@@ -1,0 +1,17 @@
+# dependencias
+node_modules/
+
+# archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# editores
+.vscode/
+.idea/
+
+# mapas de Sass
+*.css.map
+
+# secretos (Avance 2)
+.env
+.env.local
