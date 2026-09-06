@@ -9,14 +9,16 @@ echo "| # | Fecha | Hash | Mensaje | Zona | Cambio |" >> $TEMP
 echo "|---|---|---|---|---|---|" >> $TEMP
 
 git log --reverse --date=short --pretty=format:"%ad|%h|%s" \
-  | nl -w1 -s'|' \
-  | awk -F'|' '{
-      # Usamos [|] para que awk reconozca la barra correctamente
-      n = split($4, parts, " *[|] *");
-      msg = (parts[1] != "") ? parts[1] : "";
-      zona = (parts[2] != "") ? parts[2] : "";
-      cambio = (parts[3] != "") ? parts[3] : "";
-      print "| " $1 " | " $2 " | " $3 " | " msg " | " zona " | " cambio " |";
+  | nl -w1 -s'@' \
+  | awk -F'@' '{
+      n = split($2, fields, " *[|] *");
+      num = $1;
+      date_val = fields[1];
+      hash_val = fields[2];
+      msg = fields[3];
+      zona = (fields[4] != "") ? fields[4] : "";
+      cambio = (fields[5] != "") ? fields[5] : "";
+      print "| " num " | " date_val " | " hash_val " | " msg " | " zona " | " cambio " |";
     }' >> $TEMP
 
 echo "" >> $TEMP

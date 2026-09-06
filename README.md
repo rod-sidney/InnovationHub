@@ -37,9 +37,10 @@ _(se completa durante las semanas 2 a 4)_
 
 | # | Fecha | Hash | Mensaje | Zona | Cambio |
 |---|---|---|---|---|---|
-| 1 | 2026-09-06 | 7bb24d1 | Crear estructura del avance 1 y documentación inicial |  |  |
-| 2 | 2026-09-06 | 920b682 | Creación tabla resumen de commits |  |  |
-| 3 | 2026-09-06 | 3536336 | Automatización de la tabla de commits  |  |  |
-| 4 | 2026-09-06 | eaa1c88 | Corrección de automatización de tabla de commits y cambios en README  |  |  |
+| 1 | 2026-09-06 | 5527ee9 | Crear estructura del avance 1 y documentación inicial | Global | Carpetas |
+| 2 | 2026-09-06 | 92965c3 | Creación tabla resumen de commits | Global | README.md |
+| 3 | 2026-09-06 | f71deb0 | Automatización de la tabla de commits | Global | Script y hook |
+| 4 | 2026-09-06 | ed3d29a | Corrección de automatización de tabla de commits y cambios en README | Global | Script y hook |
+| 5 | 2026-09-06 | b734e8d | Corrección automatización tabla de commits | Global | Script tabla-commit.sh |
 
 <!-- FIN TABLA COMMITS -->
