@@ -41,6 +41,7 @@ _(se completa durante las semanas 2 a 4)_
 | 2 | 2026-09-06 | 92965c3 | Creación tabla resumen de commits | Global | README.md |
 | 3 | 2026-09-06 | f71deb0 | Automatización de la tabla de commits | Global | Script y hook |
 | 4 | 2026-09-06 | ed3d29a | Corrección de automatización de tabla de commits y cambios en README | Global | Script y hook |
-| 5 | 2026-09-06 | b734e8d | Corrección automatización tabla de commits | Global | Script tabla-commit.sh |
+| 5 | 2026-09-06 | 4d7eb50 | Corrección automatización tabla de commits | Global | Script tabla-commit.sh |
+| 6 | 2026-09-06 | 8ab3afa | Creación de pantallas mínimas para el avance 1. Modificación de catalogo-de-iniciativas.html y detalle-de-iniciativas.html. | avance1/paginas | Archivos HTML de vistas |
 
 <!-- FIN TABLA COMMITS -->

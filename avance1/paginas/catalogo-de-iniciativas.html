@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Catálogo de iniciativas — Innovation Hub</title>
+</head>
+
+<body>
+
+    <header>
+        <a href="../index.html">Innovation Hub</a>
+
+        <nav aria-label="Principal">
+            <ul>
+                <li><a href="catalogo.html" aria-current="page">Catálogo</a></li>
+                <li><a href="publicar.html">Publicar iniciativa</a></li>
+                <li><a href="proyectos.html">Proyectos</a></li>
+                <li><a href="perfil.html">Mi perfil</a></li>
+                <li><a href="solicitudes.html">Mis solicitudes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Catálogo de iniciativas</h1>
+
+        <aside aria-labelledby="titulo-filtros">
+            <h2 id="titulo-filtros">Filtrar iniciativas</h2>
+
+            <form>
+                <p>
+                    <label for="filtro-tipo">Tipo</label>
+                    <select id="filtro-tipo" name="tipo">
+                        <option value="">Todos</option>
+                        <option value="idea">Idea</option>
+                        <option value="necesidad">Necesidad</option>
+                        <option value="reto">Reto</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="filtro-categoria">Categoría</label>
+                    <select id="filtro-categoria" name="categoria">
+                        <option value="">Todas</option>
+                        <option value="educacion">Educación</option>
+                        <option value="ambiente">Ambiente</option>
+                        <option value="comunidad">Comunidad</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="filtro-competencia">Competencia requerida</label>
+                    <input type="text" id="filtro-competencia" name="competencia">
+                </p>
+
+                <p>
+                    <button type="submit">Aplicar filtros</button>
+                </p>
+            </form>
+        </aside>
+
+        <section aria-labelledby="titulo-resultados">
+            <h2 id="titulo-resultados">8 iniciativas encontradas</h2>
+
+            <!-- INICIATIVA 1 -->
+            <article>
+                <h3>Mapa interactivo de espacios de estudio colaborativo</h3>
+
+                <p>Idea · Comunidad</p>
+
+                <p>Aplicación de mapas que muestra en tiempo real la disponibilidad de aulas libres y cubículos de
+                    estudio en las diferentes sedes del campus.</p>
+
+                <p>Publicado por <strong>Valeria Morales</strong> el
+                    <time datetime="2026-08-07">7 de agosto de 2026</time>
+                </p>
+
+                <h4>Competencias requeridas</h4>
+                <ul>
+                    <li>Geolocalización</li>
+                    <li>UI/UX</li>
+                </ul>
+
+                <p>
+                    <span class="estado">
+                        <span aria-hidden="true">●</span> Abierta
+                    </span>
+                    · 2 de 4 miembros
+                </p>
+
+                <p><a href="detalle.html">Ver la iniciativa Mapa interactivo de espacios</a></p>
+            </article>
+
+            <!-- INICIATIVA 2 -->
+            <article>
+                <h3>Red de huertas hidropónicas urbanas</h3>
+
+                <p>Idea · Ambiente</p>
+
+                <p>Sistema IoT de monitoreo automático de nutrientes y humedad para huertas sostenibles en espacios
+                    reducidos del campus.</p>
+
+                <p>Publicado por <strong>Carlos Montero</strong> el
+                    <time datetime="2026-08-18">18 de agosto de 2026</time>
+                </p>
+
+                <h4>Competencias requeridas</h4>
+                <ul>
+                    <li>Internet de las Cosas (IoT)</li>
+                    <li>Python</li>
+                </ul>
+
+                <p>
+                    <span class="estado">
+                        <span aria-hidden="true">●</span> En progreso <!-- Cuales son los demas estados? -->
+                    </span>
+                    · 1 de 4 miembros
+                </p>
+
+                <p><a href="detalle.html">Ver la iniciativa Red de huertas</a></p>
+            </article>
+
+            <!-- INICIATIVA 3 -->
+            <article>
+                <h3>Automatización de inventario para asociaciones</h3>
+
+                <p>Necesidad · Comunidad</p>
+
+                <p>Las asociaciones estudiantiles manejan sus préstamos de equipos en hojas de cálculo desordenadas; se
+                    requiere un sistema centralizado.</p>
+
+                <p>Publicado por <strong>Sofía Vargas</strong> el
+                    <time datetime="2026-08-20">20 de agosto de 2026</time>
+                </p>
+
+                <h4>Competencias requeridas</h4>
+                <ul>
+                    <li>Bases de datos</li>
+                    <li>Node.js</li>
+                </ul>
+
+                <p>
+                    <span class="estado">
+                        <span aria-hidden="true">●</span> En progreso <!-- Cuales son los demas estados? -->
+                    </span>
+                    · 2 de 3 miembros
+                </p>
+
+                <p><a href="detalle.html">Ver la iniciativa Automatización de inventario</a></p>
+            </article>
+
+            <!-- INICIATIVA 4 -->
+            <article>
+                <h3>Asesoría digital para pequeñas empresas locales</h3>
+
+                <p>Necesidad · Educación</p>
+
+                <p>Comerciantes de la zona aledaña carecen de presencialidad digital y e-commerce básico para ofertar
+                    sus productos artesanales.</p>
+
+                <p>Publicado por <strong>Marcos Salazar</strong> el
+                    <time datetime="2026-08-22">22 de agosto de 2026</time>
+                </p>
+
+                <h4>Competencias requeridas</h4>
+                <ul>
+                    <li>Marketing digital</li>
+                    <li>E-commerce</li>
+                </ul>
+
+                <p>
+                    <span class="estado">
+                        <span aria-hidden="true">●</span> En progreso <!-- Cuales son los demas estados? -->
+                    </span>
+                    · 1 de 5 miembros
+                </p>
+
+                <p><a href="detalle.html">Ver la iniciativa Asesoría digital</a></p>
+            </article>
+
+            <!-- INICIATIVA 5 -->
+            <article>
+                <h3>Analítica de datos para el reciclaje</h3>
+
+                <p>Reto · Ambiente</p>
+
+                <p>Optimizar las rutas de recolección de residuos sólidos en el campus mediante modelos predictivos
+                    basados en los pesos históricos.</p>
+
+                <p>Publicado por <strong>Elena Campos</strong> el
+                    <time datetime="2026-08-23">23 de agosto de 2026</time>
+                </p>
+
+                <h4>Competencias requeridas</h4>
+                <ul>
+                    <li>Machine Learning</li>
+                    <li>Estadística</li>
+                </ul>
+
+                <p>
+                    <span class="estado">
+                        <span aria-hidden="true">●</span> En progreso <!-- Cuales son los demas estados? -->
+                    </span>
+                    · 4 de 8 miembros
+                </p>
+
+                <p><a href="detalle.html">Ver la iniciativa Analítica de datos para el reciclaje</a></p>
+            </article>
+
+            <!-- INICIATIVA 6 -->
+            <article>
+                <h3>Accesibilidad web institucional</h3>
+
+                <p>Reto · Educación</p>
+
+                <p>Auditar y rediseñar los portales de cursos para garantizar cumplimiento estricto de pautas WCAG 2.1
+                    AA para estudiantes con discapacidad visual.</p>
+
+                <p>Publicado por <strong>Esteban Quirós</strong> el <time datetime="2026-08-28">28 de agosto de
+                        2026</time></p>
+
+                <h4>Competencias requeridas</h4>
+                <ul>
+                    <li>Accesibilidad Web</li>
+                    <li>HTML semántico</li>
+                </ul>
+
+                <p>
+                    <span class="estado">
+                        <span aria-hidden="true">●</span> En progreso <!-- Cuales son los demas estados? -->
+                    </span>
+                    · 2 de 4 miembros
+                </p>
+
+                <p><a href="detalle.html">Ver la iniciativa Accesibilidad web institucional</a></p>
+            </article>
+
+            <!-- INICIATIVA 7 -->
+            <article>
+                <h3>Plataforma de tutorías cruzadas entre pares</h3>
+
+                <p>Idea · Educación</p>
+
+                <p>Espacio virtual donde estudiantes avanzados ofrecen acompañamiento académico a compañeros de primeros
+                    ingresos en materias de programación.</p>
+
+                <p>Publicado por <strong>Lucía Méndez</strong> el
+                    <time datetime="2026-08-31">31 de agosto de 2026</time>
+                </p>
+
+                <h4>Competencias requeridas</h4>
+                <ul>
+                    <li>JavaScript</li>
+                    <li>React</li>
+                    <li>SQL</li>
+                </ul>
+                <p>
+                    <span class="estado">
+                        <span aria-hidden="true">●</span> En progreso <!-- Cuales son los demas estados? -->
+                    </span>
+                    · 4 de 5 miembros
+                </p>
+                <p><a href="detalle.html">Ver la iniciativa Tutorías cruzadas</a></p>
+            </article>
+
+            <!-- INICIATIVA 8 -->
+            <article>
+                <h3>Campaña de reducción de huella de carbono digital</h3>
+
+                <p>Necesidad · Ambiente</p>
+
+                <p>Los servidores institucionales almacenan gigabytes de archivos obsoletos; se precisa una estrategia
+                    de concientización y limpieza de datos.</p>
+
+                <p>Publicado por <strong>Gerardo Ruiz</strong> el
+                    <time datetime="2026-09-05">5 de septiembre de 2026</time>
+                </p>
+
+                <h4>Competencias requeridas</h4>
+                <ul>
+                    <li>Gestión de proyectos</li>
+                    <li>Comunicación</li>
+                </ul>
+
+                <p>
+                    <span class="estado">
+                        <span aria-hidden="true">●</span> En progreso <!-- Cuales son los demas estados? -->
+                    </span>
+                    · 1 de 3 miembros
+                </p>
+                <p><a href="detalle.html">Ver la iniciativa Campaña huella carbono</a></p>
+            </article>
+
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p>Innovation Hub · Universidad CENFOTEC</p>
+        <p><a href="mailto:contacto@ucenfotec.ac.cr">contacto@ucenfotec.ac.cr</a></p>
+    </footer>
+
+</body>
+
+</html>
