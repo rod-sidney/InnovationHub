@@ -2,37 +2,193 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar iniciativa — Innovation Hub</title>
+
 </head>
 
 <body>
-
     <header>
+
         <a href="../index.html">Innovation Hub</a>
 
-        <nav aria-label="Principal">
+        <nav aria-label="Navegación principal">
             <ul>
-                <li><a href="catalogo.html">Catálogo</a></li>
-                <li><a href="publicar.html">Publicar iniciativa</a></li>
+                <li><a href="catalogo-de-iniciativas.html">Catálogo</a></li>
+                <li><a href="registro-de-iniciativa.html">Publicar iniciativa</a></li>
                 <li><a href="proyectos.html">Proyectos</a></li>
-                <li><a href="perfil.html">Mi perfil</a></li>
-                <li><a href="solicitudes.html">Mis solicitudes</a></li>
+                <li><a href="perfil-de-usuario.html">Mi perfil</a></li>
+                <li><a href="solicitud-de-participacion.html">Mis solicitudes</a></li>
             </ul>
         </nav>
+
     </header>
 
     <main>
-        <h1>Editar iniciativa</h1>
 
+        <h1>Editar iniciativa: Red de huertas hidropónicas urbanas</h1>
 
+        <p>Modifica la información general de tu iniciativa, ajusta las competencias necesarias o solicítala para
+            eliminación.</p>
+
+        <form id="form-editar-iniciativa" action="#" method="POST">
+
+            <fieldset>
+
+                <legend>Información Básica</legend>
+
+                <p>
+                    <label for="titulo">Título de la iniciativa <span aria-hidden="true">*</span></label>
+                    <input type="text" id="titulo" name="titulo" value="Red de huertas hidropónicas urbanas" required
+                        aria-required="true">
+                </p>
+
+                <p>
+                    <label for="tipo">Tipo de iniciativa <span aria-hidden="true">*</span></label>
+
+                    <select id="tipo" name="tipo" required aria-required="true">
+                        <option value="">Seleccione una opción</option>
+                        <option value="idea" selected>Idea</option>
+                        <option value="necesidad">Necesidad</option>
+                        <option value="reto">Reto</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="categoria">Categoría <span aria-hidden="true">*</span></label>
+
+                    <select id="categoria" name="categoria" required aria-required="true">
+                        <option value="">Seleccione una opción</option>
+                        <option value="educacion">Educación</option>
+                        <option value="ambiente" selected>Ambiente</option>
+                        <option value="comunidad">Comunidad</option>
+                    </select>
+                </p>
+
+            </fieldset>
+
+            <fieldset>
+
+                <legend>Detalles del Proyecto</legend>
+
+                <p>
+                    <label for="resumen">Resumen (Breve descripción) <span aria-hidden="true">*</span></label>
+                    <textarea id="resumen" name="resumen" rows="3" required
+                        aria-required="true">Sistema IoT de monitoreo automático de nutrientes y humedad para huertas sostenibles en espacios reducidos del campus.</textarea>
+                </p>
+
+                <p>
+                    <label for="descripcion">Descripción completa <span aria-hidden="true">*</span></label>
+                    <textarea id="descripcion" name="descripcion" rows="8" required
+                        aria-required="true">Este proyecto busca optimizar el cultivo urbano mediante la instalación de huertas hidropónicas automatizadas en diferentes sectores del campus universitario. La iniciativa combina tecnología de automatización e Internet de las Cosas (IoT) con prácticas sostenibles de producción de alimentos a pequeña escala.
+
+                        A través de sensores integrados, se medirá constantemente la temperatura, humedad del ambiente, nivel de pH y electroconductividad del agua, ajustando automáticamente la dosificación de nutrientes y los ciclos de riego para garantizar el crecimiento saludable de los cultivos.
+
+                        El objetivo principal es involucrar a la comunidad universitaria en proyectos interdisciplinarios que promuevan la soberanía alimentaria, la tecnología verde y el uso eficiente del agua en entornos urbanos.</textarea>
+                </p>
+
+                <p>
+                    <label for="problema">Problema identificado</label>
+                    <textarea id="problema" name="problema"
+                        rows="4">Falta de áreas verdes productivas en el campus y necesidad de herramientas tecnológicas aplicadas a la sostenibilidad ambiental y la agricultura urbana.</textarea>
+                </p>
+
+                <p>
+                    <label for="beneficiarios">Beneficiarios</label>
+                    <input type="text" id="beneficiarios" name="beneficiarios"
+                        value="Estudiantes, personal docente y comunidad universitaria en general.">
+                </p>
+
+                <p>
+                    <label for="etiquetas">Etiquetas (separadas por comas)</label>
+                    <input type="text" id="etiquetas" name="etiquetas"
+                        value="IoT, Sostenibilidad, Hidroponía, Python, Automatización">
+                </p>
+
+            </fieldset>
+
+            <fieldset>
+
+                <legend>Equipo y Privacidad</legend>
+
+                <p>
+                    <label for="participantes">Cantidad estimada de participantes</label>
+                    <input type="number" id="participantes" name="participantes" min="1" max="20" value="4">
+                </p>
+
+                <p>
+                    <label for="visibilidad">Nivel de visibilidad <span aria-hidden="true">*</span></label>
+
+                    <select id="visibilidad" name="visibilidad" required aria-required="true">
+
+                        <option value="publica" selected>Pública</option>
+                        <option value="institucional">Institucional</option>
+                        <option value="restringida">Restringida</option>
+                        <option value="privada">Privada</option>
+
+                    </select>
+                </p>
+
+                <fieldset>
+
+                    <legend>Competencias Requeridas</legend>
+
+                    <div id="contenedor-competencias">
+
+                        <p>
+                            <label for="competencia-1">Competencia 1</label>
+                            <input type="text" id="competencia-1" name="competencias[]"
+                                value="Internet de las Cosas (IoT)">
+                            <button type="button"
+                                aria-label="Eliminar competencia Internet de las Cosas">Eliminar</button>
+                        </p>
+
+                        <p>
+                            <label for="competencia-2">Competencia 2</label>
+                            <input type="text" id="competencia-2" name="competencias[]" value="Python">
+                            <button type="button" aria-label="Eliminar competencia Python">Eliminar</button>
+                        </p>
+
+                    </div>
+
+                    <button type="button" id="btn-agregar-competencia">Añadir otra competencia</button>
+
+                </fieldset>
+
+            </fieldset>
+
+            <div class="acciones-formulario">
+                <button type="submit">Guardar cambios</button>
+                <a href="detalle-de-iniciativa.html">Cancelar</a>
+                <button type="button" class="btn-peligro" id="btn-eliminar"
+                    aria-label="Eliminar iniciativa permanentemente">Eliminar iniciativa</button>
+            </div>
+
+        </form>
+
+        <dialog id="modal-confirmacion" aria-labelledby="titulo-modal">
+
+            <h2 id="titulo-modal">¿Estás seguro de eliminar esta iniciativa?</h2>
+            <p>Esta acción archivará o eliminará permanentemente la iniciativa "Red de huertas hidropónicas urbanas".
+                Esta operación no se puede deshacer.</p>
+
+            <form method="dialog">
+                <button value="cancelar">Cancelar</button>
+                <button value="confirmar" class="btn-peligro">Sí, eliminar</button>
+            </form>
+
+        </dialog>
 
     </main>
 
+
     <footer>
+
         <p>Innovation Hub · Universidad CENFOTEC</p>
         <p><a href="mailto:contacto@ucenfotec.ac.cr">contacto@ucenfotec.ac.cr</a></p>
+        
     </footer>
 
 </body>
