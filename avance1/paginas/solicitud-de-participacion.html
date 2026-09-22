@@ -24,15 +24,61 @@
     </header>
 
     <main>
+
         <h1>Solicitud de participación</h1>
+        <p>Estás solicitando unirte a la iniciativa: <strong>Mapa interactivo de espacios de estudio
+                colaborativo</strong></p>
 
+        <form id="form-solicitud" action="#" method="POST">
 
+            <fieldset>
+
+                <legend>Datos de tu solicitud</legend>
+                <p>
+                    <label for="rol">Rol deseado <span aria-hidden="true">*</span></label>
+                    <input type="text" id="rol" name="rol" placeholder="Ej: Desarrollador Frontend, Diseñador UX"
+                        required aria-required="true">
+                </p>
+
+                <p>
+                    <label for="competencia">Competencia principal que aportas <span aria-hidden="true">*</span></label>
+                    <input type="text" id="competencia" name="competencia" placeholder="Ej: React y Geolocalización"
+                        required aria-required="true">
+                </p>
+
+                <p>
+                    <label for="disponibilidad">Disponibilidad de tiempo <span aria-hidden="true">*</span></label>
+                    <select id="disponibilidad" name="disponibilidad" required aria-required="true">
+                        <option value="">Seleccione su disponibilidad</option>
+                        <option value="5_horas">Menos de 5 horas semanales</option>
+                        <option value="10_horas">5 a 10 horas semanales</option>
+                        <option value="mas_10_horas">Más de 10 horas semanales</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="mensaje">Mensaje de presentación <span aria-hidden="true">*</span></label>
+                    <textarea id="mensaje" name="mensaje" rows="5"
+                        placeholder="Cuéntale al propietario por qué te interesa este proyecto y qué valor puedes aportar..."
+                        required aria-required="true"></textarea>
+                </p>
+
+            </fieldset>
+
+            <p>
+                <button type="submit">Enviar solicitud</button>
+                <a href="detalle.html">Cancelar</a>
+            </p>
+
+        </form>
 
     </main>
 
     <footer>
+
         <p>Innovation Hub · Universidad CENFOTEC</p>
         <p><a href="mailto:contacto@ucenfotec.ac.cr">contacto@ucenfotec.ac.cr</a></p>
+
     </footer>
 
 </body>
