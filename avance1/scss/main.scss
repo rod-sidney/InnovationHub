@@ -2,9 +2,8 @@
 @import 'variables';
 
 // bootstrap
-@import '../node_modules/bootstrap/scss/bootstrap';
+@import '../../node_modules/bootstrap/scss/bootstrap'; 
 
-/* Parciales adicionales
-// @import 'tarjetas';
+// Parciales adicionales
+@import 'tarjetas';
 // @import 'navegacion';
-*/

@@ -46,6 +46,7 @@ _(se completa durante las semanas 2 a 4)_
 | 7 | 2026-09-08 | 1eefcf8 | Edición de la pantalla de la página principal | avance1/paginas/index.html | Estructura HTML |
 | 8 | 2026-09-21 | e2d52b0 | Se desarrolla el contenido y forms de las páginas: detalle-de-iniciativa.html, modificacion-y-eliminacion.html y publicar-iniciativa.html | avance1/paginas | paginas/detalle-de-iniciativa.html, paginas/modificacion-y-eliminacion.html, paginas/registro-de-iniciativa.html |
 | 9 | 2026-09-21 | cf81c36 | Se desarrolla el contenido y forms de las páginas: perfil-de-usuario y solicitud-de-participacion HTML. |  |  |
-| 10 | 2026-09-25 | ea80e2f | Configuración inicial de scss y se agregan links de bootstrap a los HTML | avance1/scss, avance1/paginas | Carpetas |
+| 10 | 2026-09-25 | d3aaa96 | Configuración inicial de scss y se agregan links de bootstrap a los HTML | avance1/scss, avance1/paginas | Carpetas |
+| 11 | 2026-09-25 | 7aee122 | Aplicar cambios de bootstrap y sass a la página principal | avance1/paginas, avance1/scss, avance1/css | index.html |
 
 <!-- FIN TABLA COMMITS -->
