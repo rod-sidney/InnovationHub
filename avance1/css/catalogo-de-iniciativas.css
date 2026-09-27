@@ -1,21 +1,22 @@
-/* colores de los estados de las iniciativas */
 .estado-abierta {
-    color: #198754;
-    font-weight: 700;
+  color: #439a7d;
+  font-weight: 700;
 }
 
 .estado-revision {
-    color: #fd7e14;
-    font-weight: 700;
+  color: #dba31f;
+  font-weight: 700;
 }
 
 .estado-progreso {
-    color: #0dcaf0;
-    font-weight: 700;
+  color: #8655e2;
+  font-weight: 700;
 }
 
 .estado-abierta span,
 .estado-revision span,
 .estado-progreso span {
-    margin-right: 4px;
+  margin-right: 4px;
 }
+
+/*# sourceMappingURL=catalogo-de-iniciativas.css.map */

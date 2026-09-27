@@ -11993,4 +11993,41 @@ textarea.form-control-lg {
   font-weight: bold;
   color: #191c1f;
   border-bottom: none;
+}
+
+.meta-box-flex {
+  background-color: rgb(220.1020408163, 235.7142857143, 244.8979591837);
+  border: 1px solid rgba(24, 61, 97, 0.12);
+  border-radius: 0.6rem;
+  padding: 0.85rem 1.2rem;
+  flex: 1 1 160px;
+}
+.meta-box-flex .meta-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgb(13.8842975207, 35.2892561983, 56.1157024793);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.meta-box-flex .meta-content {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #191c1f;
+  margin: 0;
+}
+
+.estado-abierta {
+  color: #439a7d;
+  font-weight: 700;
+}
+
+.estado-revision {
+  color: #dba31f;
+  font-weight: 700;
+}
+
+.estado-progreso {
+  color: #8655e2;
+  font-weight: 700;
 }/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,22 @@
+@import 'variables';
+
+.estado-abierta {
+    color: $success;
+    font-weight: 700;
+}
+
+.estado-revision {
+    color: $warning;
+    font-weight: 700;
+}
+
+.estado-progreso {
+    color: $info;
+    font-weight: 700;
+}
+
+.estado-abierta span,
+.estado-revision span,
+.estado-progreso span {
+    margin-right: 4px;
+}
