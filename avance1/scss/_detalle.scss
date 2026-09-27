@@ -38,3 +38,9 @@
     color: $info;
     font-weight: 700;
 }
+
+.estado-abierta span,
+.estado-revision span,
+.estado-progreso span {
+    margin-right: 4px;
+}

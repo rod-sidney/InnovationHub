@@ -49,6 +49,7 @@ _(se completa durante las semanas 2 a 4)_
 | 10 | 2026-09-25 | d3aaa96 | Configuración inicial de scss y se agregan links de bootstrap a los HTML | avance1/scss, avance1/paginas | Carpetas |
 | 11 | 2026-09-25 | 39ec900 | Aplicar cambios de bootstrap y sass a la página principal | avance1/paginas, avance1/scss, avance1/css | index.html |
 | 12 | 2026-09-26 | e44b115 | Se modifica la página de catálogo de iniciativas para añadir los estilos de bootstrap y css | avance1/paginas, avance1/css | catalogo-de-iniciativa.html |
-| 13 | 2026-09-27 | 5201f63 | Se modifica la página de detalle de iniciativa, añadiendo los estilos | avance1/scss, avance1/paginas, avance1/css | detalle-de-iniciativa.html |
+| 13 | 2026-09-27 | 15b7cef | Se modifica la página de detalle de iniciativa, añadiendo los estilos | avance1/scss, avance1/paginas, avance1/css | detalle-de-iniciativa.html |
+| 14 | 2026-09-27 | ef15459 | Se modifican las páginas de modificación y elimminación de iniciativas, perfil de usuario, registro de iniciativas y solicitud de perticipación + correcciones de la página catálogo de iniciativas, para añadir los estilos | avance1/paginas, avance1/css, avance1/scss | modificacion-y-eliminacion.html, perfil-de-usuario.html, registro-de-iniciativa.html, solicitud-de-participacion.html |
 
 <!-- FIN TABLA COMMITS -->
