@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Publicar iniciativa - Innovation Hub</title>
-    <!-- CSS Compilado -->
     <link href="../css/main.css" rel="stylesheet">
+    <script src="../js/main.js" defer></script>
 </head>
 
 <body class="d-flex flex-column min-vh-100 bg-light">
@@ -15,12 +15,10 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm" aria-label="Principal">
             <div class="container">
                 <a class="navbar-brand fw-bold" href="../index.html">Innovation Hub</a>
-
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
                     aria-controls="menuPrincipal" aria-expanded="false" aria-label="Alternar navegación">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="menuPrincipal">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="catalogo-de-iniciativas.html">Catálogo de
@@ -46,7 +44,6 @@
                 <div class="card bg-secondary bg-opacity-55 shadow-sm border-0 p-4 p-md-5">
                     <form id="form-registro-iniciativa" action="#" method="POST">
 
-                        <!-- Información Básica -->
                         <fieldset class="mb-5">
                             <legend class="h5 fw-bold text-primary border-bottom pb-2 mb-4">Información Básica</legend>
 
@@ -63,9 +60,9 @@
                                             class="text-danger" aria-hidden="true">*</span></label>
                                     <select id="tipo" name="tipo" class="form-select" required aria-required="true">
                                         <option value="">Seleccione una opción</option>
-                                        <option value="idea">Idea</option>
-                                        <option value="necesidad">Necesidad</option>
-                                        <option value="reto">Reto</option>
+                                        <option value="Idea">Idea</option>
+                                        <option value="Necesidad">Necesidad</option>
+                                        <option value="Reto">Reto</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 mb-3">
@@ -74,15 +71,14 @@
                                     <select id="categoria" name="categoria" class="form-select" required
                                         aria-required="true">
                                         <option value="">Seleccione una opción</option>
-                                        <option value="educacion">Educación</option>
-                                        <option value="ambiente">Ambiente</option>
-                                        <option value="comunidad">Comunidad</option>
+                                        <option value="Educación">Educación</option>
+                                        <option value="Ambiente">Ambiente</option>
+                                        <option value="Comunidad">Comunidad</option>
                                     </select>
                                 </div>
                             </div>
                         </fieldset>
 
-                        <!-- Detalles del Proyecto -->
                         <fieldset class="mb-5">
                             <legend class="h5 fw-bold text-primary border-bottom pb-2 mb-4">Detalles del Proyecto
                             </legend>
@@ -120,7 +116,6 @@
                             </div>
                         </fieldset>
 
-                        <!-- Equipo y Privacidad -->
                         <fieldset class="mb-5">
                             <legend class="h5 fw-bold text-primary border-bottom pb-2 mb-4">Equipo y Privacidad</legend>
 
@@ -136,10 +131,10 @@
                                             class="text-danger" aria-hidden="true">*</span></label>
                                     <select id="visibilidad" name="visibilidad" class="form-select" required
                                         aria-required="true">
-                                        <option value="publica">Pública</option>
-                                        <option value="institucional">Institucional</option>
-                                        <option value="restringida">Restringida</option>
-                                        <option value="privada">Privada</option>
+                                        <option value="Pública">Pública</option>
+                                        <option value="Institucional">Institucional</option>
+                                        <option value="Restringida">Restringida</option>
+                                        <option value="Privada">Privada</option>
                                     </select>
                                 </div>
                             </div>
@@ -149,8 +144,6 @@
                                 <div class="input-group mb-2">
                                     <input type="text" id="competencia-1" name="competencias[]" class="form-control"
                                         placeholder="Ej: Programación en Python">
-                                    <button class="btn btn-outline-danger" type="button"
-                                        aria-label="Eliminar competencia">Eliminar</button>
                                 </div>
                             </div>
                             <button type="button" id="btn-agregar-competencia"
@@ -169,8 +162,6 @@
     <footer class="bg-dark text-light py-4 text-center mt-auto">
         <div class="container">
             <p class="mb-1">Innovation Hub · Universidad CENFOTEC</p>
-            <a href="mailto:innovationhub@ucenfotec.ac.cr"
-                class="text-secondary text-decoration-none">innovationhub@ucenfotec.ac.cr</a>
         </div>
     </footer>
 

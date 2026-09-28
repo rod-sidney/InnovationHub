@@ -75,7 +75,7 @@ export function renderizarDetalle(iniciativa, contenedor) {
                 </div>
                 <div class="meta-box-flex shadow-sm">
                     <div class="meta-title">Propietario</div>
-                    <div class="meta-content">${iniciativa.autor}</div>
+                    <div class="meta-content">${autor}</div>
                 </div>
                 <div class="meta-box-flex shadow-sm">
                     <div class="meta-title">Estado</div>
