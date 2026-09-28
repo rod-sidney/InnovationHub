@@ -50,6 +50,7 @@ _(se completa durante las semanas 2 a 4)_
 | 11 | 2026-09-25 | 39ec900 | Aplicar cambios de bootstrap y sass a la página principal | avance1/paginas, avance1/scss, avance1/css | index.html |
 | 12 | 2026-09-26 | e44b115 | Se modifica la página de catálogo de iniciativas para añadir los estilos de bootstrap y css | avance1/paginas, avance1/css | catalogo-de-iniciativa.html |
 | 13 | 2026-09-27 | 15b7cef | Se modifica la página de detalle de iniciativa, añadiendo los estilos | avance1/scss, avance1/paginas, avance1/css | detalle-de-iniciativa.html |
-| 14 | 2026-09-27 | ef15459 | Se modifican las páginas de modificación y elimminación de iniciativas, perfil de usuario, registro de iniciativas y solicitud de perticipación + correcciones de la página catálogo de iniciativas, para añadir los estilos | avance1/paginas, avance1/css, avance1/scss | modificacion-y-eliminacion.html, perfil-de-usuario.html, registro-de-iniciativa.html, solicitud-de-participacion.html |
+| 14 | 2026-09-27 | 73cab78 | Se modifican las páginas de modificación y elimminación de iniciativas, perfil de usuario, registro de iniciativas y solicitud de perticipación + correcciones de la página catálogo de iniciativas, para añadir los estilos | avance1/paginas, avance1/css, avance1/scss | modificacion-y-eliminacion.html, perfil-de-usuario.html, registro-de-iniciativa.html, solicitud-de-participacion.html |
+| 15 | 2026-09-27 | cf82a3f | Se crean archivos js y se modifican archivos json para que las páginas catalogo de iniciativas, detalle de iniciativa y modificacion y eliminacion puedan traer los datos por medio de ellos | avance1/datos, avance1/js, avance1/paginas | catalogo-de-iniciativas.html, detalle-de-iniciativa.html, modificacion-y-eliminacion.html |
 
 <!-- FIN TABLA COMMITS -->

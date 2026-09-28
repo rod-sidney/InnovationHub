@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar iniciativa - Innovation Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/main.css" rel="stylesheet">
 </head>
 
@@ -14,11 +15,9 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm" aria-label="Principal">
             <div class="container">
                 <a class="navbar-brand fw-bold" href="../index.html">Innovation Hub</a>
-
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="menuPrincipal">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="catalogo-de-iniciativas.html">Catálogo de
@@ -37,13 +36,13 @@
             <div class="col-12 col-lg-8">
 
                 <div class="mb-4">
-                    <a href="detalle-de-iniciativa.html" class="btn btn-outline-primary btn-sm shadow-sm">
-                        &larr; Volver a la iniciativa
+                    <a href="catalogo-de-iniciativas.html" class="btn btn-outline-primary btn-sm shadow-sm">
+                        &larr; Volver al catálogo
                     </a>
                 </div>
 
                 <div class="text-md-start mb-4">
-                    <h1 class="fw-bold text-dark h2">Editar: Red de huertas hidropónicas urbanas</h1>
+                    <h1 id="titulo-editar" class="fw-bold text-dark h2">Editar Iniciativa</h1>
                     <p class="text-muted">Modifica la información general de tu iniciativa, ajusta las competencias o
                         solicítala para eliminación.</p>
                 </div>
@@ -51,21 +50,19 @@
                 <div class="card bg-secondary bg-opacity-55 shadow-sm border-0 p-4 p-md-5">
                     <form id="form-editar-iniciativa" action="#" method="POST">
 
-                        <!-- Información Básica -->
                         <fieldset class="mb-5">
                             <legend class="h5 fw-bold text-primary border-bottom pb-2 mb-4">Información Básica</legend>
                             <div class="mb-3">
                                 <label for="titulo" class="form-label fw-semibold">Título de la iniciativa <span
                                         class="text-danger">*</span></label>
-                                <input type="text" id="titulo" name="titulo" class="form-control"
-                                    value="Red de huertas hidropónicas urbanas" required>
+                                <input type="text" id="titulo" name="titulo" class="form-control" required>
                             </div>
                             <div class="row g-3">
                                 <div class="col-md-6 mb-3">
                                     <label for="tipo" class="form-label fw-semibold">Tipo de iniciativa <span
                                             class="text-danger">*</span></label>
                                     <select id="tipo" name="tipo" class="form-select" required>
-                                        <option value="idea" selected>Idea</option>
+                                        <option value="idea">Idea</option>
                                         <option value="necesidad">Necesidad</option>
                                         <option value="reto">Reto</option>
                                     </select>
@@ -75,28 +72,26 @@
                                             class="text-danger">*</span></label>
                                     <select id="categoria" name="categoria" class="form-select" required>
                                         <option value="educacion">Educación</option>
-                                        <option value="ambiente" selected>Ambiente</option>
+                                        <option value="ambiente">Ambiente</option>
                                         <option value="comunidad">Comunidad</option>
                                     </select>
                                 </div>
                             </div>
                         </fieldset>
 
-                        <!-- Detalles -->
                         <fieldset class="mb-5">
                             <legend class="h5 fw-bold text-primary border-bottom pb-2 mb-4">Detalles del Proyecto
                             </legend>
                             <div class="mb-3">
                                 <label for="resumen" class="form-label fw-semibold">Resumen <span
                                         class="text-danger">*</span></label>
-                                <textarea id="resumen" name="resumen" class="form-control" rows="3"
-                                    required>Sistema IoT de monitoreo automático de nutrientes y humedad para huertas sostenibles en espacios reducidos del campus.</textarea>
+                                <textarea id="resumen" name="resumen" class="form-control" rows="3" required></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="descripcion" class="form-label fw-semibold">Descripción completa <span
                                         class="text-danger">*</span></label>
                                 <textarea id="descripcion" name="descripcion" class="form-control" rows="8"
-                                    required>Este proyecto busca optimizar el cultivo urbano mediante la instalación de huertas hidropónicas automatizadas en diferentes sectores del campus universitario. La iniciativa combina tecnología de automatización e Internet de las Cosas (IoT) con prácticas sostenibles de producción de alimentos a pequeña escala.</textarea>
+                                    required></textarea>
                             </div>
                         </fieldset>
 
@@ -104,7 +99,7 @@
                             class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-5 pt-4 border-top gap-3">
                             <div>
                                 <button type="submit" class="btn btn-primary fw-bold px-4">Guardar cambios</button>
-                                <a href="detalle-de-iniciativa.html"
+                                <a href="catalogo-de-iniciativas.html"
                                     class="btn btn-link text-decoration-none text-muted">Cancelar</a>
                             </div>
                             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
@@ -129,13 +124,15 @@
                             aria-label="Cerrar"></button>
                     </div>
                     <div class="modal-body py-4">
-                        <p class="mb-0">Esta acción archivará o eliminará permanentemente la iniciativa <strong>"Red de
-                                huertas hidropónicas urbanas"</strong>. Esta operación no se puede deshacer.</p>
+                        <p class="mb-0">Esta acción eliminará permanentemente la iniciativa. Esta operación no se puede
+                            deshacer.</p>
                     </div>
                     <div class="modal-footer border-0 bg-light">
                         <button type="button" class="btn btn-outline-secondary"
                             data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-danger">Sí, eliminar permanentemente</button>
+                        <!-- JavaScript ID para eliminar -->
+                        <button type="button" class="btn btn-danger" id="btn-eliminar-confirmado">Sí, eliminar
+                            permanentemente</button>
                     </div>
                 </div>
             </div>
@@ -150,6 +147,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="../js/app.js"></script>
 </body>
 
 </html>

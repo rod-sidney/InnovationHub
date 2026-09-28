@@ -10,27 +10,22 @@
     <link href="../css/catalogo-de-iniciativas.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <header>
-        <!-- navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm" aria-label="Principal">
             <div class="container">
-                <a class="navbar-brand fw-bold" href="index.html" aria-current="page">Innovation Hub</a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
-                    aria-controls="menuPrincipal" aria-expanded="false" aria-label="Alternar navegación">
+                <a class="navbar-brand fw-bold" href="../index.html">Innovation Hub</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="menuPrincipal">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="paginas/catalogo-de-iniciativas.html">Catálogo de
+                        <li class="nav-item"><a class="nav-link" href="catalogo-de-iniciativas.html">Catálogo de
                                 iniciativas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="paginas/registro-de-iniciativa.html">Publicar
+                        <li class="nav-item"><a class="nav-link" href="registro-de-iniciativa.html">Publicar
                                 iniciativa</a></li>
-                        <li class="nav-item"><a class="nav-link" href="paginas/perfil-de-usuario.html">Mi perfil</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="perfil-de-usuario.html">Mi perfil</a></li>
                     </ul>
                 </div>
             </div>
@@ -38,12 +33,12 @@
     </header>
 
     <main class="container py-5">
-        <h1 class="mb-4 fw-bold text-dark" aria-label="Título del catálogo de iniciativas">Catálogo de iniciativas</h1>
+        <h1 class="mb-4 fw-bold text-dark">Catálogo de iniciativas</h1>
 
         <aside class="card shadow-sm border-0 mb-5 p-4" aria-labelledby="titulo-filtros">
             <h2 id="titulo-filtros" class="h5 mb-3 fw-bold text-primary">Filtrar iniciativas</h2>
 
-            <form class="row g-3 align-items-end">
+            <form id="form-filtros" class="row g-3 align-items-end">
                 <div class="col-12 col-md-3">
                     <label for="filtro-tipo" class="form-label fw-semibold">Tipo</label>
                     <select id="filtro-tipo" name="tipo" class="form-select">
@@ -65,7 +60,7 @@
                 </div>
 
                 <div class="col-12 col-md-4">
-                    <label for="filtro-competencia" class="form-label fw-semibold">Competencia requerida</label>
+                    <label for="filtro-competencia" class="form-label fw-semibold">Palabra clave o Competencia</label>
                     <input type="text" id="filtro-competencia" name="competencia" class="form-control"
                         placeholder="Ej. React, IoT, Python...">
                 </div>
@@ -77,259 +72,9 @@
         </aside>
 
         <section aria-labelledby="titulo-resultados">
-            <h2 id="titulo-resultados" class="h4 mb-4 fw-bold text-dark">8 iniciativas encontradas</h2>
-
-            <div class="row g-4">
-
-                <!-- INICIATIVA 1 -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <article class="card h-100 shadow-sm border-0">
-                        <div class="card-body d-flex flex-column">
-                            <span class="badge bg-secondary text-dark align-self-start mb-2">Idea · Comunidad</span>
-                            <h3 class="card-title h5 fw-bold">Mapa interactivo de espacios de estudio colaborativo</h3>
-                            <p class="card-text text-muted small">Aplicación de mapas que muestra en tiempo real la
-                                disponibilidad de aulas libres y cubículos de estudio en las diferentes sedes del
-                                campus.</p>
-                            <p class="small text-muted mb-3">Publicado por <strong>Valeria Morales</strong> el <time
-                                    datetime="2026-08-07">7 ago 2026</time></p>
-
-                            <div class="mt-auto">
-                                <h4 class="h6 fw-bold mb-1">Competencias:</h4>
-                                <ul class="small text-muted mb-3 list-unstyled">
-                                    <li>· Geolocalización</li>
-                                    <li>· UI/UX</li>
-                                </ul>
-                                <div class="d-flex justify-content-between align-items-center border-top pt-3">
-                                    <span class="estado-abierta"><span aria-hidden="true">●</span> Abierta</span>
-                                    <span class="text-muted small">2/4 miembros</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white border-0 pb-3 text-center">
-                            <a href="detalle-de-iniciativa.html" class="btn btn-outline-primary w-100">Ver
-                                iniciativa</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- INICIATIVA 2 -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <article class="card h-100 shadow-sm border-0">
-                        <div class="card-body d-flex flex-column">
-                            <span class="badge bg-secondary text-dark align-self-start mb-2">Idea · Ambiente</span>
-                            <h3 class="card-title h5 fw-bold">Red de huertas hidropónicas urbanas</h3>
-                            <p class="card-text text-muted small">Sistema IoT de monitoreo automático de nutrientes y
-                                humedad para huertas sostenibles en espacios reducidos del campus.</p>
-                            <p class="small text-muted mb-3">Publicado por <strong>Carlos Montero</strong> el <time
-                                    datetime="2026-08-18">18 ago 2026</time></p>
-
-                            <div class="mt-auto">
-                                <h4 class="h6 fw-bold mb-1">Competencias:</h4>
-                                <ul class="small text-muted mb-3 list-unstyled">
-                                    <li>· Internet de las Cosas (IoT)</li>
-                                    <li>· Python</li>
-                                </ul>
-                                <div class="d-flex justify-content-between align-items-center border-top pt-3">
-                                    <span class="estado-abierta"><span aria-hidden="true">●</span> Abierta</span>
-                                    <span class="text-muted small">1/4 miembros</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white border-0 pb-3 text-center">
-                            <a href="detalle-de-iniciativa.html" class="btn btn-outline-primary w-100">Ver
-                                iniciativa</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- INICIATIVA 3 -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <article class="card h-100 shadow-sm border-0">
-                        <div class="card-body d-flex flex-column">
-                            <span class="badge bg-secondary text-dark align-self-start mb-2">Necesidad ·
-                                Comunidad</span>
-                            <h3 class="card-title h5 fw-bold">Automatización de inventario para asociaciones</h3>
-                            <p class="card-text text-muted small">Las asociaciones estudiantiles manejan sus préstamos
-                                de equipos en hojas de cálculo desordenadas; se requiere un sistema centralizado.</p>
-                            <p class="small text-muted mb-3">Publicado por <strong>Sofía Vargas</strong> el <time
-                                    datetime="2026-08-20">20 ago 2026</time></p>
-
-                            <div class="mt-auto">
-                                <h4 class="h6 fw-bold mb-1">Competencias:</h4>
-                                <ul class="small text-muted mb-3 list-unstyled">
-                                    <li>· Bases de datos</li>
-                                    <li>· Node.js</li>
-                                </ul>
-                                <div class="d-flex justify-content-between align-items-center border-top pt-3">
-                                    <span class="estado-revision"><span aria-hidden="true">●</span> En revisión</span>
-                                    <span class="text-muted small">2/3 miembros</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white border-0 pb-3 text-center">
-                            <a href="detalle-de-iniciativa.html" class="btn btn-outline-primary w-100">Ver
-                                iniciativa</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- INICIATIVA 4 -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <article class="card h-100 shadow-sm border-0">
-                        <div class="card-body d-flex flex-column">
-                            <span class="badge bg-secondary text-dark align-self-start mb-2">Necesidad ·
-                                Educación</span>
-                            <h3 class="card-title h5 fw-bold">Asesoría digital para pequeñas empresas locales</h3>
-                            <p class="card-text text-muted small">Comerciantes de la zona aledaña carecen de
-                                presencialidad digital y e-commerce básico para ofertar sus productos artesanales.</p>
-                            <p class="small text-muted mb-3">Publicado por <strong>Marcos Salazar</strong> el <time
-                                    datetime="2026-08-22">22 ago 2026</time></p>
-
-                            <div class="mt-auto">
-                                <h4 class="h6 fw-bold mb-1">Competencias:</h4>
-                                <ul class="small text-muted mb-3 list-unstyled">
-                                    <li>· Marketing digital</li>
-                                    <li>· E-commerce</li>
-                                </ul>
-                                <div class="d-flex justify-content-between align-items-center border-top pt-3">
-                                    <span class="estado-abierta"><span aria-hidden="true">●</span> Abierta</span>
-                                    <span class="text-muted small">1/5 miembros</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white border-0 pb-3 text-center">
-                            <a href="detalle-de-iniciativa.html" class="btn btn-outline-primary w-100">Ver
-                                iniciativa</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- INICIATIVA 5 -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <article class="card h-100 shadow-sm border-0">
-                        <div class="card-body d-flex flex-column">
-                            <span class="badge bg-secondary text-dark align-self-start mb-2">Reto · Ambiente</span>
-                            <h3 class="card-title h5 fw-bold">Analítica de datos para el reciclaje</h3>
-                            <p class="card-text text-muted small">Optimizar las rutas de recolección de residuos sólidos
-                                en el campus mediante modelos predictivos basados en los pesos históricos.</p>
-                            <p class="small text-muted mb-3">Publicado por <strong>Elena Campos</strong> el <time
-                                    datetime="2026-08-23">23 ago 2026</time></p>
-
-                            <div class="mt-auto">
-                                <h4 class="h6 fw-bold mb-1">Competencias:</h4>
-                                <ul class="small text-muted mb-3 list-unstyled">
-                                    <li>· Machine Learning</li>
-                                    <li>· Estadística</li>
-                                </ul>
-                                <div class="d-flex justify-content-between align-items-center border-top pt-3">
-                                    <span class="estado-abierta"><span aria-hidden="true">●</span> Abierta</span>
-                                    <span class="text-muted small">4/8 miembros</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white border-0 pb-3 text-center">
-                            <a href="detalle-de-iniciativa.html" class="btn btn-outline-primary w-100">Ver
-                                iniciativa</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- INICIATIVA 6 -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <article class="card h-100 shadow-sm border-0">
-                        <div class="card-body d-flex flex-column">
-                            <span class="badge bg-secondary text-dark align-self-start mb-2">Reto · Educación</span>
-                            <h3 class="card-title h5 fw-bold">Accesibilidad web institucional</h3>
-                            <p class="card-text text-muted small">Auditar y rediseñar los portales de cursos para
-                                garantizar cumplimiento estricto de pautas WCAG 2.1 AA para estudiantes con discapacidad
-                                visual.</p>
-                            <p class="small text-muted mb-3">Publicado por <strong>Esteban Quirós</strong> el <time
-                                    datetime="2026-08-28">28 ago 2026</time></p>
-
-                            <div class="mt-auto">
-                                <h4 class="h6 fw-bold mb-1">Competencias:</h4>
-                                <ul class="small text-muted mb-3 list-unstyled">
-                                    <li>· Accesibilidad Web</li>
-                                    <li>· HTML semántico</li>
-                                </ul>
-                                <div class="d-flex justify-content-between align-items-center border-top pt-3">
-                                    <span class="estado-progreso"><span aria-hidden="true">●</span> En progreso</span>
-                                    <span class="text-muted small">2/4 miembros</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white border-0 pb-3 text-center">
-                            <a href="detalle-de-iniciativa.html" class="btn btn-outline-primary w-100">Ver
-                                iniciativa</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- INICIATIVA 7 -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <article class="card h-100 shadow-sm border-0">
-                        <div class="card-body d-flex flex-column">
-                            <span class="badge bg-secondary text-dark align-self-start mb-2">Idea · Educación</span>
-                            <h3 class="card-title h5 fw-bold">Plataforma de tutorías cruzadas entre pares</h3>
-                            <p class="card-text text-muted small">Espacio virtual donde estudiantes avanzados ofrecen
-                                acompañamiento académico a compañeros de primeros ingresos en materias de programación.
-                            </p>
-                            <p class="small text-muted mb-3">Publicado por <strong>Lucía Méndez</strong> el <time
-                                    datetime="2026-08-31">31 ago 2026</time></p>
-
-                            <div class="mt-auto">
-                                <h4 class="h6 fw-bold mb-1">Competencias:</h4>
-                                <ul class="small text-muted mb-3 list-unstyled">
-                                    <li>· JavaScript</li>
-                                    <li>· React</li>
-                                    <li>· SQL</li>
-                                </ul>
-                                <div class="d-flex justify-content-between align-items-center border-top pt-3">
-                                    <span class="estado-abierta"><span aria-hidden="true">●</span> Abierta</span>
-                                    <span class="text-muted small">4/5 miembros</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white border-0 pb-3 text-center">
-                            <a href="detalle-de-iniciativa.html" class="btn btn-outline-primary w-100">Ver
-                                iniciativa</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- INICIATIVA 8 -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <article class="card h-100 shadow-sm border-0">
-                        <div class="card-body d-flex flex-column">
-                            <span class="badge bg-secondary text-dark align-self-start mb-2">Necesidad ·
-                                Ambiente</span>
-                            <h3 class="card-title h5 fw-bold">Campaña de reducción de huella de carbono digital</h3>
-                            <p class="card-text text-muted small">Los servidores institucionales almacenan gigabytes de
-                                archivos obsoletos; se precisa una estrategia de concientización y limpieza de datos.
-                            </p>
-                            <p class="small text-muted mb-3">Publicado por <strong>Gerardo Ruiz</strong> el <time
-                                    datetime="2026-09-05">5 sep 2026</time></p>
-
-                            <div class="mt-auto">
-                                <h4 class="h6 fw-bold mb-1">Competencias:</h4>
-                                <ul class="small text-muted mb-3 list-unstyled">
-                                    <li>· Gestión de proyectos</li>
-                                    <li>· Comunicación</li>
-                                </ul>
-                                <div class="d-flex justify-content-between align-items-center border-top pt-3">
-                                    <span class="estado-progreso"><span aria-hidden="true">●</span> En progreso</span>
-                                    <span class="text-muted small">1/3 miembros</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white border-0 pb-3 text-center">
-                            <a href="detalle-de-iniciativa.html" class="btn btn-outline-primary w-100">Ver
-                                iniciativa</a>
-                        </div>
-                    </article>
-                </div>
-
-            </div>
+            <h2 id="titulo-resultados" class="h4 mb-4 fw-bold text-dark">Cargando...</h2>
+            <!-- JS inyecta las tarjetas -->
+            <div class="row g-4" id="catalogo-contenedor"></div>
         </section>
     </main>
 
@@ -342,7 +87,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script type="module" src="../js/app.js"></script>
 </body>
 
 </html>

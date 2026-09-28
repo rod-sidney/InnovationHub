@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "nombre": "Ambiente"
+    },
+    {
+        "id": 2,
+        "nombre": "Comunidad"
+    },
+    {
+        "id": 3,
+        "nombre": "Tecnología"
+    }
+]
