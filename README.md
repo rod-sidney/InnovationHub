@@ -25,11 +25,20 @@ equipos interdisciplinarios dentro de la comunidad universitaria.
  
 ## Cómo ejecutar
  
-Abrir `avance1/index.html` en el navegador. No requiere instalación.
+**Nota:** Debido a que la aplicación utiliza la API `fetch` de JavaScript para leer archivos JSON locales, abrir el archivo directamente en el navegador (`file://`) generará un error de CORS. 
+
+Para ejecutar el proyecto correctamente:
+1. Abrir el proyecto en un editor como Visual Studio Code.
+2. Utilizar una extensión de servidor local (como Live Server).
+3. Levantar el servidor en el archivo `index.html` de la raíz o dentro de `avance1/`.
  
 ## Decisiones de diseño
  
-_(se completa durante las semanas 2 a 4)_
+1. **Diseño Responsive y UI:** Se utilizó Bootstrap 5 junto con Sass para que la interfaz sea responsive (mobile-first), accesible y visualmente coherente. Se emplearon utilidades de flexbox y grid system para el catálogo y perfiles.
+2. **Persistencia de Datos Simulada:** Dado que aún no hay un backend, se implementó `localStorage` de HTML5. Esto permite que las nuevas iniciativas creadas desde los formularios se guarden en el navegador del usuario y persistan al cambiar de página, simulando una base de datos real.
+3. **Carga Asíncrona de Datos:** Los datos iniciales se extraen de archivos estáticos `.json` utilizando Fetch API y promesas (async/await), inyectándose en el DOM al inicializar la aplicación.
+4. **Enrutamiento por Parámetros:** Para navegar entre el catálogo, el detalle de una iniciativa y la solicitud de participación, se utilizó `URLSearchParams`. Esto permite capturar el `?id=X` de la URL para saber exactamente qué información renderizar en las vistas de detalle sin necesidad de múltiples archivos HTML.
+5. **Delegación de Eventos:** Para mejorar el rendimiento y manejar elementos creados dinámicamente (como la adición de múltiples competencias en el formulario de registro), se implementó el patrón de delegación de eventos en JavaScript.
  
 ## Resumen de commits
  
@@ -53,6 +62,7 @@ _(se completa durante las semanas 2 a 4)_
 | 14 | 2026-09-27 | 73cab78 | Se modifican las páginas de modificación y elimminación de iniciativas, perfil de usuario, registro de iniciativas y solicitud de perticipación + correcciones de la página catálogo de iniciativas, para añadir los estilos | avance1/paginas, avance1/css, avance1/scss | modificacion-y-eliminacion.html, perfil-de-usuario.html, registro-de-iniciativa.html, solicitud-de-participacion.html |
 | 15 | 2026-09-27 | 6163a4e | Se crean archivos js y se modifican archivos json para que las páginas catalogo de iniciativas, detalle de iniciativa y modificacion y eliminacion puedan traer los datos por medio de ellos | avance1/datos, avance1/js, avance1/paginas | catalogo-de-iniciativas.html, detalle-de-iniciativa.html, modificacion-y-eliminacion.html |
 | 16 | 2026-09-27 | 70c08a4 | Correcciones js y de archivos json para poder cargar los datos | avance1/datos, avance1/js | iniciativas.json, userprofile.json, api.js, app.js, ui.js |
-| 17 | 2026-09-27 | 9f4edc9 | Se modifican archivos js para implementar la funcionalidad en archivos html: perfil, registro de iniciativa, solicitud de participacion | avance1/js, avance1/paginas | index.html, perfil-de-usuario.html, registro-de-iniciativa.html, solicitud-de-participacion.html |
+| 17 | 2026-09-27 | 98ff89f | Se modifican archivos js para implementar la funcionalidad en archivos html: perfil, registro de iniciativa, solicitud de participacion | avance1/js, avance1/paginas | index.html, perfil-de-usuario.html, registro-de-iniciativa.html, solicitud-de-participacion.html |
+| 18 | 2026-09-27 | 5ef5dab | Se hace la edición final del README | Global | README.md |
 
 <!-- FIN TABLA COMMITS -->
