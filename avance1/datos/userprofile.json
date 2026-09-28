@@ -1,0 +1,20 @@
+[
+    {
+    "id": "1",
+    "nombre": "Carla Montero",
+    "rol": "Estudiante de Desarrollo de Software",
+    "email": "cmontero@ucenfotec.ac.cr",
+    "foto": "https://picsum.photos/id/64/150/150",
+    "competencias": [
+            "Internet de las Cosas (IoT)",
+            "Python",
+            "React",
+            "Node.js"
+        ],
+    "intereses": [
+            "Sostenibilidad",
+            "Medio ambiente",
+            "Automatización"
+        ]
+    }
+]

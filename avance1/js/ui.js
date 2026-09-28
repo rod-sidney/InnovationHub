@@ -13,7 +13,6 @@ export function renderizarCatalogo(iniciativas, contenedor) {
     }
 
     contenedor.innerHTML = iniciativas.map(ini => {
-        // Asignar clase de color al estado
         let claseEstado = "bg-secondary";
         if (ini.estado?.toLowerCase().includes('abiert')) claseEstado = 'estado-abierta';
         else if (ini.estado?.toLowerCase().includes('progres')) claseEstado = 'estado-progreso';
@@ -56,7 +55,9 @@ export function renderizarDetalle(iniciativa, contenedor) {
     else if (iniciativa.estado?.toLowerCase().includes('progres')) claseEstado = 'estado-progreso';
     else if (iniciativa.estado?.toLowerCase().includes('revis')) claseEstado = 'estado-revision';
 
-    const comps = iniciativa.competencias || [];
+    const comps = iniciativa.competencias_requeridas || iniciativa.competencias || [];
+    const autor = iniciativa.propietario || iniciativa.propietario || 'Anónimo';
+    
 
     contenedor.innerHTML = `
         <h1 class="fw-bold text-dark mb-4">${iniciativa.titulo}</h1>
@@ -73,8 +74,8 @@ export function renderizarDetalle(iniciativa, contenedor) {
                     <div class="meta-content">${iniciativa.categoria}</div>
                 </div>
                 <div class="meta-box-flex shadow-sm">
-                    <div class="meta-title">Autor</div>
-                    <div class="meta-content">${iniciativa.propietario}</div>
+                    <div class="meta-title">Propietario</div>
+                    <div class="meta-content">${iniciativa.autor}</div>
                 </div>
                 <div class="meta-box-flex shadow-sm">
                     <div class="meta-title">Estado</div>
@@ -95,7 +96,7 @@ export function renderizarDetalle(iniciativa, contenedor) {
                     <section class="card border-0 shadow-sm p-4">
                         <h2 class="h5 fw-bold text-primary mb-3">Competencias requeridas</h2>
                         <ul class="list-group list-group-flush">
-                            ${comps.map(c => `<li class="list-group-bg border-0 px-0 py-1 text-dark">· ${c}</li>`).join('')}
+                            ${comps.length > 0 ? comps.map(c => `<li class="list-group-item border-0 px-0 py-1 text-dark bg-transparent">· ${c}</li>`).join('') : '<p class="text-muted small mb-0">No se especificaron competencias.</p>'}
                         </ul>
                     </section>
                 </div>

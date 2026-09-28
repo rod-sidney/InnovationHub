@@ -3,7 +3,6 @@ import { renderizarCatalogo, mostrarCarga, mostrarError, renderizarDetalle } fro
 import { inicializarFormulario } from './validations.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Referencias al DOM del Catálogo
     const contenedorCatalogo = document.getElementById('catalogo-contenedor');
     const selectTipo = document.getElementById('filtro-tipo');
     const selectCategoria = document.getElementById('filtro-categoria');
@@ -11,21 +10,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     const formFiltros = document.getElementById('form-filtros');
     const tituloResultados = document.getElementById('titulo-resultados');
 
-    // Referencias al DOM del Detalle
     const contenedorDetalle = document.getElementById('detalle-contenedor');
-
-    // Referencias al DOM de Edición/Eliminación
     const formEditar = document.getElementById('form-editar-iniciativa');
     const btnEliminarConfirmado = document.getElementById('btn-eliminar-confirmado');
 
-    // Obtener el ID de la URL si estamos en detalle o edición
     const urlParams = new URLSearchParams(window.location.search);
     const idActual = urlParams.get('id');
 
     try {
         await cargarDatos();
 
-        //Inicializar Catálogo y Filtrado
+        // Inicializar Catálogo y Filtrado
         if (contenedorCatalogo) {
             renderizarCatalogo(iniciativasLocales, contenedorCatalogo);
             if (tituloResultados) tituloResultados.textContent = `${iniciativasLocales.length} iniciativas encontradas`;
@@ -40,8 +35,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const coincideTipo = tipo === '' || ini.tipo.toLowerCase() === tipo;
                     const coincideCategoria = categoria === '' || ini.categoria.toLowerCase() === categoria;
 
-                    // Buscar en título, resumen y array de competencias
-                    const textoBusqueda = `${ini.titulo} ${ini.resumen} ${(ini.competencias || []).join(' ')}`.toLowerCase();
+                    const listaComps = ini.competencias_requeridas || ini.competencias || [];
+                    const textoBusqueda = `${ini.titulo} ${ini.resumen} ${listaComps.join(' ')}`.toLowerCase();
                     const coincideCompetencia = competencia === '' || textoBusqueda.includes(competencia);
 
                     return coincideTipo && coincideCategoria && coincideCompetencia;
@@ -51,13 +46,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 renderizarCatalogo(resultados, contenedorCatalogo);
             };
 
-            selectTipo?.addEventListener('change', aplicarFiltros);
-            selectCategoria?.addEventListener('change', aplicarFiltros);
-            inputCompetencia?.addEventListener('input', aplicarFiltros);
             formFiltros?.addEventListener('submit', aplicarFiltros);
         }
 
-        //Inicializar Página de Detalle
+        // Inicializar Página de Detalle
         if (contenedorDetalle && idActual) {
             const iniciativa = obtenerIniciativaPorId(idActual);
             if (iniciativa) {
@@ -67,21 +59,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         }
 
-        //Inicializar Página de Edición y Eliminación
+        // Inicializar Página de Edición y Eliminación
         if (formEditar && idActual) {
             const iniciativa = obtenerIniciativaPorId(idActual);
             if (iniciativa) {
-                // Pre-llenar datos
                 document.getElementById('titulo').value = iniciativa.titulo;
                 document.getElementById('tipo').value = iniciativa.tipo.toLowerCase();
                 document.getElementById('categoria').value = iniciativa.categoria.toLowerCase();
                 document.getElementById('resumen').value = iniciativa.resumen;
-                document.getElementById('descripcion').value = iniciativa.descripcion || iniciativa.resumen;
+                document.getElementById('descripcion').value = iniciativa.descripcion || iniciativa.descripcion;
 
                 const tituloH1 = document.getElementById('titulo-editar');
                 if (tituloH1) tituloH1.textContent = `Editar: ${iniciativa.titulo}`;
 
-                // Evento Guardar
                 formEditar.addEventListener('submit', (e) => {
                     e.preventDefault();
                     const datosActualizados = {
@@ -96,7 +86,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                     window.location.href = `detalle-de-iniciativa.html?id=${idActual}`;
                 });
 
-                // Evento Eliminar
                 if (btnEliminarConfirmado) {
                     btnEliminarConfirmado.addEventListener('click', () => {
                         eliminarIniciativaLocal(idActual);
@@ -112,6 +101,5 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (contenedorCatalogo) mostrarError(contenedorCatalogo, "Ocurrió un error al cargar los datos. Verifica que estás usando Live Server.");
     }
 
-    // Inicializar formularios externos
     inicializarFormulario();
 });

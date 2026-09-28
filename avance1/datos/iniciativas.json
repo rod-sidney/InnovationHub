@@ -4,12 +4,12 @@
         "titulo": "Mapa interactivo de espacios de estudio colaborativo",
         "tipo": "Idea",
         "categoria": "Comunidad",
-        "resumen": "Aplicación de mapas que muestra en tiempo real la disponibilidad de aulas libres y cubículos de estudio en las diferentes sedes del campus.",
-        "descripcion_detallada": "Para muchos estudiantes, encontrar un lugar tranquilo para estudiar o reunirse en grupo puede ser un desafío diario, especialmente durante las semanas de exámenes. A menudo, los alumnos recorren varios edificios buscando un aula vacía o un cubículo disponible en la biblioteca, lo que resulta en una pérdida de tiempo valioso.\n\nEsta idea propone el desarrollo de un mapa interactivo accesible desde cualquier dispositivo móvil o computadora. El sistema se integraría con los horarios oficiales de la universidad y, potencialmente, con sensores de movimiento o sistemas de reserva existentes para mostrar en tiempo real qué espacios están libres, ocupados o reservados por otros grupos.\n\nEl impacto esperado es mejorar sustancialmente la experiencia estudiantil, optimizar el uso de las instalaciones del campus y fomentar el trabajo colaborativo sin fricciones. Buscamos estudiantes apasionados por el diseño de interfaces limpias y el desarrollo de sistemas de geolocalización o mapas interactivos para hacer realidad esta herramienta.",
         "propietario": "Valeria Morales",
+        "resumen": "Aplicación de mapas que muestra en tiempo real la disponibilidad de aulas libres y cubículos de estudio en las diferentes sedes del campus.",
+        "descripcion": "Para muchos estudiantes, encontrar un lugar tranquilo para estudiar o reunirse en grupo puede ser un desafío diario, especialmente durante las semanas de exámenes. A menudo, los alumnos recorren varios edificios buscando un aula vacía o un cubículo disponible en la biblioteca, lo que resulta en una pérdida de tiempo valioso.\n\nEsta idea propone el desarrollo de un mapa interactivo accesible desde cualquier dispositivo móvil o computadora. El sistema se integraría con los horarios oficiales de la universidad y, potencialmente, con sensores de movimiento o sistemas de reserva existentes para mostrar en tiempo real qué espacios están libres, ocupados o reservados por otros grupos.\n\nEl impacto esperado es mejorar sustancialmente la experiencia estudiantil, optimizar el uso de las instalaciones del campus y fomentar el trabajo colaborativo sin fricciones. Buscamos estudiantes apasionados por el diseño de interfaces limpias y el desarrollo de sistemas de geolocalización o mapas interactivos para hacer realidad esta herramienta.",
         "fecha": "2026-08-07",
         "nivel_visibilidad": "Pública",
-        "competencias_requeridas": [
+        "competencias": [
             "Geolocalización",
             "UI/UX"
         ],
@@ -25,13 +25,13 @@
         "titulo": "Red de huertas hidropónicas urbanas",
         "tipo": "Idea",
         "categoria": "Ambiente",
+        "propietario": "Carlos Montero",
         "resumen": "Sistema IoT de monitoreo automático de nutrientes y humedad para huertas sostenibles en espacios reducidos del campus.",
-        "descripcion_detallada": "La falta de espacios verdes y la creciente necesidad de promover la sostenibilidad en entornos urbanos han inspirado la creación de este proyecto. Se busca implementar una serie de huertas hidropónicas compactas que puedan ubicarse en balcones, azoteas o espacios reducidos dentro de las instalaciones universitarias, optimizando así el uso del suelo.\n\nPara asegurar el éxito y la escalabilidad del cultivo, el proyecto integrará un sistema basado en el Internet de las Cosas (IoT). Mediante sensores conectados a placas programables, se monitorearán en tiempo real variables críticas como los niveles de nutrientes, el pH del agua y la humedad ambiente. Estos datos se enviarán a un servidor central donde podrán visualizarse y gestionarse a través de un panel de control.\n\nEste esfuerzo no solo fomenta la conciencia ambiental, sino que sirve como un laboratorio vivo para que estudiantes de tecnología y ciencias apliquen sus conocimientos en un entorno real. El objetivo final es crear un modelo de agricultura urbana automatizada que sea replicable y pueda extenderse a la comunidad local.",
-        "autor": "Carlos Montero",
+        "descripcion": "La falta de espacios verdes y la creciente necesidad de promover la sostenibilidad en entornos urbanos han inspirado la creación de este proyecto. Se busca implementar una serie de huertas hidropónicas compactas que puedan ubicarse en balcones, azoteas o espacios reducidos dentro de las instalaciones universitarias, optimizando así el uso del suelo.\n\nPara asegurar el éxito y la escalabilidad del cultivo, el proyecto integrará un sistema basado en el Internet de las Cosas (IoT). Mediante sensores conectados a placas programables, se monitorearán en tiempo real variables críticas como los niveles de nutrientes, el pH del agua y la humedad ambiente. Estos datos se enviarán a un servidor central donde podrán visualizarse y gestionarse a través de un panel de control.\n\nEste esfuerzo no solo fomenta la conciencia ambiental, sino que sirve como un laboratorio vivo para que estudiantes de tecnología y ciencias apliquen sus conocimientos en un entorno real. El objetivo final es crear un modelo de agricultura urbana automatizada que sea replicable y pueda extenderse a la comunidad local.",       
         "fecha": "2026-08-18",
         "estado": "Abierta",
         "nivel_visibilidad": "Pública",
-        "competencias_requeridas": [
+        "competencias": [
             "Internet de las Cosas (IoT)",
             "Python"
         ],
@@ -45,13 +45,13 @@
         "titulo": "Automatización de inventario para asociaciones",
         "tipo": "Necesidad",
         "categoria": "Comunidad",
+        "propietario": "Sofía Vargas",
         "resumen": "Las asociaciones estudiantiles manejan sus préstamos de equipos en hojas de cálculo desordenadas; se requiere un sistema centralizado.",
-        "descripcion_detallada": "Actualmente, las distintas asociaciones estudiantiles manejan un inventario considerable de equipos, desde proyectores y herramientas pesadas hasta juegos de mesa y suministros para eventos. Sin embargo, la gestión de estos activos se realiza mediante hojas de cálculo individuales que suelen desactualizarse, borrarse accidentalmente o ser inaccesibles para los nuevos miembros de las juntas directivas al inicio de cada año.\n\nEsta situación genera pérdida de equipos, compras duplicadas innecesarias por falta de visibilidad y retrasos burocráticos cuando otras asociaciones necesitan solicitar préstamos de material. La necesidad principal y más urgente es desarrollar un sistema centralizado, seguro y fácil de usar que permita a todas las asociaciones registrar sus equipos de forma estandarizada.\n\nLa solución ideal debe ser una aplicación web intuitiva, capaz de gestionar préstamos mediante el escaneo de códigos QR, enviar alertas automáticas de devolución y generar reportes de uso trimestrales. Necesitamos estudiantes con experiencia en el diseño de bases de datos relacionales y desarrollo de APIs en Node.js para estructurar el núcleo de esta plataforma que beneficiará a toda la comunidad estudiantil.",
-        "autor": "Sofía Vargas",
+        "descripcion": "Actualmente, las distintas asociaciones estudiantiles manejan un inventario considerable de equipos, desde proyectores y herramientas pesadas hasta juegos de mesa y suministros para eventos. Sin embargo, la gestión de estos activos se realiza mediante hojas de cálculo individuales que suelen desactualizarse, borrarse accidentalmente o ser inaccesibles para los nuevos miembros de las juntas directivas al inicio de cada año.\n\nEsta situación genera pérdida de equipos, compras duplicadas innecesarias por falta de visibilidad y retrasos burocráticos cuando otras asociaciones necesitan solicitar préstamos de material. La necesidad principal y más urgente es desarrollar un sistema centralizado, seguro y fácil de usar que permita a todas las asociaciones registrar sus equipos de forma estandarizada.\n\nLa solución ideal debe ser una aplicación web intuitiva, capaz de gestionar préstamos mediante el escaneo de códigos QR, enviar alertas automáticas de devolución y generar reportes de uso trimestrales. Necesitamos estudiantes con experiencia en el diseño de bases de datos relacionales y desarrollo de APIs en Node.js para estructurar el núcleo de esta plataforma que beneficiará a toda la comunidad estudiantil.",
         "fecha": "2026-08-20",
         "estado": "En revisión",
         "nivel_visibilidad": "Pública",
-        "competencias_requeridas": [
+        "competencias": [
             "Bases de datos",
             "Node.js"
         ],
@@ -66,13 +66,13 @@
         "titulo": "Asesoría digital para pequeñas empresas locales",
         "tipo": "Necesidad",
         "categoria": "Educación",
+        "propietario": "Marcos Salazar",
         "resumen": "Comerciantes de la zona aledaña carecen de presencialidad digital y e-commerce básico para ofertar sus productos artesanales.",
-        "descripcion_detallada": "Los comercios aledaños al campus universitario, muchos de ellos enfocados en la venta de productos artesanales y servicios de alimentación local, se han quedado rezagados en la transición hacia la economía digital. Esta brecha tecnológica limita severamente sus oportunidades de crecimiento y su capacidad de llegar a un público más allá del tráfico peatonal de la zona.\n\nEl proyecto propone la formación de un equipo de asesores voluntarios que trabajen mano a mano con estos pequeños empresarios. La labor consistirá en realizar un diagnóstico inicial de sus necesidades digitales, crear perfiles estructurados en plataformas de redes sociales, y montar tiendas de e-commerce básicas utilizando herramientas accesibles y de bajo costo que ellos mismos puedan administrar en el futuro.\n\nAdemás de la implementación técnica, se brindarán talleres de capacitación sobre fundamentos de marketing digital y atención al cliente en línea. Esta iniciativa representa una excelente oportunidad de extensión universitaria, permitiendo a los estudiantes aplicar sus habilidades y generar un impacto económico directo y positivo en la comunidad vecina.",
-        "autor": "Marcos Salazar",
+        "descripcion": "Los comercios aledaños al campus universitario, muchos de ellos enfocados en la venta de productos artesanales y servicios de alimentación local, se han quedado rezagados en la transición hacia la economía digital. Esta brecha tecnológica limita severamente sus oportunidades de crecimiento y su capacidad de llegar a un público más allá del tráfico peatonal de la zona.\n\nEl proyecto propone la formación de un equipo de asesores voluntarios que trabajen mano a mano con estos pequeños empresarios. La labor consistirá en realizar un diagnóstico inicial de sus necesidades digitales, crear perfiles estructurados en plataformas de redes sociales, y montar tiendas de e-commerce básicas utilizando herramientas accesibles y de bajo costo que ellos mismos puedan administrar en el futuro.\n\nAdemás de la implementación técnica, se brindarán talleres de capacitación sobre fundamentos de marketing digital y atención al cliente en línea. Esta iniciativa representa una excelente oportunidad de extensión universitaria, permitiendo a los estudiantes aplicar sus habilidades y generar un impacto económico directo y positivo en la comunidad vecina.",    
         "fecha": "2026-08-22",
         "estado": "Abierta",
         "nivel_visibilidad": "Pública",
-        "competencias_requeridas": [
+        "competencias": [
             "Marketing digital",
             "E-commerce"
         ],
@@ -86,13 +86,13 @@
         "titulo": "Analítica de datos para el reciclaje",
         "tipo": "Reto",
         "categoria": "Ambiente",
+        "propietario": "Elena Campos",
         "resumen": "Optimizar las rutas de recolección de residuos sólidos en el campus mediante modelos predictivos basados en los pesos históricos.",
-        "descripcion_detallada": "La gestión actual de los residuos sólidos en la institución presenta ineficiencias significativas, ya que las rutas de recolección interna se realizan siguiendo un cronograma estático sin considerar el volumen real de desechos acumulados en cada punto. Esto genera viajes innecesarios a contenedores casi vacíos y, de manera opuesta, desbordamiento de basura en zonas de alta afluencia.\n\nEste reto busca aprovechar la base de datos histórica de los pesajes de residuos, proveniente de los centros de acopio institucionales, para entrenar modelos predictivos utilizando técnicas de Machine Learning. El sistema deberá analizar patrones de generación de desechos correlacionados con el calendario académico, eventos especiales en el campus y condiciones climáticas, logrando pronosticar los picos de acumulación.\n\nEl entregable final será un algoritmo de optimización que genere rutas de recolección dinámicas y diarias, minimizando el tiempo de traslado y el esfuerzo del personal de mantenimiento. Este proyecto es una oportunidad ideal para que los estudiantes apasionados por la estadística aplicada y la ciencia de datos resuelvan un problema logístico real y contribuyan a un campus más limpio.",
-        "autor": "Elena Campos",
+        "descripcion": "La gestión actual de los residuos sólidos en la institución presenta ineficiencias significativas, ya que las rutas de recolección interna se realizan siguiendo un cronograma estático sin considerar el volumen real de desechos acumulados en cada punto. Esto genera viajes innecesarios a contenedores casi vacíos y, de manera opuesta, desbordamiento de basura en zonas de alta afluencia.\n\nEste reto busca aprovechar la base de datos histórica de los pesajes de residuos, proveniente de los centros de acopio institucionales, para entrenar modelos predictivos utilizando técnicas de Machine Learning. El sistema deberá analizar patrones de generación de desechos correlacionados con el calendario académico, eventos especiales en el campus y condiciones climáticas, logrando pronosticar los picos de acumulación.\n\nEl entregable final será un algoritmo de optimización que genere rutas de recolección dinámicas y diarias, minimizando el tiempo de traslado y el esfuerzo del personal de mantenimiento. Este proyecto es una oportunidad ideal para que los estudiantes apasionados por la estadística aplicada y la ciencia de datos resuelvan un problema logístico real y contribuyan a un campus más limpio.",  
         "fecha": "2026-08-23",
         "estado": "Abierta",
         "nivel_visibilidad": "Institucional",
-        "competencias_requeridas": [
+        "competencias": [
             "Machine Learning",
             "Estadística"
         ],
@@ -109,13 +109,13 @@
         "titulo": "Accesibilidad web institucional",
         "tipo": "Reto",
         "categoria": "Educación",
+        "propietario": "Esteban Quirós",
         "resumen": "Auditar y rediseñar los portales de cursos para garantizar cumplimiento estricto de pautas WCAG 2.1 AA para estudiantes con discapacidad visual.",
-        "descripcion_detallada": "A pesar de los avances tecnológicos, los portales web utilizados por la institución para la matriculación y la gestión de cursos aún presentan importantes barreras de accesibilidad. Los estudiantes con discapacidad visual o con limitaciones motoras enfrentan dificultades constantes al utilizar estas plataformas debido a la falta de compatibilidad con lectores de pantalla y a una navegación por teclado altamente ineficiente.\n\nEl propósito de este reto es llevar a cabo una auditoría exhaustiva de la interfaz actual, identificando los puntos de fricción y las violaciones a los estándares internacionales de accesibilidad. Posteriormente, el equipo deberá proponer e implementar refactorizaciones directas en el código base, asegurando el uso adecuado de HTML semántico, atributos ARIA, y la configuración de contrastes de color óptimos.\n\nAlcanzar el nivel de conformidad WCAG 2.1 AA no solo responde a un requerimiento ético y de derechos estudiantiles, sino que mejora la usabilidad general del sistema para todos los usuarios. Los participantes de este proyecto adquirirán una experiencia invaluable en la creación de interfaces inclusivas, una competencia altamente demandada y prioritaria en la industria del desarrollo de software.",
-        "autor": "Esteban Quirós",
+        "descripcion": "A pesar de los avances tecnológicos, los portales web utilizados por la institución para la matriculación y la gestión de cursos aún presentan importantes barreras de accesibilidad. Los estudiantes con discapacidad visual o con limitaciones motoras enfrentan dificultades constantes al utilizar estas plataformas debido a la falta de compatibilidad con lectores de pantalla y a una navegación por teclado altamente ineficiente.\n\nEl propósito de este reto es llevar a cabo una auditoría exhaustiva de la interfaz actual, identificando los puntos de fricción y las violaciones a los estándares internacionales de accesibilidad. Posteriormente, el equipo deberá proponer e implementar refactorizaciones directas en el código base, asegurando el uso adecuado de HTML semántico, atributos ARIA, y la configuración de contrastes de color óptimos.\n\nAlcanzar el nivel de conformidad WCAG 2.1 AA no solo responde a un requerimiento ético y de derechos estudiantiles, sino que mejora la usabilidad general del sistema para todos los usuarios. Los participantes de este proyecto adquirirán una experiencia invaluable en la creación de interfaces inclusivas, una competencia altamente demandada y prioritaria en la industria del desarrollo de software.",  
         "fecha": "2026-08-28",
         "estado": "En progreso",
         "nivel_visibilidad": "Institucional",
-        "competencias_requeridas": [
+        "competencias": [
             "Accesibilidad Web",
             "HTML semántico"
         ],
@@ -130,13 +130,13 @@
         "titulo": "Plataforma de tutorías cruzadas entre pares",
         "tipo": "Idea",
         "categoria": "Educación",
+        "propietario": "Lucía Méndez",
         "resumen": "Espacio virtual donde estudiantes avanzados ofrecen acompañamiento académico a compañeros de primeros ingresos en materias de programación.",
-        "descripcion_detallada": "La curva de aprendizaje en las materias introductorias de programación y tecnología suele ser muy pronunciada, ocasionando episodios de frustración y altas tasas de deserción durante los primeros ciclos universitarios. Aunque existen profesores y asistentes, a menudo la explicación recibida de un par, quien comparte un lenguaje más cercano a las vivencias del estudiante, resulta ser el recurso didáctico más empático y efectivo.\n\nLa propuesta consiste en construir una plataforma web que conecte proactivamente a estudiantes experimentados, dispuestos a compartir sus conocimientos, con aquellos que requieren apoyo académico puntual. El sistema permitirá agendar sesiones de tutoría virtuales o presenciales en tiempo real, filtrar mentores por áreas de dominio (como lógica de programación, bases de datos o desarrollo web) y contará con un sistema de calificación y retroalimentación bidireccional.\n\nEl desarrollo implicará la creación de una aplicación robusta utilizando React para el frontend y SQL para la gestión de usuarios, horarios y el almacenamiento del progreso. A largo plazo, se espera que esta plataforma logre institucionalizarse como el sistema oficial de acompañamiento estudiantil, fortaleciendo la retención y el tejido de apoyo mutuo dentro de la comunidad.",
-        "autor": "Lucía Méndez",
+        "descripcion": "La curva de aprendizaje en las materias introductorias de programación y tecnología suele ser muy pronunciada, ocasionando episodios de frustración y altas tasas de deserción durante los primeros ciclos universitarios. Aunque existen profesores y asistentes, a menudo la explicación recibida de un par, quien comparte un lenguaje más cercano a las vivencias del estudiante, resulta ser el recurso didáctico más empático y efectivo.\n\nLa propuesta consiste en construir una plataforma web que conecte proactivamente a estudiantes experimentados, dispuestos a compartir sus conocimientos, con aquellos que requieren apoyo académico puntual. El sistema permitirá agendar sesiones de tutoría virtuales o presenciales en tiempo real, filtrar mentores por áreas de dominio (como lógica de programación, bases de datos o desarrollo web) y contará con un sistema de calificación y retroalimentación bidireccional.\n\nEl desarrollo implicará la creación de una aplicación robusta utilizando React para el frontend y SQL para la gestión de usuarios, horarios y el almacenamiento del progreso. A largo plazo, se espera que esta plataforma logre institucionalizarse como el sistema oficial de acompañamiento estudiantil, fortaleciendo la retención y el tejido de apoyo mutuo dentro de la comunidad.",
         "fecha": "2026-08-31",
         "estado": "Abierta",
         "nivel_visibilidad": "Pública",
-        "competencias_requeridas": [
+        "competencias": [
             "JavaScript",
             "React",
             "SQL"
@@ -154,13 +154,13 @@
         "titulo": "Campaña de reducción de huella de carbono digital",
         "tipo": "Necesidad",
         "categoria": "Ambiente",
+        "propietario": "Gerardo Ruiz",
         "resumen": "Los servidores institucionales almacenan gigabytes de archivos obsoletos; se precisa una estrategia de concientización y limpieza de datos.",
-        "descripcion_detallada": "Con frecuencia, la sostenibilidad ambiental se asocia únicamente con el mundo físico, ignorando por completo el grave impacto ecológico que conlleva mantener la infraestructura tecnológica de la universidad. Los servidores institucionales, los sistemas de correo electrónico y las plataformas en la nube consumen enormes cantidades de energía eléctrica ininterrumpida para mantener en línea gigabytes de información duplicada, versiones antiguas de documentos y correos totalmente irrelevantes.\n\nEsta necesidad puntual requiere la estructuración de una campaña integral de concientización dirigida a estudiantes, cuerpo docente y personal administrativo. Se deberán redactar y distribuir guías de buenas prácticas para la depuración de archivos digitales, y organizar jornadas institucionales de 'limpieza de datos', estableciendo metas medibles y transparentes en cuanto al espacio de almacenamiento liberado.\n\nA diferencia de otras iniciativas, este proyecto no demanda desarrollo de software, sino fuertes habilidades de gestión de proyectos, diseño de material comunicativo y un alto nivel de liderazgo. El éxito de esta campaña sentará un precedente sobre la responsabilidad digital y podría integrarse como una política anual permanente para reducir la huella de carbono institucional.",
-        "autor": "Gerardo Ruiz",
+        "descripcion": "Con frecuencia, la sostenibilidad ambiental se asocia únicamente con el mundo físico, ignorando por completo el grave impacto ecológico que conlleva mantener la infraestructura tecnológica de la universidad. Los servidores institucionales, los sistemas de correo electrónico y las plataformas en la nube consumen enormes cantidades de energía eléctrica ininterrumpida para mantener en línea gigabytes de información duplicada, versiones antiguas de documentos y correos totalmente irrelevantes.\n\nEsta necesidad puntual requiere la estructuración de una campaña integral de concientización dirigida a estudiantes, cuerpo docente y personal administrativo. Se deberán redactar y distribuir guías de buenas prácticas para la depuración de archivos digitales, y organizar jornadas institucionales de 'limpieza de datos', estableciendo metas medibles y transparentes en cuanto al espacio de almacenamiento liberado.\n\nA diferencia de otras iniciativas, este proyecto no demanda desarrollo de software, sino fuertes habilidades de gestión de proyectos, diseño de material comunicativo y un alto nivel de liderazgo. El éxito de esta campaña sentará un precedente sobre la responsabilidad digital y podría integrarse como una política anual permanente para reducir la huella de carbono institucional.",
         "fecha": "2026-09-05",
         "estado": "En progreso",
         "nivel_visibilidad": "Institucional",
-        "competencias_requeridas": [
+        "competencias": [
             "Gestión de proyectos",
             "Comunicación"
         ],
