@@ -1,5 +1,12 @@
 {
+  "scripts": {
+    "sass": "sass --no-source-map avance1/scss:avance1/css",
+    "sass:watch": "sass --no-source-map --watch avance1/scss:avance1/css"
+  },
   "dependencies": {
     "bootstrap": "^5.3.8"
+  },
+  "devDependencies": {
+    "sass": "1.100.0"
   }
 }

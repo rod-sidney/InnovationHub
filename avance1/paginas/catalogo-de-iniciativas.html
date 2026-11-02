@@ -16,16 +16,19 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm" aria-label="Principal">
             <div class="container">
                 <a class="navbar-brand fw-bold" href="../index.html">Innovation Hub</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                    aria-controls="menuPrincipal" aria-expanded="false" aria-label="Alternar navegación">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="menuPrincipal">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="catalogo-de-iniciativas.html">Catálogo de
-                                iniciativas</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page"
+                                href="catalogo-de-iniciativas.html">Catálogo de iniciativas</a></li>
                         <li class="nav-item"><a class="nav-link" href="registro-de-iniciativa.html">Publicar
                                 iniciativa</a></li>
-                        <li class="nav-item"><a class="nav-link" href="perfil-de-usuario.html">Mi perfil</a></li>
+                        <!-- Con sesión iniciada, JS cambia este enlace por "Hola, Nombre" (lleva a Mi perfil) y "Cerrar sesión" -->
+                        <li class="nav-item" id="menu-sesion"><a class="nav-link" href="iniciar-sesion.html">Iniciar
+                                sesión</a></li>
                     </ul>
                 </div>
             </div>
@@ -36,10 +39,18 @@
         <h1 class="mb-4 fw-bold text-dark">Catálogo de iniciativas</h1>
 
         <aside class="card shadow-sm border-0 mb-5 p-4" aria-labelledby="titulo-filtros">
-            <h2 id="titulo-filtros" class="h5 mb-3 fw-bold text-primary">Filtrar iniciativas</h2>
+            <h2 id="titulo-filtros" class="h5 mb-1 fw-bold text-primary">Filtrar iniciativas</h2>
+            <p class="small text-muted mb-3">Los resultados se actualizan mientras escribes o eliges una opción.</p>
 
             <form id="form-filtros" class="row g-3 align-items-end">
-                <div class="col-12 col-md-3">
+                <!-- Búsqueda de texto (título, resumen y etiquetas), separada del filtro de competencia -->
+                <div class="col-12 col-lg-4">
+                    <label for="filtro-texto" class="form-label fw-semibold">Buscar por texto</label>
+                    <input type="search" id="filtro-texto" name="texto" class="form-control"
+                        placeholder="Título, resumen o etiqueta">
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-2">
                     <label for="filtro-tipo" class="form-label fw-semibold">Tipo</label>
                     <select id="filtro-tipo" name="tipo" class="form-select">
                         <option value="">Todos</option>
@@ -49,30 +60,35 @@
                     </select>
                 </div>
 
-                <div class="col-12 col-md-3">
+                <div class="col-12 col-sm-6 col-lg-2">
                     <label for="filtro-categoria" class="form-label fw-semibold">Categoría</label>
                     <select id="filtro-categoria" name="categoria" class="form-select">
                         <option value="">Todas</option>
-                        <option value="educacion">Educación</option>
+                        <option value="educación">Educación</option>
                         <option value="ambiente">Ambiente</option>
                         <option value="comunidad">Comunidad</option>
                     </select>
                 </div>
 
-                <div class="col-12 col-md-4">
-                    <label for="filtro-competencia" class="form-label fw-semibold">Palabra clave o Competencia</label>
-                    <input type="text" id="filtro-competencia" name="competencia" class="form-control"
-                        placeholder="Ej. React, IoT, Python...">
+                <div class="col-12 col-sm-6 col-lg-2">
+                    <label for="filtro-competencia" class="form-label fw-semibold">Competencia</label>
+                    <!-- JS agrega las competencias del catálogo (datos/competencias.json) -->
+                    <select id="filtro-competencia" name="competencia" class="form-select">
+                        <option value="">Todas</option>
+                    </select>
                 </div>
 
-                <div class="col-12 col-md-2">
-                    <button type="submit" class="btn btn-primary w-100 fw-bold">Aplicar filtros</button>
+                <div class="col-12 col-sm-6 col-lg-2">
+                    <!-- Los filtros se aplican solos, botón devuelve todos a su valor inicial -->
+                    <button type="button" id="btn-limpiar-filtros" class="btn btn-outline-primary w-100 fw-bold">Limpiar
+                        filtros</button>
                 </div>
             </form>
         </aside>
 
         <section aria-labelledby="titulo-resultados">
-            <h2 id="titulo-resultados" class="h4 mb-4 fw-bold text-dark">Cargando...</h2>
+            <!-- aria-live: los lectores de pantalla anuncian el nuevo conteo cada vez que se filtra -->
+            <h2 id="titulo-resultados" class="h4 mb-4 fw-bold text-dark" aria-live="polite">Cargando...</h2>
             <!-- JS inyecta las tarjetas -->
             <div class="row g-4" id="catalogo-contenedor"></div>
         </section>

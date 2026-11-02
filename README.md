@@ -4,7 +4,7 @@ Proyecto del curso SOFT-12-C1 -- Programación Web Avanzada
 
 **Estudiante:** Sidney Rodríguez
 
-**Seccion:** SCV2   **Periodo:** III Cuatrimestre 2026
+**Sección:** SCV2   **Periodo:** III Cuatrimestre 2026
 
 **Docente:** Álvaro Cordero Peña
 
@@ -17,11 +17,22 @@ equipos interdisciplinarios dentro de la comunidad universitaria.
 ## Estructura del repositorio
 
 - `avance1/` — prototipo con HTML, CSS, JavaScript, Bootstrap y Sass
-  - `paginas/` — pantallas del prototipo
-  - `datos/`   — archivos JSON con datos simulados
-  - `js/`      — módulos de JavaScript
+  - `index.html` — página principal
+  - `paginas/` — pantallas del prototipo (catálogo, detalle, publicar, editar, perfil, solicitud, iniciar sesión y crear cuenta)
+  - `datos/`   — archivos JSON con datos simulados: `iniciativas.json`, `usuarios.json`, `competencias.json` y `categorias.json`
+  - `js/`      — módulos de JavaScript, cada uno con una responsabilidad:
+    - `api.js` — carga de iniciativas y del catálogo de competencias, y su persistencia
+    - `auth.js` — sesión (iniciar, cerrar, registrarse) y reglas de permisos y visibilidad
+    - `solicitudes.js` — solicitudes de participación
+    - `validations.js` — validación propia de los formularios
+    - `ui.js` — generación del HTML y componentes de la interfaz (toasts, modales, chips)
+    - `imagenes.js` — reducción de fotos antes de guardarlas
+    - `main.js` y `app.js` — controladores de cada página
   - `scss/`    — variables y parciales de Sass
   - `css/`     — hoja de estilos compilada
+  - `img/`     — imágenes predeterminadas (perfil e iniciativa sin foto)
+- `herramientas/` — script que genera la tabla de commits de este README
+- `package.json` — dependencias (Bootstrap y Sass) y scripts para compilar los estilos
  
 ## Cómo ejecutar
  
@@ -30,7 +41,37 @@ equipos interdisciplinarios dentro de la comunidad universitaria.
 Para ejecutar el proyecto correctamente:
 1. Abrir el proyecto en un editor como Visual Studio Code.
 2. Utilizar una extensión de servidor local (como Live Server).
-3. Levantar el servidor en el archivo `index.html` de la raíz o dentro de `avance1/`.
+3. Abrir `avance1/index.html` con el servidor (clic derecho → *Open with Live Server*).
+
+## Cómo compilar los estilos (Sass)
+
+Los estilos se escriben en `avance1/scss/` y se compilan a `avance1/css/`. El CSS compilado ya está incluido en el repositorio, así que no hace falta compilar para ver el prototipo.
+
+1. Instalar las dependencias (Bootstrap y Sass) una sola vez:
+   ```bash
+   npm install
+   ```
+2. Compilar todos los estilos:
+   ```bash
+   npm run sass
+   ```
+   O dejarlo compilando automáticamente cada vez que se guarda un archivo `.scss`:
+   ```bash
+   npm run sass:watch
+   ```
+
+`main.scss` importa primero las variables propias (`_variables.scss`), que sobrescriben las de Bootstrap, luego Bootstrap y al final los parciales (`_tarjetas.scss` y `_detalle.scss`). Al compilar, Sass muestra advertencias de obsolescencia (por ejemplo, de `@import`) que vienen en parte del propio Bootstrap 5.3; no impiden la compilación.
+
+## Cuentas de prueba
+
+Todas usan la contraseña `Hub12345`. Las cuentas creadas desde "Crear cuenta" se guardan en el navegador.
+
+| Correo | Para probar |
+|---|---|
+| `cmontero@ucenfotec.ac.cr` | Estudiante: propietaria de una iniciativa pública y de una privada, y miembro de una restringida |
+| `svargas@ucenfotec.ac.cr` | Estudiante: propietaria de una iniciativa restringida |
+| `equiros@ucenfotec.ac.cr` | Docente: propietario de una iniciativa institucional |
+| `admin.innovationhub@ucenfotec.ac.cr` | La única cuenta de administrador |
  
 ## Decisiones de diseño
  
@@ -39,6 +80,14 @@ Para ejecutar el proyecto correctamente:
 3. **Carga Asíncrona de Datos:** Los datos iniciales se extraen de archivos estáticos `.json` utilizando Fetch API y promesas (async/await), inyectándose en el DOM al inicializar la aplicación.
 4. **Enrutamiento por Parámetros:** Para navegar entre el catálogo, el detalle de una iniciativa y la solicitud de participación, se utilizó `URLSearchParams`. Esto permite capturar el `?id=X` de la URL para saber exactamente qué información renderizar en las vistas de detalle sin necesidad de múltiples archivos HTML.
 5. **Delegación de Eventos:** Para mejorar el rendimiento y manejar elementos creados dinámicamente (como la adición de múltiples competencias en el formulario de registro), se implementó el patrón de delegación de eventos en JavaScript.
+6. **Sesión y permisos en el navegador:** `auth.js` valida el inicio de sesión contra `datos/usuarios.json` y contra las cuentas nuevas guardadas en `localStorage`; la sesión no guarda la contraseña. Las reglas de visibilidad (pública, institucional, restringida y privada) y de propietario (RN-06, RN-07, RN-10, RN-11 y RN-15) se revisan en el cliente; desde el Avance 2 se verificarán en el servidor. Las contraseñas de prueba están en texto plano solo porque todavía no hay servidor.
+7. **Versión de los datos:** `VERSION_DATOS` (en `api.js`) hace que el navegador descarte la copia vieja de `localStorage` cuando cambia la estructura de los archivos JSON.
+8. **Catálogo de competencias:** `datos/competencias.json` se carga con `fetch` y llena las listas del filtro del catálogo y del formulario de iniciativa, agrupadas por categoría, en lugar de escribir las competencias como texto libre.
+9. **Retroalimentación con componentes de Bootstrap:** los mensajes de éxito usan toasts y las confirmaciones usan modales (eliminar, descartar cambios, quitar una competencia), en lugar de `alert()` y `confirm()`.
+10. **Validación propia:** los formularios usan `novalidate` y JavaScript propio (`validations.js`) con un mensaje por campo; se revisan campos obligatorios, formato, longitud (con contadores de caracteres), rangos, selecciones válidas, coincidencias y repetidos.
+11. **Fotos reducidas:** `imagenes.js` reduce las fotos con `canvas` (300 px las de perfil y 800 px las de iniciativas) para que quepan en `localStorage`.
+12. **Contenido seguro:** todo dato de usuarios o iniciativas pasa por `escaparHTML()` antes de insertarse con `innerHTML`, para que no se interprete como HTML.
+13. **Versión fija de Sass (1.100.0):** desde la 1.101, Sass escribe algunos colores calculados en porcentajes y eso rompe íconos SVG incrustados de Bootstrap.
  
 ## Resumen de commits
  
@@ -63,6 +112,7 @@ Para ejecutar el proyecto correctamente:
 | 15 | 2026-09-27 | 6163a4e | Se crean archivos js y se modifican archivos json para que las páginas catalogo de iniciativas, detalle de iniciativa y modificacion y eliminacion puedan traer los datos por medio de ellos | avance1/datos, avance1/js, avance1/paginas | catalogo-de-iniciativas.html, detalle-de-iniciativa.html, modificacion-y-eliminacion.html |
 | 16 | 2026-09-27 | 70c08a4 | Correcciones js y de archivos json para poder cargar los datos | avance1/datos, avance1/js | iniciativas.json, userprofile.json, api.js, app.js, ui.js |
 | 17 | 2026-09-27 | 98ff89f | Se modifican archivos js para implementar la funcionalidad en archivos html: perfil, registro de iniciativa, solicitud de participacion | avance1/js, avance1/paginas | index.html, perfil-de-usuario.html, registro-de-iniciativa.html, solicitud-de-participacion.html |
-| 18 | 2026-09-27 | 5ef5dab | Se hace la edición final del README | Global | README.md |
+| 18 | 2026-09-27 | 92f9878 | Se hace la edición final del README | Global | README.md |
+| 19 | 2026-11-02 | f37be83 | Correcciones del avance 1 y preparación para avance 2 | /avance1 | /datos, /img, /js, /paginas, /scss/main.scss, index.html, package.json |
 
 <!-- FIN TABLA COMMITS -->

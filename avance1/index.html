@@ -7,7 +7,7 @@
     <title>Inicio - Innovation Hub</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
-    <script src="js/main.js" defer></script>
+    <script type="module" src="js/main.js"></script>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -26,8 +26,9 @@
                                 iniciativas</a></li>
                         <li class="nav-item"><a class="nav-link" href="paginas/registro-de-iniciativa.html">Publicar
                                 iniciativa</a></li>
-                        <li class="nav-item"><a class="nav-link" href="paginas/perfil-de-usuario.html">Mi perfil</a>
-                        </li>
+                        <!-- Con sesión iniciada, JS cambia este enlace por "Hola, Nombre" (lleva a Mi perfil) y "Cerrar sesión" -->
+                        <li class="nav-item" id="menu-sesion"><a class="nav-link"
+                                href="paginas/iniciar-sesion.html">Iniciar sesión</a></li>
                     </ul>
                 </div>
             </div>

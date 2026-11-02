@@ -15,7 +15,8 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm" aria-label="Principal">
             <div class="container">
                 <a class="navbar-brand fw-bold" href="../index.html">Innovation Hub</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                    aria-controls="menuPrincipal" aria-expanded="false" aria-label="Alternar navegación">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="menuPrincipal">
@@ -24,7 +25,9 @@
                                 iniciativas</a></li>
                         <li class="nav-item"><a class="nav-link" href="registro-de-iniciativa.html">Publicar
                                 iniciativa</a></li>
-                        <li class="nav-item"><a class="nav-link" href="perfil-de-usuario.html">Mi perfil</a></li>
+                        <!-- Con sesión iniciada, JS cambia este enlace por "Hola, Nombre" (lleva a Mi perfil) y "Cerrar sesión" -->
+                        <li class="nav-item" id="menu-sesion"><a class="nav-link" href="iniciar-sesion.html">Iniciar
+                                sesión</a></li>
                     </ul>
                 </div>
             </div>

@@ -1,0 +1,202 @@
+[
+    {
+        "id": 1,
+        "nombre": "JavaScript",
+        "categoria": "Desarrollo de software"
+    },
+    {
+        "id": 2,
+        "nombre": "React",
+        "categoria": "Desarrollo de software"
+    },
+    {
+        "id": 3,
+        "nombre": "Node.js",
+        "categoria": "Desarrollo de software"
+    },
+    {
+        "id": 4,
+        "nombre": "Express",
+        "categoria": "Desarrollo de software"
+    },
+    {
+        "id": 5,
+        "nombre": "APIs REST",
+        "categoria": "Desarrollo de software"
+    },
+    {
+        "id": 6,
+        "nombre": "HTML semántico",
+        "categoria": "Desarrollo de software"
+    },
+    {
+        "id": 7,
+        "nombre": "CSS",
+        "categoria": "Desarrollo de software"
+    },
+    {
+        "id": 8,
+        "nombre": "Accesibilidad Web",
+        "categoria": "Desarrollo de software"
+    },
+    {
+        "id": 9,
+        "nombre": "Python",
+        "categoria": "Desarrollo de software"
+    },
+    {
+        "id": 10,
+        "nombre": "Java",
+        "categoria": "Desarrollo de software"
+    },
+    {
+        "id": 11,
+        "nombre": "C#",
+        "categoria": "Desarrollo de software"
+    },
+    {
+        "id": 12,
+        "nombre": "Geolocalización",
+        "categoria": "Desarrollo de software"
+    },
+    {
+        "id": 13,
+        "nombre": "Leaflet",
+        "categoria": "Desarrollo de software"
+    },
+    {
+        "id": 14,
+        "nombre": "Bases de datos",
+        "categoria": "Datos e inteligencia artificial"
+    },
+    {
+        "id": 15,
+        "nombre": "SQL",
+        "categoria": "Datos e inteligencia artificial"
+    },
+    {
+        "id": 16,
+        "nombre": "MongoDB",
+        "categoria": "Datos e inteligencia artificial"
+    },
+    {
+        "id": 17,
+        "nombre": "Modelado de datos",
+        "categoria": "Datos e inteligencia artificial"
+    },
+    {
+        "id": 18,
+        "nombre": "Pandas",
+        "categoria": "Datos e inteligencia artificial"
+    },
+    {
+        "id": 19,
+        "nombre": "Estadística",
+        "categoria": "Datos e inteligencia artificial"
+    },
+    {
+        "id": 20,
+        "nombre": "Machine Learning",
+        "categoria": "Datos e inteligencia artificial"
+    },
+    {
+        "id": 21,
+        "nombre": "Visualización de datos",
+        "categoria": "Datos e inteligencia artificial"
+    },
+    {
+        "id": 22,
+        "nombre": "Power BI",
+        "categoria": "Datos e inteligencia artificial"
+    },
+    {
+        "id": 23,
+        "nombre": "UI/UX",
+        "categoria": "Diseño"
+    },
+    {
+        "id": 24,
+        "nombre": "Figma",
+        "categoria": "Diseño"
+    },
+    {
+        "id": 25,
+        "nombre": "Investigación de usuarios",
+        "categoria": "Diseño"
+    },
+    {
+        "id": 26,
+        "nombre": "Diseño gráfico",
+        "categoria": "Diseño"
+    },
+    {
+        "id": 27,
+        "nombre": "Internet de las Cosas (IoT)",
+        "categoria": "Hardware e infraestructura"
+    },
+    {
+        "id": 28,
+        "nombre": "Electrónica",
+        "categoria": "Hardware e infraestructura"
+    },
+    {
+        "id": 29,
+        "nombre": "Arduino",
+        "categoria": "Hardware e infraestructura"
+    },
+    {
+        "id": 30,
+        "nombre": "Linux",
+        "categoria": "Hardware e infraestructura"
+    },
+    {
+        "id": 31,
+        "nombre": "Gestión de proyectos",
+        "categoria": "Gestión y comunicación"
+    },
+    {
+        "id": 32,
+        "nombre": "Liderazgo",
+        "categoria": "Gestión y comunicación"
+    },
+    {
+        "id": 33,
+        "nombre": "Comunicación",
+        "categoria": "Gestión y comunicación"
+    },
+    {
+        "id": 34,
+        "nombre": "Gestión de comunidades",
+        "categoria": "Gestión y comunicación"
+    },
+    {
+        "id": 35,
+        "nombre": "Moderación de contenido",
+        "categoria": "Gestión y comunicación"
+    },
+    {
+        "id": 36,
+        "nombre": "Redacción de contenido",
+        "categoria": "Gestión y comunicación"
+    },
+    {
+        "id": 37,
+        "nombre": "Marketing digital",
+        "categoria": "Negocios"
+    },
+    {
+        "id": 38,
+        "nombre": "E-commerce",
+        "categoria": "Negocios"
+    },
+    {
+        "id": 39,
+        "nombre": "Ventas",
+        "categoria": "Negocios"
+    },
+    {
+        "id": 40,
+        "nombre": "Finanzas",
+        "categoria": "Negocios"
+    }
+]

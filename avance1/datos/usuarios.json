@@ -1,0 +1,471 @@
+[
+    {
+        "id": 1,
+        "nombre": "Carla",
+        "primer_apellido": "Montero",
+        "segundo_apellido": "Ruiz",
+        "correo": "cmontero@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Estudiante",
+        "rol": "usuario",
+        "carrera": "Desarrollo de Software",
+        "descripcion": "Me gusta unir la programación con proyectos ambientales. Disfruto prototipar con sensores y construir interfaces sencillas.",
+        "competencias": [
+            "Internet de las Cosas (IoT)",
+            "Python",
+            "React",
+            "Node.js"
+        ],
+        "intereses": [
+            "Sostenibilidad",
+            "Medio ambiente",
+            "Automatización"
+        ],
+        "disponibilidad": "5 a 10 horas semanales",
+        "portafolio": "https://example.com/portafolio/cmontero",
+        "foto": "https://picsum.photos/id/64/150/150",
+        "fecha_registro": "2026-08-01",
+        "estado": "Activa"
+    },
+    {
+        "id": 2,
+        "nombre": "Valeria",
+        "primer_apellido": "Morales",
+        "segundo_apellido": "Castro",
+        "correo": "vmorales@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Estudiante",
+        "rol": "usuario",
+        "carrera": "Diseño y Desarrollo Web",
+        "descripcion": "Diseño experiencias móviles centradas en las personas que las usan.",
+        "competencias": [
+            "UI/UX",
+            "Figma",
+            "Geolocalización"
+        ],
+        "intereses": [
+            "Vida estudiantil",
+            "Mapas",
+            "Diseño"
+        ],
+        "disponibilidad": "Más de 10 horas semanales",
+        "portafolio": "",
+        "foto": "",
+        "fecha_registro": "2026-08-02",
+        "estado": "Activa"
+    },
+    {
+        "id": 3,
+        "nombre": "Andrés",
+        "primer_apellido": "Soto",
+        "segundo_apellido": "Jiménez",
+        "correo": "asoto@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Estudiante",
+        "rol": "usuario",
+        "carrera": "Ingeniería del Software",
+        "descripcion": "Desarrollo frontend y me interesan los mapas interactivos.",
+        "competencias": [
+            "JavaScript",
+            "Leaflet",
+            "Geolocalización"
+        ],
+        "intereses": [
+            "Mapas",
+            "Movilidad"
+        ],
+        "disponibilidad": "5 a 10 horas semanales",
+        "portafolio": "",
+        "foto": "",
+        "fecha_registro": "2026-08-03",
+        "estado": "Activa"
+    },
+    {
+        "id": 4,
+        "nombre": "Sofía",
+        "primer_apellido": "Vargas",
+        "segundo_apellido": "Solano",
+        "correo": "svargas@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Estudiante",
+        "rol": "usuario",
+        "carrera": "Desarrollo de Software",
+        "descripcion": "Me interesa resolver problemas de organización con software.",
+        "competencias": [
+            "Node.js",
+            "Bases de datos",
+            "APIs REST"
+        ],
+        "intereses": [
+            "Asociaciones estudiantiles",
+            "Automatización"
+        ],
+        "disponibilidad": "5 a 10 horas semanales",
+        "portafolio": "",
+        "foto": "",
+        "fecha_registro": "2026-08-03",
+        "estado": "Activa"
+    },
+    {
+        "id": 5,
+        "nombre": "Elena",
+        "primer_apellido": "Rojas",
+        "segundo_apellido": "Mora",
+        "correo": "erojas@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Estudiante",
+        "rol": "usuario",
+        "carrera": "Ingeniería del Software",
+        "descripcion": "Me especializo en el modelado de bases de datos relacionales.",
+        "competencias": [
+            "SQL",
+            "Bases de datos",
+            "Modelado de datos"
+        ],
+        "intereses": [
+            "Datos",
+            "Gestión"
+        ],
+        "disponibilidad": "Menos de 5 horas semanales",
+        "portafolio": "",
+        "foto": "",
+        "fecha_registro": "2026-08-05",
+        "estado": "Activa"
+    },
+    {
+        "id": 6,
+        "nombre": "Marcos",
+        "primer_apellido": "Salazar",
+        "segundo_apellido": "Vega",
+        "correo": "msalazar@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Estudiante",
+        "rol": "usuario",
+        "carrera": "Administración de Negocios",
+        "descripcion": "Busco acercar la tecnología a los emprendimientos locales.",
+        "competencias": [
+            "Marketing digital",
+            "E-commerce",
+            "Ventas"
+        ],
+        "intereses": [
+            "Emprendimiento",
+            "Comercio local"
+        ],
+        "disponibilidad": "Más de 10 horas semanales",
+        "portafolio": "",
+        "foto": "",
+        "fecha_registro": "2026-08-06",
+        "estado": "Activa"
+    },
+    {
+        "id": 7,
+        "nombre": "Elena",
+        "primer_apellido": "Campos",
+        "segundo_apellido": "Arias",
+        "correo": "ecampos@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Docente",
+        "rol": "usuario",
+        "carrera": "Ciencia de Datos",
+        "descripcion": "Docente de estadística aplicada e investigación con datos abiertos.",
+        "competencias": [
+            "Machine Learning",
+            "Estadística",
+            "Python"
+        ],
+        "intereses": [
+            "Sostenibilidad",
+            "Datos abiertos"
+        ],
+        "disponibilidad": "5 a 10 horas semanales",
+        "portafolio": "",
+        "foto": "",
+        "fecha_registro": "2026-08-01",
+        "estado": "Activa"
+    },
+    {
+        "id": 8,
+        "nombre": "Javier",
+        "primer_apellido": "Soto",
+        "segundo_apellido": "Brenes",
+        "correo": "jsoto@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Estudiante",
+        "rol": "usuario",
+        "carrera": "Ciencia de Datos",
+        "descripcion": "Me apasiona encontrar patrones en los datos.",
+        "competencias": [
+            "Python",
+            "Pandas",
+            "Estadística"
+        ],
+        "intereses": [
+            "Datos",
+            "Medio ambiente"
+        ],
+        "disponibilidad": "5 a 10 horas semanales",
+        "portafolio": "",
+        "foto": "",
+        "fecha_registro": "2026-08-08",
+        "estado": "Activa"
+    },
+    {
+        "id": 9,
+        "nombre": "María",
+        "primer_apellido": "Jiménez",
+        "segundo_apellido": "Rojas",
+        "correo": "mjimenez@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Estudiante",
+        "rol": "usuario",
+        "carrera": "Ingeniería del Software",
+        "descripcion": "Me interesa aplicar inteligencia artificial a problemas reales.",
+        "competencias": [
+            "Machine Learning",
+            "Python"
+        ],
+        "intereses": [
+            "Inteligencia artificial",
+            "Sostenibilidad"
+        ],
+        "disponibilidad": "Menos de 5 horas semanales",
+        "portafolio": "",
+        "foto": "",
+        "fecha_registro": "2026-08-09",
+        "estado": "Activa"
+    },
+    {
+        "id": 10,
+        "nombre": "Roberto",
+        "primer_apellido": "Brenes",
+        "segundo_apellido": "Calvo",
+        "correo": "rbrenes@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Estudiante",
+        "rol": "usuario",
+        "carrera": "Ciencia de Datos",
+        "descripcion": "Visualización de datos y tableros de control.",
+        "competencias": [
+            "Visualización de datos",
+            "Power BI",
+            "SQL"
+        ],
+        "intereses": [
+            "Datos",
+            "Logística"
+        ],
+        "disponibilidad": "5 a 10 horas semanales",
+        "portafolio": "",
+        "foto": "",
+        "fecha_registro": "2026-08-10",
+        "estado": "Activa"
+    },
+    {
+        "id": 11,
+        "nombre": "Esteban",
+        "primer_apellido": "Quirós",
+        "segundo_apellido": "Méndez",
+        "correo": "equiros@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Docente",
+        "rol": "usuario",
+        "carrera": "Desarrollo Web",
+        "descripcion": "Docente de desarrollo web e impulsor de la accesibilidad digital.",
+        "competencias": [
+            "Accesibilidad Web",
+            "HTML semántico",
+            "CSS"
+        ],
+        "intereses": [
+            "Inclusión",
+            "Educación"
+        ],
+        "disponibilidad": "5 a 10 horas semanales",
+        "portafolio": "",
+        "foto": "",
+        "fecha_registro": "2026-08-01",
+        "estado": "Activa"
+    },
+    {
+        "id": 12,
+        "nombre": "Ana Luisa",
+        "primer_apellido": "Gómez",
+        "segundo_apellido": "Pérez",
+        "correo": "agomez@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Estudiante",
+        "rol": "usuario",
+        "carrera": "Diseño de Experiencia de Usuario",
+        "descripcion": "Investigo cómo hacer interfaces usables para todas las personas.",
+        "competencias": [
+            "Accesibilidad Web",
+            "UI/UX",
+            "Investigación de usuarios"
+        ],
+        "intereses": [
+            "Inclusión",
+            "Diseño"
+        ],
+        "disponibilidad": "Más de 10 horas semanales",
+        "portafolio": "",
+        "foto": "",
+        "fecha_registro": "2026-08-11",
+        "estado": "Activa"
+    },
+    {
+        "id": 13,
+        "nombre": "Lucía",
+        "primer_apellido": "Méndez",
+        "segundo_apellido": "Araya",
+        "correo": "lmendez@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Estudiante",
+        "rol": "usuario",
+        "carrera": "Desarrollo de Software",
+        "descripcion": "Fui tutora de programación y quiero que más estudiantes reciban apoyo.",
+        "competencias": [
+            "JavaScript",
+            "React",
+            "SQL"
+        ],
+        "intereses": [
+            "Educación",
+            "Mentoría"
+        ],
+        "disponibilidad": "5 a 10 horas semanales",
+        "portafolio": "",
+        "foto": "",
+        "fecha_registro": "2026-08-12",
+        "estado": "Activa"
+    },
+    {
+        "id": 14,
+        "nombre": "Felipe",
+        "primer_apellido": "Arce",
+        "segundo_apellido": "Navarro",
+        "correo": "farce@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Estudiante",
+        "rol": "usuario",
+        "carrera": "Desarrollo de Software",
+        "descripcion": "Desarrollo frontend con React.",
+        "competencias": [
+            "React",
+            "JavaScript",
+            "CSS"
+        ],
+        "intereses": [
+            "Educación",
+            "Videojuegos"
+        ],
+        "disponibilidad": "5 a 10 horas semanales",
+        "portafolio": "",
+        "foto": "",
+        "fecha_registro": "2026-08-12",
+        "estado": "Activa"
+    },
+    {
+        "id": 15,
+        "nombre": "Daniela",
+        "primer_apellido": "Vega",
+        "segundo_apellido": "Chaves",
+        "correo": "dvega@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Estudiante",
+        "rol": "usuario",
+        "carrera": "Ingeniería del Software",
+        "descripcion": "Me gusta construir APIs y servicios del lado del servidor.",
+        "competencias": [
+            "Node.js",
+            "Express",
+            "MongoDB"
+        ],
+        "intereses": [
+            "Educación",
+            "Backend"
+        ],
+        "disponibilidad": "Menos de 5 horas semanales",
+        "portafolio": "",
+        "foto": "",
+        "fecha_registro": "2026-08-13",
+        "estado": "Activa"
+    },
+    {
+        "id": 16,
+        "nombre": "Andrés",
+        "primer_apellido": "Castro",
+        "segundo_apellido": "Fallas",
+        "correo": "acastro@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Estudiante",
+        "rol": "usuario",
+        "carrera": "Tecnologías de Información",
+        "descripcion": "Administración de bases de datos y servidores.",
+        "competencias": [
+            "SQL",
+            "Bases de datos",
+            "Linux"
+        ],
+        "intereses": [
+            "Infraestructura",
+            "Educación"
+        ],
+        "disponibilidad": "5 a 10 horas semanales",
+        "portafolio": "",
+        "foto": "",
+        "fecha_registro": "2026-08-14",
+        "estado": "Activa"
+    },
+    {
+        "id": 17,
+        "nombre": "Gerardo",
+        "primer_apellido": "Ruiz",
+        "segundo_apellido": "Alfaro",
+        "correo": "gruiz@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Administrativo",
+        "rol": "usuario",
+        "carrera": "Tecnologías de Información",
+        "descripcion": "Coordino proyectos de infraestructura tecnológica en la universidad.",
+        "competencias": [
+            "Gestión de proyectos",
+            "Comunicación",
+            "Liderazgo"
+        ],
+        "intereses": [
+            "Sostenibilidad",
+            "Gestión del cambio"
+        ],
+        "disponibilidad": "Menos de 5 horas semanales",
+        "portafolio": "",
+        "foto": "",
+        "fecha_registro": "2026-08-01",
+        "estado": "Activa"
+    },
+    {
+        "id": 100,
+        "nombre": "Laura",
+        "primer_apellido": "Chacón",
+        "segundo_apellido": "Rojas",
+        "correo": "admin.innovationhub@ucenfotec.ac.cr",
+        "contrasena": "Hub12345",
+        "tipo_miembro": "Administrativo",
+        "rol": "administrador",
+        "carrera": "Coordinación de Innovation Hub",
+        "descripcion": "Administro la información general de la plataforma y modero el contenido publicado.",
+        "competencias": [
+            "Gestión de comunidades",
+            "Moderación de contenido"
+        ],
+        "intereses": [
+            "Innovación",
+            "Emprendimiento"
+        ],
+        "disponibilidad": "Más de 10 horas semanales",
+        "portafolio": "",
+        "foto": "",
+        "fecha_registro": "2026-08-01",
+        "estado": "Activa"
+    }
+]

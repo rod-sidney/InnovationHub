@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mi perfil - Innovation Hub</title>
     <link href="../css/main.css" rel="stylesheet">
-    <script src="../js/main.js" defer></script>
+    <script type="module" src="../js/main.js"></script>
 </head>
 
 <body class="d-flex flex-column min-vh-100 bg-light">
@@ -15,7 +15,8 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm" aria-label="Principal">
             <div class="container">
                 <a class="navbar-brand fw-bold" href="../index.html">Innovation Hub</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                    aria-controls="menuPrincipal" aria-expanded="false" aria-label="Alternar navegación">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="menuPrincipal">
@@ -24,8 +25,9 @@
                                 iniciativas</a></li>
                         <li class="nav-item"><a class="nav-link" href="registro-de-iniciativa.html">Publicar
                                 iniciativa</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page"
-                                href="perfil-de-usuario.html">Mi perfil</a></li>
+                        <!-- Con sesión iniciada, JS cambia este enlace por "Hola, Nombre" (lleva a Mi perfil) y "Cerrar sesión" -->
+                        <li class="nav-item" id="menu-sesion"><a class="nav-link" href="iniciar-sesion.html">Iniciar
+                                sesión</a></li>
                     </ul>
                 </div>
             </div>
@@ -36,80 +38,11 @@
 
         <h1 class="visually-hidden">Mi Perfil</h1>
 
-        <div class="row g-4">
-
-            <div class="col-12 col-lg-4">
-                <section aria-labelledby="titulo-info-personal"
-                    class="card bg-secondary bg-opacity-50 shadow-sm border-0 text-center p-4">
-                    <!-- foto de perfil -->
-                    <div class="mb-3">
-                        <img src="https://picsum.photos/id/64/150/150" alt="Foto de Carlos Montero"
-                            class="rounded-circle shadow-sm border border-3 border-white">
-                    </div>
-
-                    <h2 id="titulo-info-personal" class="h4 fw-bold text-dark mb-1">Carla Montero</h2>
-                    <p class="text-muted mb-3">Estudiante de Desarrollo de Software</p>
-
-                    <a href="mailto:cmontero@ucenfotec.ac.cr"
-                        class="btn btn-outline-primary btn-sm w-100 mb-2">cmontero@ucenfotec.ac.cr</a>
-                    <button class="btn btn-light btn-sm w-100 text-dark border">Editar Perfil</button>
-                </section>
-            </div>
-
-            <!-- Detalles y Proyectos -->
-            <div class="col-12 col-lg-8">
-
-                <!-- Competencias e Intereses -->
-                <div class="card shadow-sm border border-secondary p-4 mb-4">
-                    <div class="row g-4">
-
-                        <div class="col-md-6">
-                            <h2 id="titulo-competencias" class="h5 fw-bold text-primary mb-3">Mis Competencias</h2>
-                            <div class="d-flex flex-wrap gap-2">
-                                <span class="badge bg-secondary text-dark px-3 py-2">Internet de las Cosas (IoT)</span>
-                                <span class="badge bg-secondary text-dark px-3 py-2">Python</span>
-                                <span class="badge bg-secondary text-dark px-3 py-2">React</span>
-                                <span class="badge bg-secondary text-dark px-3 py-2">Node.js</span>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <h2 id="titulo-intereses" class="h5 fw-bold text-primary mb-3">Mis Intereses</h2>
-                            <div class="d-flex flex-wrap gap-2">
-                                <span class="badge border border-primary text-primary px-3 py-2">Sostenibilidad</span>
-                                <span class="badge border border-primary text-primary px-3 py-2">Medio ambiente</span>
-                                <span class="badge border border-primary text-primary px-3 py-2">Automatización</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Proyectos -->
-                <section aria-labelledby="titulo-proyectos">
-                    <h2 id="titulo-proyectos" class="h4 fw-bold text-dark mb-3 mt-2">Proyectos en los que participo</h2>
-
-                    <article class="card card-iniciativa border border-secondary mb-3">
-                        <div
-                            class="card-header bg-secondary fw-bold text-dark border-0 d-flex justify-content-between align-items-center">
-                            <span>Idea · Ambiente</span>
-                            <span class="badge bg-light text-dark border">Propietario</span>
-                        </div>
-                        <div class="card-body row align-items-center">
-                            <div class="col-md-8 mb-3 mb-md-0">
-                                <h3 class="h5 fw-bold mb-1">Red de huertas hidropónicas urbanas</h3>
-                                <p class="text-muted small mb-0">Estado: <span class="estado-abierta"><span
-                                            aria-hidden="true">●</span> Abierta</span></p>
-                            </div>
-                            <div class="col-md-4 text-md-end">
-                                <a href="detalle-de-iniciativa.html" class="btn btn-outline-primary btn-sm">Ir a la
-                                    iniciativa</a>
-                            </div>
-                        </div>
-                    </article>
-
-                </section>
-
+        <!-- JS genera el perfil del usuario con sesión iniciada (datos/usuarios.json) -->
+        <div id="perfil-contenedor">
+            <div class="text-center my-5">
+                <div class="spinner-border text-primary" role="status"></div>
+                <p>Cargando perfil...</p>
             </div>
         </div>
     </main>

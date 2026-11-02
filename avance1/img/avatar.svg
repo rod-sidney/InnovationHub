@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
+    <!-- Foto de perfil predeterminada: se usa cuando el usuario no ha subido una foto -->
+    <rect width="150" height="150" fill="#dcebf4"/>
+    <circle cx="75" cy="60" r="27" fill="#183d61"/>
+    <path d="M25 150c0-30 22-52 50-52s50 22 50 52z" fill="#183d61"/>
+</svg>

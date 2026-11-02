@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Solicitud de participación - Innovation Hub</title>
     <link href="../css/main.css" rel="stylesheet">
-    <script src="../js/main.js" defer></script>
+    <script type="module" src="../js/main.js"></script>
 </head>
 
 <body class="d-flex flex-column min-vh-100 bg-light">
@@ -15,7 +15,8 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm" aria-label="Principal">
             <div class="container">
                 <a class="navbar-brand fw-bold" href="../index.html">Innovation Hub</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                    aria-controls="menuPrincipal" aria-expanded="false" aria-label="Alternar navegación">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="menuPrincipal">
@@ -24,7 +25,9 @@
                                 iniciativas</a></li>
                         <li class="nav-item"><a class="nav-link" href="registro-de-iniciativa.html">Publicar
                                 iniciativa</a></li>
-                        <li class="nav-item"><a class="nav-link" href="perfil-de-usuario.html">Mi perfil</a></li>
+                        <!-- Con sesión iniciada, JS cambia este enlace por "Hola, Nombre" (lleva a Mi perfil) y "Cerrar sesión" -->
+                        <li class="nav-item" id="menu-sesion"><a class="nav-link" href="iniciar-sesion.html">Iniciar
+                                sesión</a></li>
                     </ul>
                 </div>
             </div>
@@ -36,57 +39,75 @@
             <div class="col-12 col-lg-6">
 
                 <div class="mb-4">
-                    <a href="detalle-de-iniciativa.html" class="btn btn-outline-primary btn-sm shadow-sm">
+                    <!-- JS apunta Volver al detalle de la iniciativa y pide confirmación si hay algo escrito -->
+                    <a id="btn-volver-solicitud" href="catalogo-de-iniciativas.html"
+                        class="btn btn-outline-primary btn-sm shadow-sm">
                         &larr; Volver
                     </a>
                 </div>
 
-                <div class="card shadow-sm border-0 bg-secondary bg-opacity-55">
+                <div class="card shadow-sm border-0 bg-secondary bg-opacity-50">
                     <div class="card-header bg-transparent border-0 py-4 pb-0">
                         <h1 class="h4 fw-bold mb-1 text-primary">Solicitud de participación</h1>
-                        <p class="mb-0 small text-primary">Postulando para: <strong>Mapa interactivo de espacios de
-                                estudio colaborativo</strong></p>
+                        <!-- JS coloca el título de la iniciativa -->
+                        <p class="mb-0 small text-primary">Postulando para: <strong
+                                id="titulo-iniciativa-solicitud">...</strong></p>
                     </div>
 
                     <div class="card-body p-4 p-md-5">
-                        <form id="form-solicitud" action="#" method="POST">
+                        <form id="form-solicitud" action="#" method="POST" novalidate>
 
                             <div class="mb-3">
-                                <label for="rol" class="form-label fw-semibold">Rol deseado <span
-                                        class="text-danger">*</span></label>
+                                <label for="rol" class="form-label fw-semibold">Rol deseado <span class="text-danger"
+                                        aria-hidden="true">*</span></label>
                                 <input type="text" id="rol" name="rol" class="form-control"
-                                    placeholder="Ej: Desarrollador Frontend, Diseñador UX" required>
+                                    placeholder="Ej: Desarrollador Frontend, Diseñador UX" required aria-required="true"
+                                    maxlength="60" aria-describedby="contador-rol">
+                                <!-- JS actualiza los contadores mientras se escribe -->
+                                <div id="contador-rol" class="form-text">0 de 60 caracteres</div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="competencia" class="form-label fw-semibold">Competencia principal que
-                                    aportas <span class="text-danger">*</span></label>
-                                <input type="text" id="competencia" name="competencia" class="form-control"
-                                    placeholder="Ej: React y Geolocalización" required>
+                                    aportas <span class="text-danger" aria-hidden="true">*</span></label>
+                                <!-- JS agrega como opciones las competencias que requiere la iniciativa -->
+                                <select id="competencia" name="competencia" class="form-select" required
+                                    aria-required="true" aria-describedby="ayuda-competencia">
+                                    <option value="">Seleccione una competencia</option>
+                                </select>
+                                <div id="ayuda-competencia" class="form-text">Solo puedes elegir entre las competencias
+                                    que requiere esta iniciativa.</div>
                             </div>
 
                             <div class="mb-4">
                                 <label for="disponibilidad" class="form-label fw-semibold">Disponibilidad de tiempo
-                                    <span class="text-danger">*</span></label>
-                                <select id="disponibilidad" name="disponibilidad" class="form-select" required>
+                                    <span class="text-danger" aria-hidden="true">*</span></label>
+                                <select id="disponibilidad" name="disponibilidad" class="form-select" required
+                                    aria-required="true">
                                     <option value="">Seleccione su disponibilidad</option>
-                                    <option value="5_horas">Menos de 5 horas semanales</option>
-                                    <option value="10_horas">5 a 10 horas semanales</option>
-                                    <option value="mas_10_horas">Más de 10 horas semanales</option>
+                                    <option value="Menos de 5 horas semanales">Menos de 5 horas semanales</option>
+                                    <option value="5 a 10 horas semanales">5 a 10 horas semanales</option>
+                                    <option value="Más de 10 horas semanales">Más de 10 horas semanales</option>
                                 </select>
                             </div>
 
                             <div class="mb-4">
                                 <label for="mensaje" class="form-label fw-semibold">Mensaje de presentación <span
-                                        class="text-danger">*</span></label>
+                                        class="text-danger" aria-hidden="true">*</span></label>
                                 <textarea id="mensaje" name="mensaje" class="form-control" rows="5"
-                                    placeholder="Cuéntale al propietario por qué te interesa este proyecto..."
-                                    required></textarea>
+                                    placeholder="Cuéntale al propietario por qué te interesa este proyecto..." required
+                                    aria-required="true" maxlength="500" aria-describedby="contador-mensaje"></textarea>
+                                <!-- JS actualiza el contador mientras se escribe -->
+                                <div id="contador-mensaje" class="form-text">0 de 500 caracteres</div>
                             </div>
 
+                            <!-- JS aviso si no se pudo guardar la solicitud -->
+                            <div id="mensaje-solicitud" aria-live="polite"></div>
+
                             <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
-                                <a href="detalle-de-iniciativa.html"
-                                    class="btn btn-link text-decoration-none text-muted px-0">Cancelar</a>
+                                <!-- Botón JS vuelve al detalle y pide confirmación si hay algo escrito -->
+                                <button type="button" id="btn-cancelar-solicitud"
+                                    class="btn btn-outline-primary">Cancelar</button>
                                 <button type="submit" class="btn btn-primary fw-bold px-4">Enviar solicitud</button>
                             </div>
 

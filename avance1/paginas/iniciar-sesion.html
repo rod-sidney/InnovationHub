@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iniciar sesión - Innovation Hub</title>
+    <link href="../css/main.css" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm" aria-label="Principal">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="../index.html">Innovation Hub</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                    aria-controls="menuPrincipal" aria-expanded="false" aria-label="Alternar navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="catalogo-de-iniciativas.html">Catálogo de
+                                iniciativas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="registro-de-iniciativa.html">Publicar
+                                iniciativa</a></li>
+                        <!-- Con sesión iniciada, JS cambia este enlace por "Hola, Nombre" (lleva a Mi perfil) y "Cerrar sesión" -->
+                        <li class="nav-item" id="menu-sesion"><a class="nav-link active" aria-current="page"
+                                href="iniciar-sesion.html">Iniciar sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-5">
+
+                <div class="text-center mb-4">
+                    <h1 class="fw-bold text-dark">Iniciar sesión</h1>
+                    <p class="text-muted">Entra para publicar iniciativas, solicitar participación y ver tu perfil.</p>
+                </div>
+
+                <div class="card shadow-sm border-0 p-4 p-md-5">
+                    <!-- JS errores de inicio de sesión o de carga de usuarios -->
+                    <div id="mensaje-login" aria-live="polite"></div>
+
+                    <form id="form-login" action="#" method="POST" novalidate>
+                        <div class="mb-3">
+                            <label for="correo" class="form-label fw-semibold">Correo electrónico <span
+                                    class="text-danger" aria-hidden="true">*</span></label>
+                            <input type="email" id="correo" name="correo" class="form-control"
+                                placeholder="nombre@ucenfotec.ac.cr" autocomplete="email" required aria-required="true">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="contrasena" class="form-label fw-semibold">Contraseña <span class="text-danger"
+                                    aria-hidden="true">*</span></label>
+                            <input type="password" id="contrasena" name="contrasena" class="form-control"
+                                autocomplete="current-password" required aria-required="true">
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg fw-bold">Iniciar sesión</button>
+                        </div>
+                    </form>
+
+                    <p class="text-center mt-4 mb-0">¿No tienes cuenta?
+                        <a id="enlace-registro" href="registro-de-usuario.html" class="fw-semibold">Crea una cuenta</a>
+                    </p>
+                </div>
+
+                <!-- usuarios en datos/usuarios.json -->
+                <details class="card border-0 shadow-sm p-3 mt-4 small">
+                    <summary class="fw-semibold">Cuentas de prueba</summary>
+                    <p class="mt-2 mb-2">Todas usan la contraseña <code>Hub12345</code>.</p>
+                    <ul class="mb-0">
+                        <li><code>cmontero@ucenfotec.ac.cr</code>: propietaria de una iniciativa pública y de una
+                            privada; miembro de una restringida.</li>
+                        <li><code>svargas@ucenfotec.ac.cr</code>: propietaria de una iniciativa restringida.</li>
+                        <li><code>equiros@ucenfotec.ac.cr</code>: docente, propietario de una iniciativa institucional.
+                        </li>
+                        <li><code>admin.innovationhub@ucenfotec.ac.cr</code>: la única cuenta de administrador.</li>
+                    </ul>
+                </details>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-light py-4 text-center mt-auto">
+        <div class="container">
+            <p class="mb-1">Innovation Hub · Universidad CENFOTEC</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="../js/app.js"></script>
+</body>
+
+</html>
