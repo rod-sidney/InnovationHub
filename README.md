@@ -120,6 +120,7 @@ Todas usan la contraseña `Hub12345`. Las cuentas creadas desde "Crear cuenta" s
 | 23 | 2026-11-03 | ef959dc | Crear el proyecto del servidor con Express y configurar CORS | servidor, Global | package.json, .env.example, app.js, server.js, env.js, .gitignore |
 | 24 | 2026-11-03 | 9a3f8c6 | Agregar el manejo uniforme de errores y de rutas inexistentes | servidor/src | ErrorApi.js, errores.js, app.js |
 | 25 | 2026-11-03 | 859ce46 | Conectar el servidor con MongoDB mediante Mongoose | servidor | db.js, env.js, server.js, package.json, .env.example |
-| 26 | 2026-11-03 | 05dde75 | Crear los modelos de usuarios, competencias y sesiones | servidor/src/modelos | valores.js, Usuario.js, Competencia.js, Sesion.js |
+| 26 | 2026-11-03 | abea8a1 | Crear los modelos de usuarios, competencias y sesiones | servidor/src/modelos | valores.js, Usuario.js, Competencia.js, Sesion.js |
+| 27 | 2026-11-03 | 7b1402c | Crear los modelos de iniciativas, solicitudes y proyectos | servidor/src/modelos | Iniciativa.js, Solicitud.js, Proyecto.js |
 
 <!-- FIN TABLA COMMITS -->
