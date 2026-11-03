@@ -240,6 +240,142 @@ hash.
 
 El sobre de la sección 1.5, donde `data` es una lista de objetos `T`.
 
+### 4.5 `InitiativeSummary` (resumen de una iniciativa)
+
+Es la forma de cada elemento del catálogo y del detalle cuando el usuario solo tiene acceso al
+resumen.
+
+```json
+{
+  "id": "670000000000000000000001",
+  "title": "Mapa interactivo de espacios de estudio colaborativo",
+  "type": "idea",
+  "category": "technology",
+  "summary": "Aplicación de mapas que muestra la disponibilidad de aulas libres.",
+  "tags": ["Mapas", "Campus"],
+  "visibility": "public",
+  "status": "team_building",
+  "skills": [{ "id": "660000000000000000000021", "name": "Geolocalización", "category": "Datos e inteligencia artificial" }],
+  "owner": { "id": "650000000000000000000002", "fullName": "Valeria Morales Jiménez", "photo": null },
+  "memberCount": 2,
+  "memberLimit": 4,
+  "availableSlots": 2,
+  "image": "https://picsum.photos/id/11/800/450",
+  "createdAt": "2026-08-07T15:00:00.000Z",
+  "updatedAt": "2026-08-07T15:00:00.000Z",
+  "access": "summary"
+}
+```
+
+`memberCount` cuenta al propietario. `availableSlots` es `memberLimit - memberCount` (nunca negativo).
+
+### 4.6 `InitiativeDetail` (detalle completo)
+
+Es un `InitiativeSummary` con `"access": "full"` y estos campos adicionales:
+
+```json
+{
+  "description": "Texto largo de la iniciativa...",
+  "problem": "Los estudiantes pierden tiempo buscando un aula libre.",
+  "beneficiaries": "Estudiantes de todas las sedes",
+  "members": [
+    {
+      "user": {
+        "id": "650000000000000000000002",
+        "fullName": "Valeria Morales Jiménez",
+        "photo": null,
+        "career": "Diseño de Experiencia de Usuario",
+        "skills": [{ "skill": { "id": "660000000000000000000016", "name": "UI/UX", "category": "Diseño" }, "level": "advanced" }]
+      },
+      "role": "Propietaria",
+      "joinedAt": "2026-08-07T15:00:00.000Z",
+      "isOwner": true
+    }
+  ],
+  "projectId": null
+}
+```
+
+`members` contiene el equipo actual, empezando por el propietario. `projectId` es el identificador del
+proyecto que generó la iniciativa, o `null`.
+
+### 4.7 `InitiativeView` (respuesta de `GET /api/initiatives/{id}`)
+
+Es un `InitiativeDetail` (o un `InitiativeSummary` si el acceso es de resumen) con el campo `viewer`,
+que describe la relación del usuario que consulta con la iniciativa:
+
+```json
+{
+  "viewer": { "isOwner": false, "isMember": false, "pendingRequestId": "680000000000000000000003" }
+}
+```
+
+`pendingRequestId` es el identificador de la solicitud pendiente del usuario para esta iniciativa, o
+`null`. Sin sesión, los tres valores son `false`, `false` y `null`.
+
+### 4.8 `Member` (integrante del equipo)
+
+El mismo objeto que cada elemento de `members` en la sección 4.6.
+
+### 4.9 `Request` (solicitud de participación)
+
+```json
+{
+  "id": "680000000000000000000001",
+  "status": "pending",
+  "role": "Desarrollo del frontend",
+  "message": "Tengo experiencia con React y me interesa el proyecto.",
+  "availability": "medium",
+  "skill": { "id": "660000000000000000000002", "name": "React", "category": "Desarrollo de software" },
+  "initiative": { "id": "670000000000000000000001", "title": "Mapa interactivo de espacios de estudio colaborativo", "ownerId": "650000000000000000000002" },
+  "requester": {
+    "id": "650000000000000000000004",
+    "fullName": "Sofía Vargas Castro",
+    "photo": null,
+    "career": "Desarrollo Web",
+    "skills": [{ "skill": { "id": "660000000000000000000002", "name": "React", "category": "Desarrollo de software" }, "level": "intermediate" }]
+  },
+  "responseComment": null,
+  "decidedAt": null,
+  "createdAt": "2026-10-20T14:00:00.000Z",
+  "updatedAt": "2026-10-20T14:00:00.000Z"
+}
+```
+
+### 4.10 `ProjectSummary` y `Project`
+
+`ProjectSummary` (elementos del listado de proyectos):
+
+```json
+{
+  "id": "690000000000000000000001",
+  "name": "Huerta urbana inteligente",
+  "objective": "Automatizar el riego de la huerta del campus.",
+  "status": "planning",
+  "technologies": ["Arduino", "Node.js"],
+  "startDate": "2026-10-01",
+  "repository": { "owner": "expressjs", "name": "express", "url": "https://github.com/expressjs/express" },
+  "initiative": { "id": "670000000000000000000004", "title": "Huerta urbana con sensores", "category": "sustainability", "visibility": "public" },
+  "owner": { "id": "650000000000000000000001", "fullName": "Carla Montero Ruiz", "photo": null },
+  "memberCount": 3,
+  "createdAt": "2026-10-01T13:00:00.000Z"
+}
+```
+
+`Project` (detalle) es un `ProjectSummary` con estos campos adicionales:
+
+```json
+{
+  "description": "Descripción completa del proyecto...",
+  "estimatedEndDate": "2027-03-01",
+  "members": [ "...lista de Member (sección 4.8), tomada del equipo de la iniciativa..." ],
+  "updatedAt": "2026-10-01T13:00:00.000Z"
+}
+```
+
+`repository` es `null` cuando el proyecto no tiene repositorio asociado. El servidor solo guarda el
+propietario y el nombre del repositorio; la información de GitHub la consulta el cliente.
+
 ## 5. Rutas
 
 ### 5.1 Salud
@@ -404,3 +540,345 @@ Respuesta `201`: `Skill`.
 
 Errores: `400 VALIDATION_ERROR`, `401 UNAUTHENTICATED`, `403 FORBIDDEN` (no es administrador),
 `409 SKILL_EXISTS`.
+
+### 5.5 Iniciativas
+
+#### `GET /api/initiatives` — Catálogo con búsqueda, filtros, orden y paginación
+
+Acceso: Opcional. Solo devuelve las iniciativas que el usuario puede ver (sección 3).
+
+| Parámetro | Descripción |
+|---|---|
+| `q` | Texto que se busca en el título, el resumen y las etiquetas |
+| `type` | `idea`, `need` o `challenge` |
+| `category` | Un valor de la sección 2 |
+| `skill` | Identificador de una competencia requerida |
+| `status` | Un estado de iniciativa. Sin este parámetro se excluyen las archivadas |
+| `visibility` | Una visibilidad (dentro de las que el usuario puede ver) |
+| `available` | `true` para mostrar solo iniciativas con espacios disponibles |
+| `owner` | Identificador del propietario |
+| `member` | Identificador de un usuario que forma parte del equipo |
+| `sort` | `recent` (más recientes primero, por defecto), `oldest` o `title` (A-Z) |
+| `page`, `size` | Paginación (sección 1.5) |
+
+Respuesta `200`: `Page<InitiativeSummary>`. El listado nunca incluye la descripción, el problema ni
+los miembros.
+
+Errores: `400 VALIDATION_ERROR`.
+
+#### `GET /api/initiatives/{id}` — Detalle
+
+Acceso: Opcional. Respuesta `200`: `InitiativeView` (sección 4.7) con `access: "full"` o
+`access: "summary"` según la sección 3.
+
+Errores: `401 UNAUTHENTICATED` (iniciativa no pública consultada sin sesión), `403 FORBIDDEN`
+(iniciativa privada de un equipo al que no pertenece), `404 NOT_FOUND`.
+
+#### `POST /api/initiatives` — Registrar iniciativa
+
+Acceso: Sesión. El propietario es siempre el usuario de la sesión (RN-02); el cuerpo no puede elegirlo.
+
+```json
+{
+  "title": "Mapa interactivo de espacios de estudio colaborativo",
+  "type": "idea",
+  "category": "technology",
+  "summary": "Aplicación de mapas que muestra la disponibilidad de aulas libres.",
+  "description": "Texto largo...",
+  "problem": "Los estudiantes pierden tiempo buscando un aula libre.",
+  "beneficiaries": "Estudiantes de todas las sedes",
+  "tags": ["Mapas", "Campus"],
+  "visibility": "public",
+  "skills": ["660000000000000000000021"],
+  "memberLimit": 4,
+  "image": null
+}
+```
+
+| Campo | Regla |
+|---|---|
+| `title` | Obligatorio, máximo 100 caracteres |
+| `type`, `category`, `visibility` | Obligatorios, un valor de la sección 2 |
+| `summary` | Obligatorio, máximo 300 caracteres |
+| `description` | Obligatoria, máximo 3000 caracteres |
+| `problem` | Opcional, máximo 1000 caracteres |
+| `beneficiaries` | Opcional, máximo 150 caracteres |
+| `tags` | Lista de hasta 8 textos de 1 a 30 caracteres, sin repetidos (sin distinguir mayúsculas) |
+| `skills` | Lista de 1 a 10 identificadores del catálogo, sin repetidos |
+| `memberLimit` | Obligatorio, entero de 1 a 20 |
+| `image` | `null`, enlace `https://` de hasta 500 caracteres o imagen en data URL de hasta 700 000 caracteres |
+
+El servidor genera `id`, `owner`, `status: "published"`, `members` (el propietario, con el rol
+"Propietario") y las fechas.
+
+Respuesta `201`: `InitiativeDetail`.
+
+Errores: `400 VALIDATION_ERROR`, `401 UNAUTHENTICATED`.
+
+#### `PUT /api/initiatives/{id}` — Modificar iniciativa
+
+Acceso: Sesión, y solo el propietario (RN-06). Mismo cuerpo y mismas reglas que al registrar. Se
+conservan `id`, `owner`, `members` y `createdAt`; se actualiza `updatedAt`.
+
+Respuesta `200`: `InitiativeDetail`.
+
+Errores: `400 VALIDATION_ERROR`, `401 UNAUTHENTICATED`, `403 FORBIDDEN`, `404 NOT_FOUND`,
+`409 INITIATIVE_ARCHIVED` (no se modifica una iniciativa archivada),
+`409 MEMBER_LIMIT_TOO_LOW` (el límite no puede quedar por debajo de los miembros actuales).
+
+#### `DELETE /api/initiatives/{id}` — Eliminar o archivar
+
+Acceso: Sesión, y solo el propietario (RN-07).
+
+- Si la iniciativa **no** tiene solicitudes, miembros además del propietario (actuales o retirados) ni
+  proyecto, se elimina (RN-08). Respuesta `204`.
+- Si tiene información relacionada, se archiva en lugar de eliminarse (RN-09): `status` pasa a
+  `archived`. Respuesta `200`:
+
+```json
+{ "result": "archived", "initiative": { "...": "InitiativeDetail" } }
+```
+
+Errores: `401 UNAUTHENTICATED`, `403 FORBIDDEN`, `404 NOT_FOUND`, `409 ALREADY_ARCHIVED`.
+
+### 5.6 Equipo
+
+#### `GET /api/initiatives/{id}/members` — Consultar el equipo
+
+Acceso: Opcional; requiere acceso completo a la iniciativa (sección 3). Parámetros opcionales: `skill`
+(identificador de competencia) y `role` (texto en el rol).
+
+Respuesta `200`: lista de `Member`, empezando por el propietario.
+
+Errores: `400 VALIDATION_ERROR`, `401 UNAUTHENTICATED`, `403 FORBIDDEN`, `404 NOT_FOUND`.
+
+#### `DELETE /api/initiatives/{id}/members/{userId}` — Retirar a un miembro
+
+Acceso: Sesión, y solo el propietario. Cuerpo opcional: `{ "reason": "Texto de hasta 300 caracteres" }`.
+El miembro pasa al historial de retiros con la fecha y el motivo.
+
+Respuesta `204`.
+
+Errores: `400 VALIDATION_ERROR`, `401 UNAUTHENTICATED`, `403 FORBIDDEN`,
+`404 NOT_FOUND` (la iniciativa no existe o el usuario no es miembro), `409 INITIATIVE_ARCHIVED`,
+`409 OWNER_CANNOT_LEAVE`.
+
+### 5.7 Solicitudes de participación
+
+#### `POST /api/requests` — Registrar solicitud
+
+Acceso: Sesión.
+
+```json
+{
+  "initiativeId": "670000000000000000000001",
+  "role": "Desarrollo del frontend",
+  "skillId": "660000000000000000000002",
+  "availability": "medium",
+  "message": "Tengo experiencia con React y me interesa el proyecto."
+}
+```
+
+| Campo | Regla |
+|---|---|
+| `initiativeId` | Obligatorio, iniciativa existente |
+| `role` | Obligatorio, máximo 60 caracteres |
+| `skillId` | Obligatorio, una de las competencias que requiere la iniciativa |
+| `availability` | Obligatoria, un valor de la sección 2 |
+| `message` | Opcional, máximo 500 caracteres |
+
+Respuesta `201`: `Request` con `status: "pending"`.
+
+Errores: `400 VALIDATION_ERROR` (incluye una iniciativa inexistente o una competencia
+que la iniciativa no requiere), `401 UNAUTHENTICATED`, `403 FORBIDDEN` (iniciativa que el usuario no
+puede ver), `403 OWN_INITIATIVE` (RN-10), `409 INITIATIVE_ARCHIVED`, `409 ALREADY_MEMBER` (RN-15),
+`409 PENDING_REQUEST_EXISTS` (RN-11), `409 TEAM_FULL`.
+
+#### `GET /api/requests/sent` — Mis solicitudes
+
+Acceso: Sesión. Parámetros: `status`, `initiative` (identificador), `sort` (`recent` por defecto u
+`oldest`), `page`, `size`.
+
+Respuesta `200`: `Page<Request>` con las solicitudes del usuario de la sesión.
+
+Errores: `400 VALIDATION_ERROR`, `401 UNAUTHENTICATED`.
+
+#### `GET /api/requests/received` — Solicitudes recibidas
+
+Acceso: Sesión. Lista las solicitudes de las iniciativas de las que el usuario es propietario.
+
+| Parámetro | Descripción |
+|---|---|
+| `initiative` | Identificador de una iniciativa propia |
+| `status` | Un estado de solicitud |
+| `skill` | Identificador de la competencia ofrecida |
+| `role` | Texto que se busca en el rol solicitado |
+| `sort` | `recent` (por defecto) u `oldest` |
+| `page`, `size` | Paginación |
+
+Respuesta `200`: `Page<Request>`.
+
+Errores: `400 VALIDATION_ERROR`, `401 UNAUTHENTICATED`, `403 FORBIDDEN` (`initiative` de otra persona).
+
+#### `GET /api/requests/{id}` — Consultar una solicitud
+
+Acceso: Sesión; solo el solicitante o el propietario de la iniciativa. Respuesta `200`: `Request`.
+
+Errores: `401 UNAUTHENTICATED`, `403 FORBIDDEN`, `404 NOT_FOUND`.
+
+#### `PUT /api/requests/{id}` — Modificar una solicitud pendiente
+
+Acceso: Sesión; solo el solicitante. Cuerpo: `role`, `skillId`, `availability` y `message`, con las
+mismas reglas que al registrar. No se modifican la iniciativa, el solicitante ni la fecha original.
+
+Respuesta `200`: `Request`.
+
+Errores: `400 VALIDATION_ERROR`, `401 UNAUTHENTICATED`, `403 FORBIDDEN`, `404 NOT_FOUND`,
+`409 REQUEST_NOT_PENDING` (RN-12).
+
+#### `PATCH /api/requests/{id}/status` — Cancelar, aceptar o rechazar
+
+Acceso: Sesión. Cuerpo: `{ "status": "accepted", "comment": "¡Bienvenida al equipo!" }`. El comentario
+es opcional (máximo 300 caracteres) y solo se guarda al aceptar o rechazar.
+
+| `status` | Quién puede | Efecto |
+|---|---|---|
+| `cancelled` | Solo el solicitante | La solicitud queda cancelada y se conserva (RN-13) |
+| `accepted` | Solo el propietario de la iniciativa | La solicitud queda aceptada y el solicitante entra al equipo con el rol solicitado y la fecha de incorporación (RN-14) |
+| `rejected` | Solo el propietario de la iniciativa | La solicitud queda rechazada; nadie entra al equipo |
+
+Solo se resuelven solicitudes pendientes. Respuesta `200`: `Request` actualizado.
+
+Errores: `400 VALIDATION_ERROR` (estado no permitido), `401 UNAUTHENTICATED`, `403 FORBIDDEN`,
+`404 NOT_FOUND`, `409 REQUEST_NOT_PENDING`, `409 INITIATIVE_ARCHIVED`, `409 ALREADY_MEMBER` (RN-15),
+`409 TEAM_FULL`.
+
+### 5.8 Proyectos
+
+#### `POST /api/projects` — Convertir una iniciativa en proyecto
+
+Acceso: Sesión; solo el propietario de la iniciativa.
+
+```json
+{
+  "initiativeId": "670000000000000000000004",
+  "name": "Huerta urbana inteligente",
+  "objective": "Automatizar el riego de la huerta del campus.",
+  "description": "Texto largo...",
+  "technologies": ["Arduino", "Node.js"],
+  "startDate": "2026-11-02",
+  "estimatedEndDate": "2027-03-01",
+  "repositoryUrl": "https://github.com/expressjs/express"
+}
+```
+
+| Campo | Regla |
+|---|---|
+| `initiativeId` | Obligatorio, iniciativa existente |
+| `name` | Obligatorio, máximo 100 caracteres |
+| `objective` | Obligatorio, máximo 500 caracteres |
+| `description` | Obligatoria, máximo 2000 caracteres |
+| `technologies` | Lista de 1 a 10 textos de 1 a 40 caracteres, sin repetidos |
+| `startDate` | Obligatoria, fecha `AAAA-MM-DD` válida |
+| `estimatedEndDate` | Opcional (`null`), fecha válida igual o posterior a `startDate` |
+| `repositoryUrl` | Opcional (`null`), dirección `https://github.com/propietario/repositorio` |
+
+El servidor obtiene la iniciativa de origen, el propietario y los integrantes; el estado inicial es
+`planning` y la iniciativa pasa a `converted`.
+
+Respuesta `201`: `Project`.
+
+Errores: `400 VALIDATION_ERROR` (incluye una iniciativa inexistente), `401 UNAUTHENTICATED`,
+`403 FORBIDDEN` (no es el propietario), `409 INITIATIVE_ARCHIVED`,
+`409 NOT_ENOUGH_MEMBERS` (RN-17: se necesita al menos un miembro además del propietario),
+`409 PROJECT_ALREADY_EXISTS` (RN-18).
+
+#### `GET /api/projects` — Listar los proyectos accesibles
+
+Acceso: Opcional. Devuelve los proyectos cuya iniciativa de origen el usuario puede ver completa
+(sección 3). Parámetros: `sort` (`recent` por defecto u `oldest`), `page`, `size`.
+
+Respuesta `200`: `Page<ProjectSummary>`.
+
+Errores: `400 VALIDATION_ERROR`.
+
+#### `GET /api/projects/{id}` — Consultar proyecto
+
+Acceso: Opcional, con las reglas de visibilidad de la iniciativa de origen. Respuesta `200`: `Project`.
+
+Errores: `401 UNAUTHENTICATED`, `403 FORBIDDEN`, `404 NOT_FOUND`.
+
+### 5.9 Rutas reservadas para la entrega final
+
+Estas rutas forman parte del contrato congelado, pero se implementan en la entrega final:
+
+| Verbo y ruta | Descripción |
+|---|---|
+| `GET /api/projects?status=&category=&skill=&technology=&owner=&q=` | Búsqueda (`q` en nombre, objetivo y descripción) y filtros de proyectos, además de `sort`, `page` y `size` |
+| `PUT /api/projects/{id}` | Modificar un proyecto (solo el propietario; no cambia la iniciativa de origen). `200` `Project` |
+| `DELETE /api/projects/{id}` | Archivar un proyecto: `status` pasa a `archived`, nunca se borra. `200` `Project` |
+| `PATCH /api/initiatives/{id}/members/{userId}` | Cambiar el rol de un integrante: `{ "role": "..." }`. `200` `Member` |
+| `DELETE /api/users/{id}` | Desactivar la propia cuenta: `status` pasa a `inactive` y se conserva el historial. `204` |
+
+Mientras no estén implementadas, el servidor del Avance 2 responde `404 ROUTE_NOT_FOUND` a los
+verbos nuevos, y `GET /api/projects` ignora los filtros que todavía no aplica.
+
+## 6. Reglas de negocio que verifica el servidor
+
+La numeración es la del documento general del proyecto; la segunda columna indica cómo las nombra la
+consigna del Avance 2.
+
+| Regla (documento general) | Consigna Avance 2 | Dónde se verifica | Respuesta si se incumple |
+|---|---|---|---|
+| RN-01 Correo único | — | `POST /api/auth/register` | `409 EMAIL_TAKEN` |
+| RN-02 Un único propietario | RN-01 | `POST /api/initiatives` toma el propietario de la sesión | (no se puede elegir) |
+| RN-03 Propietario registrado y activo | RN-01 | Toda ruta con sesión rechaza cuentas inactivas | `403 ACCOUNT_INACTIVE` |
+| RN-04 Tipo idea, necesidad o reto | — | Validación de `type` | `400 VALIDATION_ERROR` |
+| RN-05 Exactamente una visibilidad | RN-03 | Validación de `visibility` | `400 VALIDATION_ERROR` |
+| RN-06 Solo el propietario modifica | RN-04 | `PUT /api/initiatives/{id}` | `403 FORBIDDEN` |
+| RN-07 Solo el propietario elimina o archiva | RN-04 | `DELETE /api/initiatives/{id}` | `403 FORBIDDEN` |
+| RN-08 Sin información relacionada se elimina | RN-10 | `DELETE /api/initiatives/{id}` | `204` |
+| RN-09 Con información relacionada se archiva | RN-10 | `DELETE /api/initiatives/{id}` | `200` con `result: "archived"` |
+| RN-10 No solicitar en una iniciativa propia | RN-05 | `POST /api/requests` | `403 OWN_INITIATIVE` |
+| RN-11 Una sola solicitud pendiente por iniciativa | RN-06 | `POST /api/requests` e índice único parcial | `409 PENDING_REQUEST_EXISTS` |
+| RN-12 Una solicitud resuelta no se modifica | RN-07 | `PUT /api/requests/{id}` | `409 REQUEST_NOT_PENDING` |
+| RN-13 Solo se cancelan las pendientes | RN-07 | `PATCH /api/requests/{id}/status` | `409 REQUEST_NOT_PENDING` |
+| RN-14 Al aceptar, el usuario entra al equipo | RN-08 | `PATCH /api/requests/{id}/status` | (efecto automático) |
+| RN-15 No entrar dos veces al mismo equipo | RN-08 | `POST /api/requests` y al aceptar | `409 ALREADY_MEMBER` |
+| RN-16 El propietario es parte del equipo | — | `POST /api/initiatives` lo agrega como primer miembro | (efecto automático) |
+| RN-17 Proyecto solo con un miembro además del propietario | RN-09 | `POST /api/projects` | `409 NOT_ENOUGH_MEMBERS` |
+| RN-18 Una iniciativa genera un solo proyecto | RN-09 | `POST /api/projects` e índice único | `409 PROJECT_ALREADY_EXISTS` |
+| RN-19 La iniciativa convertida se conserva | RN-10 | `DELETE /api/initiatives/{id}` archiva (el proyecto es información relacionada) | `200` con `result: "archived"` |
+| RN-20 Toda consulta respeta la visibilidad | RN-03 | Listados y detalles de iniciativas, equipos y proyectos | `401` o `403` |
+
+## 7. Resumen de rutas
+
+| Verbo | Ruta | Acceso | Éxito |
+|---|---|---|---|
+| GET | `/api/health` | Público | 200 |
+| POST | `/api/auth/register` | Público | 201 |
+| POST | `/api/auth/login` | Público | 200 |
+| POST | `/api/auth/logout` | Sesión | 204 |
+| GET | `/api/auth/me` | Sesión | 200 |
+| GET | `/api/users` | Sesión | 200 |
+| GET | `/api/users/{id}` | Sesión | 200 |
+| PUT | `/api/users/{id}` | Sesión (dueño) | 200 |
+| GET | `/api/skills` | Público | 200 |
+| GET | `/api/skills/{id}` | Público | 200 |
+| POST | `/api/skills` | Admin | 201 |
+| GET | `/api/initiatives` | Opcional | 200 |
+| GET | `/api/initiatives/{id}` | Opcional | 200 |
+| POST | `/api/initiatives` | Sesión | 201 |
+| PUT | `/api/initiatives/{id}` | Sesión (propietario) | 200 |
+| DELETE | `/api/initiatives/{id}` | Sesión (propietario) | 204 o 200 |
+| GET | `/api/initiatives/{id}/members` | Opcional | 200 |
+| DELETE | `/api/initiatives/{id}/members/{userId}` | Sesión (propietario) | 204 |
+| POST | `/api/requests` | Sesión | 201 |
+| GET | `/api/requests/sent` | Sesión | 200 |
+| GET | `/api/requests/received` | Sesión | 200 |
+| GET | `/api/requests/{id}` | Sesión (solicitante o propietario) | 200 |
+| PUT | `/api/requests/{id}` | Sesión (solicitante) | 200 |
+| PATCH | `/api/requests/{id}/status` | Sesión (según el estado) | 200 |
+| POST | `/api/projects` | Sesión (propietario de la iniciativa) | 201 |
+| GET | `/api/projects` | Opcional | 200 |
+| GET | `/api/projects/{id}` | Opcional | 200 |

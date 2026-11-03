@@ -115,6 +115,7 @@ Todas usan la contraseña `Hub12345`. Las cuentas creadas desde "Crear cuenta" s
 | 18 | 2026-09-27 | 92f9878 | Se hace la edición final del README | Global | README.md |
 | 19 | 2026-11-02 | 15bcdc6 | Correcciones del avance 1 y preparación para avance 2 | /avance1 | /datos, /img, /js, /paginas, /scss/main.scss, index.html, package.json |
 | 20 | 2026-11-02 | 75d5b58 | Diseñar el modelo de datos para MongoDB con decisiones de embebido y referencia | docs | modelo-datos.md |
-| 21 | 2026-11-02 | 30708e5 | Definir las convenciones del contrato de la API y las rutas de autenticación, usuarios y competencias | docs | api-contract.md |
+| 21 | 2026-11-02 | 3a04060 | Definir las convenciones del contrato de la API y las rutas de autenticación, usuarios y competencias | docs | api-contract.md |
+| 22 | 2026-11-03 | fb92b70 | Completar el contrato de la API con iniciativas, equipo, solicitudes y proyectos | docs | api-contract.md |
 
 <!-- FIN TABLA COMMITS -->
