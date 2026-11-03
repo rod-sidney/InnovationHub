@@ -119,6 +119,7 @@ Todas usan la contraseña `Hub12345`. Las cuentas creadas desde "Crear cuenta" s
 | 22 | 2026-11-03 | f0b8ccb | Completar el contrato de la API con iniciativas, equipo, solicitudes y proyectos | docs | api-contract.md |
 | 23 | 2026-11-03 | ef959dc | Crear el proyecto del servidor con Express y configurar CORS | servidor, Global | package.json, .env.example, app.js, server.js, env.js, .gitignore |
 | 24 | 2026-11-03 | 9a3f8c6 | Agregar el manejo uniforme de errores y de rutas inexistentes | servidor/src | ErrorApi.js, errores.js, app.js |
-| 25 | 2026-11-03 | 8a6129b | Conectar el servidor con MongoDB mediante Mongoose | servidor | db.js, env.js, server.js, package.json, .env.example |
+| 25 | 2026-11-03 | 859ce46 | Conectar el servidor con MongoDB mediante Mongoose | servidor | db.js, env.js, server.js, package.json, .env.example |
+| 26 | 2026-11-03 | 05dde75 | Crear los modelos de usuarios, competencias y sesiones | servidor/src/modelos | valores.js, Usuario.js, Competencia.js, Sesion.js |
 
 <!-- FIN TABLA COMMITS -->
