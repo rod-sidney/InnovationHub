@@ -116,6 +116,7 @@ Todas usan la contraseña `Hub12345`. Las cuentas creadas desde "Crear cuenta" s
 | 19 | 2026-11-02 | 15bcdc6 | Correcciones del avance 1 y preparación para avance 2 | /avance1 | /datos, /img, /js, /paginas, /scss/main.scss, index.html, package.json |
 | 20 | 2026-11-02 | 75d5b58 | Diseñar el modelo de datos para MongoDB con decisiones de embebido y referencia | docs | modelo-datos.md |
 | 21 | 2026-11-02 | 3a04060 | Definir las convenciones del contrato de la API y las rutas de autenticación, usuarios y competencias | docs | api-contract.md |
-| 22 | 2026-11-03 | fb92b70 | Completar el contrato de la API con iniciativas, equipo, solicitudes y proyectos | docs | api-contract.md |
+| 22 | 2026-11-03 | f0b8ccb | Completar el contrato de la API con iniciativas, equipo, solicitudes y proyectos | docs | api-contract.md |
+| 23 | 2026-11-03 | 8304e60 | Crear el proyecto del servidor con Express y configurar CORS | servidor, Global | package.json, .env.example, app.js, server.js, env.js, .gitignore |
 
 <!-- FIN TABLA COMMITS -->
