@@ -114,6 +114,7 @@ Todas usan la contraseña `Hub12345`. Las cuentas creadas desde "Crear cuenta" s
 | 17 | 2026-09-27 | 98ff89f | Se modifican archivos js para implementar la funcionalidad en archivos html: perfil, registro de iniciativa, solicitud de participacion | avance1/js, avance1/paginas | index.html, perfil-de-usuario.html, registro-de-iniciativa.html, solicitud-de-participacion.html |
 | 18 | 2026-09-27 | 92f9878 | Se hace la edición final del README | Global | README.md |
 | 19 | 2026-11-02 | 15bcdc6 | Correcciones del avance 1 y preparación para avance 2 | /avance1 | /datos, /img, /js, /paginas, /scss/main.scss, index.html, package.json |
-| 20 | 2026-11-02 | 614c9a4 | Diseñar el modelo de datos para MongoDB con decisiones de embebido y referencia | docs | modelo-datos.md |
+| 20 | 2026-11-02 | 75d5b58 | Diseñar el modelo de datos para MongoDB con decisiones de embebido y referencia | docs | modelo-datos.md |
+| 21 | 2026-11-02 | 30708e5 | Definir las convenciones del contrato de la API y las rutas de autenticación, usuarios y competencias | docs | api-contract.md |
 
 <!-- FIN TABLA COMMITS -->
