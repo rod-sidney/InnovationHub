@@ -15,3 +15,9 @@ Thumbs.db
 # secretos (Avance 2)
 .env
 .env.local
+
+# compilación del cliente (Vite)
+dist/
+
+# registros
+*.log
