@@ -90,3 +90,48 @@ export function aResumenIniciativa(iniciativa) {
         access: 'summary'
     };
 }
+
+// Integrante con los datos que muestra el equipo: referencia corta, carrera y competencias
+export function aUsuarioDelEquipo(usuario) {
+    return {
+        ...aUsuarioCorto(usuario),
+        career: usuario.career,
+        skills: aCompetenciasDelUsuario(usuario.skills)
+    };
+}
+
+// Miembro del equipo (sección 4.8)
+// Requiere populate de members.user
+export function aMiembro(miembro, idPropietario) {
+    return {
+        user: aUsuarioDelEquipo(miembro.user),
+        role: miembro.role,
+        joinedAt: miembro.joinedAt,
+        isOwner: String(miembro.user._id) === idPropietario
+    };
+}
+
+// Equipo completo, empezando por el propietario
+export function aEquipo(miembros, idPropietario) {
+    const equipo = miembros
+        .filter((miembro) => miembro.user)   // por si una cuenta ya no existe
+        .map((miembro) => aMiembro(miembro, idPropietario));
+
+    return [
+        ...equipo.filter((miembro) => miembro.isOwner),
+        ...equipo.filter((miembro) => !miembro.isOwner)
+    ];
+}
+
+// Detalle completo de una iniciativa (sección 4.6): el resumen más los textos y el equipo
+export function aDetalleIniciativa(iniciativa, idProyecto) {
+    return {
+        ...aResumenIniciativa(iniciativa),
+        description: iniciativa.description,
+        problem: iniciativa.problem,
+        beneficiaries: iniciativa.beneficiaries,
+        members: aEquipo(iniciativa.members, String(iniciativa.owner._id)),
+        projectId: idProyecto ? String(idProyecto) : null,
+        access: 'full'
+    };
+}
