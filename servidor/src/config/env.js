@@ -22,5 +22,6 @@ function leerObligatoria(nombre) {
 export const config = {
     puerto: Number(process.env.PORT) || 3000,
     mongodbUri: leerObligatoria('MONGODB_URI'),
-    origenCliente: leerObligatoria('CLIENT_ORIGIN')
+    origenCliente: leerObligatoria('CLIENT_ORIGIN'),
+    horasSesion: Number(process.env.SESSION_HOURS) || 8
 };

@@ -4,6 +4,7 @@
 
 import { Router } from 'express';
 
+import rutasAutenticacion from './autenticacion.rutas.js';
 import rutasCompetencias from './competencias.rutas.js';
 
 const rutas = Router();
@@ -13,6 +14,7 @@ rutas.get('/health', (req, res) => {
     res.json({ status: 'ok' });
 });
 
+rutas.use('/auth', rutasAutenticacion);
 rutas.use('/skills', rutasCompetencias);
 
 export default rutas;
