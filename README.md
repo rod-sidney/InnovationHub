@@ -127,6 +127,7 @@ Todas usan la contraseña `Hub12345`. Las cuentas creadas desde "Crear cuenta" s
 | 30 | 2026-11-03 | 7de12f6 | Implementar la consulta del catálogo de competencias | servidor/src | competencias.rutas.js, competencias.controlador.js, competencias.servicio.js, competencias.validacion.js, representaciones.js |
 | 31 | 2026-11-03 | d03db10 | Implementar el registro y el inicio de sesión con contraseñas cifradas | servidor/src | autenticacion.rutas.js, autenticacion.controlador.js, autenticacion.servicio.js, autenticacion.validacion.js, tokens.js |
 | 32 | 2026-11-04 | f7c7960 | Proteger rutas con el middleware de sesión y agregar cierre de sesión, usuario actual y alta de competencias | servidor/src | middlewares/autenticacion.js, autenticacion, competencias |
-| 33 | 2026-11-04 | bbfa6d9 | Implementar la búsqueda paginada de usuarios y la consulta y modificación del perfil | servidor/src | usuarios.rutas.js, usuarios.controlador.js, usuarios.servicio.js, usuarios.validacion.js |
+| 33 | 2026-11-04 | 5fab554 | Implementar la búsqueda paginada de usuarios y la consulta y modificación del perfil | servidor/src | usuarios.rutas.js, usuarios.controlador.js, usuarios.servicio.js, usuarios.validacion.js |
+| 34 | 2026-11-04 | 428a6a0 | Implementar el catálogo de iniciativas con visibilidad, búsqueda, filtros, orden y paginación | servidor/src | iniciativas.rutas.js, iniciativas.controlador.js, iniciativas.servicio.js, iniciativas.validacion.js, visibilidad.js |
 
 <!-- FIN TABLA COMMITS -->

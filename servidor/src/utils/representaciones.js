@@ -17,7 +17,7 @@ export function nombreCompleto(usuario) {
 }
 
 // Competencias del perfil con el nombre del catálogo (requiere populate('skills.skill'))
-// filter descarta una competencia que ya no exista en el catálogo.
+// filter descarta una competencia que ya no exista en el catálogo
 function aCompetenciasDelUsuario(competencias) {
     return competencias
         .filter((elemento) => elemento.skill)
@@ -53,4 +53,40 @@ export function aUsuario(usuario, incluirCorreo = false) {
     }
 
     return perfil;
+}
+
+// Referencia corta a un usuario (sección 4.1)
+// ej: propietario de una iniciativa
+export function aUsuarioCorto(usuario) {
+    return {
+        id: String(usuario._id),
+        fullName: nombreCompleto(usuario),
+        photo: usuario.photo || null
+    };
+}
+
+// Resumen de una iniciativa (sección 4.5)
+// Requiere populate de skills y owner
+export function aResumenIniciativa(iniciativa) {
+    const memberCount = iniciativa.members.length;
+
+    return {
+        id: String(iniciativa._id),
+        title: iniciativa.title,
+        type: iniciativa.type,
+        category: iniciativa.category,
+        summary: iniciativa.summary,
+        tags: iniciativa.tags,
+        visibility: iniciativa.visibility,
+        status: iniciativa.status,
+        skills: iniciativa.skills.filter(Boolean).map((competencia) => aCompetencia(competencia)),
+        owner: aUsuarioCorto(iniciativa.owner),
+        memberCount,
+        memberLimit: iniciativa.memberLimit,
+        availableSlots: Math.max(0, iniciativa.memberLimit - memberCount),
+        image: iniciativa.image,
+        createdAt: iniciativa.createdAt,
+        updatedAt: iniciativa.updatedAt,
+        access: 'summary'
+    };
 }
