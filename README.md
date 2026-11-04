@@ -130,6 +130,7 @@ Todas usan la contraseña `Hub12345`. Las cuentas creadas desde "Crear cuenta" s
 | 33 | 2026-11-04 | 5fab554 | Implementar la búsqueda paginada de usuarios y la consulta y modificación del perfil | servidor/src | usuarios.rutas.js, usuarios.controlador.js, usuarios.servicio.js, usuarios.validacion.js |
 | 34 | 2026-11-04 | bed07d5 | Implementar el catálogo de iniciativas con visibilidad, búsqueda, filtros, orden y paginación | servidor/src | iniciativas.rutas.js, iniciativas.controlador.js, iniciativas.servicio.js, iniciativas.validacion.js, visibilidad.js |
 | 35 | 2026-11-04 | 9a1f35a | Implementar el detalle de iniciativa según su visibilidad y la relación del usuario | servidor/src | iniciativas.servicio.js, visibilidad.js, representaciones.js, iniciativas.controlador.js, iniciativas.rutas.js |
-| 36 | 2026-11-04 | 2d549fe | Implementar el registro y la modificación de iniciativas con validación en el servidor | servidor/src | iniciativas.servicio.js, iniciativas.validacion.js, iniciativas.controlador.js, iniciativas.rutas.js |
+| 36 | 2026-11-04 | 386dd83 | Implementar el registro y la modificación de iniciativas con validación en el servidor | servidor/src | iniciativas.servicio.js, iniciativas.validacion.js, iniciativas.controlador.js, iniciativas.rutas.js |
+| 37 | 2026-11-04 | 8c579f6 | Implementar la eliminación o el archivado de iniciativas según su información relacionada | servidor/src | iniciativas.servicio.js, iniciativas.controlador.js, iniciativas.rutas.js |
 
 <!-- FIN TABLA COMMITS -->

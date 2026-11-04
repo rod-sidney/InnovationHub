@@ -2,7 +2,7 @@
 // Capa HTTP de las iniciativas
 
 import {
-    listarIniciativas, obtenerIniciativa, crearIniciativa, actualizarIniciativa
+    listarIniciativas, obtenerIniciativa, crearIniciativa, actualizarIniciativa, eliminarIniciativa
 } from '../servicios/iniciativas.servicio.js';
 import { validarConsultaIniciativas, validarIniciativa } from '../validaciones/iniciativas.validacion.js';
 
@@ -31,4 +31,15 @@ export async function actualizar(req, res) {
     const datos = validarIniciativa(req.body || {});
     const iniciativa = await actualizarIniciativa(req.params.id, datos, req.usuario);
     res.json(iniciativa);
+}
+
+// DELETE /api/initiatives/:id: 204 si se eliminó, 200 con la iniciativa si se archivó
+export async function eliminar(req, res) {
+    const resultado = await eliminarIniciativa(req.params.id, req.usuario);
+
+    if (resultado.result === 'deleted') {
+        return res.status(204).end();
+    }
+
+    res.json(resultado);
 }

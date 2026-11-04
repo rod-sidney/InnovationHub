@@ -1,5 +1,6 @@
 // iniciativas.servicio.js
-// Lógica de las iniciativas: catálogo con búsqueda, filtros, orden y paginación, detalle, registro y modificación.
+// Lógica de las iniciativas: catálogo con búsqueda, filtros, orden y paginación, detalle,
+// registro, modificación y eliminación o archivado
 
 import Iniciativa from '../modelos/Iniciativa.js';
 import Solicitud from '../modelos/Solicitud.js';
@@ -177,4 +178,38 @@ export async function actualizarIniciativa(id, datos, usuario) {
     await iniciativa.save();
 
     return armarDetalle(await buscarIniciativaCompleta(iniciativa._id));
+}
+
+// elimina la iniciativa si no tiene información relacionada
+// si tiene, la archiva
+export async function eliminarIniciativa(id, usuario) {
+    const iniciativa = await buscarIniciativa(id);
+
+    // solo el propietario puede eliminar o archivar
+    if (!esPropietario(iniciativa, usuario)) {
+        throw new ErrorApi(403, 'FORBIDDEN', 'Solo el propietario puede eliminar o archivar esta iniciativa.');
+    }
+
+    if (iniciativa.status === 'archived') {
+        throw new ErrorApi(409, 'ALREADY_ARCHIVED', 'La iniciativa ya está archivada.');
+    }
+
+    // antes de decidir se revisan las solicitudes, miembros y el proyecto
+    const [cantidadSolicitudes, tieneProyecto] = await Promise.all([
+        Solicitud.countDocuments({ initiative: iniciativa._id }),
+        Proyecto.exists({ initiative: iniciativa._id })
+    ]);
+    const tieneMiembros = iniciativa.members.length > 1 || iniciativa.removedMembers.length > 0;
+
+    // sin información relacionada, se elimina de verdad
+    if (cantidadSolicitudes === 0 && !tieneProyecto && !tieneMiembros) {
+        await iniciativa.deleteOne();
+        return { result: 'deleted' };
+    }
+
+    // con información relacionada, se archiva para conservar el historial
+    iniciativa.status = 'archived';
+    await iniciativa.save();
+
+    return { result: 'archived', initiative: await armarDetalle(await buscarIniciativaCompleta(iniciativa._id)) };
 }
