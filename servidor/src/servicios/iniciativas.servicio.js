@@ -1,15 +1,16 @@
 // iniciativas.servicio.js
-// Lógica de las iniciativas: catálogo con búsqueda, filtros, orden y paginación
+// Lógica de las iniciativas: catálogo con búsqueda, filtros, orden y paginación, detalle, registro y modificación.
 
 import Iniciativa from '../modelos/Iniciativa.js';
 import Solicitud from '../modelos/Solicitud.js';
 import Proyecto from '../modelos/Proyecto.js';
-import { noEncontrado } from '../utils/ErrorApi.js';
+import { ErrorApi, noEncontrado } from '../utils/ErrorApi.js';
 import { patronDeBusqueda } from '../utils/texto.js';
 import { armarPagina, saltoDePagina } from '../utils/paginacion.js';
 import { aResumenIniciativa, aDetalleIniciativa } from '../utils/representaciones.js';
 import { esIdValido } from '../validaciones/reglas.js';
 import { filtroDeVisibilidad, verificarQuePuedeVer, esPropietario, esMiembro } from './visibilidad.js';
+import { verificarCompetencias } from './competencias.servicio.js';
 
 // Datos del propietario se piden con populate para el resumen
 const CAMPOS_PROPIETARIO = 'firstName lastName secondLastName photo';
@@ -70,10 +71,22 @@ export async function listarIniciativas(filtros, paginacion, usuario) {
     return armarPagina(iniciativas.map((iniciativa) => aResumenIniciativa(iniciativa)), total, paginacion);
 }
 
+// Busca una iniciativa sin datos relacionados (verificar reglas antes de modificarla)
+// Se exporta porque equipo, solicitudes y proyectos también la usan
+export async function buscarIniciativa(id) {
+    const iniciativa = esIdValido(String(id)) ? await Iniciativa.findById(id) : null;
+
+    if (!iniciativa) {
+        throw noEncontrado('La iniciativa no existe.');
+    }
+
+    return iniciativa;
+}
+
 // Busca una iniciativa con todo lo que necesita el detalle
 // Si no existe, 404
 async function buscarIniciativaCompleta(id) {
-    const iniciativa = esIdValido(id)
+    const iniciativa = esIdValido(String(id))
         ? await Iniciativa.findById(id)
             .populate('skills')
             .populate('owner', CAMPOS_PROPIETARIO)
@@ -121,4 +134,47 @@ export async function obtenerIniciativa(id, usuario) {
     vista.viewer = await relacionDelUsuario(iniciativa, usuario);
 
     return vista;
+}
+
+export async function crearIniciativa(datos, usuario) {
+    await verificarCompetencias(datos.skills, 'skills');
+
+    // el propietario es el usuario de la sesión, no un dato del cliente
+    // el propietario entra al equipo de forma automática, sin solicitud
+    const iniciativa = await Iniciativa.create({
+        ...datos,
+        owner: usuario._id,
+        status: 'published',
+        members: [{ user: usuario._id, role: 'Propietario', joinedAt: new Date() }]
+    });
+
+    return armarDetalle(await buscarIniciativaCompleta(iniciativa._id));
+}
+
+export async function actualizarIniciativa(id, datos, usuario) {
+    const iniciativa = await buscarIniciativa(id);
+
+    // solo el propietario puede modificar la iniciativa
+    if (!esPropietario(iniciativa, usuario)) {
+        throw new ErrorApi(403, 'FORBIDDEN', 'Solo el propietario puede modificar esta iniciativa.');
+    }
+
+    await verificarCompetencias(datos.skills, 'skills');
+
+    // no se modifica una iniciativa archivada
+    if (iniciativa.status === 'archived') {
+        throw new ErrorApi(409, 'INITIATIVE_ARCHIVED', 'La iniciativa está archivada y no se puede modificar.');
+    }
+
+    // el límite no puede quedar por debajo de los miembros ya aceptados
+    if (datos.memberLimit < iniciativa.members.length) {
+        throw new ErrorApi(409, 'MEMBER_LIMIT_TOO_LOW',
+            `El equipo ya tiene ${iniciativa.members.length} integrantes: el límite no puede ser menor.`);
+    }
+
+    // Se conservan id, owner, members, status y createdAt; timestamps actualiza updatedAt
+    iniciativa.set(datos);
+    await iniciativa.save();
+
+    return armarDetalle(await buscarIniciativaCompleta(iniciativa._id));
 }
