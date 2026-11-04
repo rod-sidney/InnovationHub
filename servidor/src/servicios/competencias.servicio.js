@@ -3,8 +3,8 @@
 // Lee y guarda en MongoDB por medio del modelo Competencia
 
 import Competencia from '../modelos/Competencia.js';
-import { noEncontrado } from '../utils/ErrorApi.js';
-import { patronDeBusqueda } from '../utils/texto.js';
+import { ErrorApi, noEncontrado } from '../utils/ErrorApi.js';
+import { escaparRegex, patronDeBusqueda } from '../utils/texto.js';
 import { aCompetencia } from '../utils/representaciones.js';
 import { esIdValido } from '../validaciones/reglas.js';
 
@@ -31,4 +31,24 @@ export async function obtenerCompetencia(id) {
     }
 
     return aCompetencia(competencia);
+}
+
+export async function crearCompetencia({ name, category }) {
+    // Se compara el nombre completo sin distinguir mayúsculas
+    // "react" y "React" son la misma
+    const existe = await Competencia.exists({ name: new RegExp(`^${escaparRegex(name)}$`, 'i') });
+    if (existe) {
+        throw new ErrorApi(409, 'SKILL_EXISTS', 'Ya existe una competencia con ese nombre.');
+    }
+
+    try {
+        const competencia = await Competencia.create({ name, category });
+        return aCompetencia(competencia);
+    } catch (error) {
+        // índice unique detiene que dos iguales lleguen
+        if (error.code === 11000) {
+            throw new ErrorApi(409, 'SKILL_EXISTS', 'Ya existe una competencia con ese nombre.');
+        }
+        throw error;
+    }
 }

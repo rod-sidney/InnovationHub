@@ -17,3 +17,17 @@ export function validarConsultaCompetencias(consulta) {
 
     return { q, category };
 }
+
+// Cuerpo de POST /api/skills
+export function validarCompetencia(cuerpo) {
+    const errores = [];
+
+    const name = texto(errores, 'name', cuerpo.name, { nombre: 'el nombre', obligatorio: true, maximo: 60 });
+    const category = texto(errores, 'category', cuerpo.category, { nombre: 'la categoría', obligatorio: true, maximo: 60 });
+
+    if (errores.length > 0) {
+        throw errorDeValidacion(errores);
+    }
+
+    return { name, category };
+}

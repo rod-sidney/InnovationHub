@@ -81,3 +81,14 @@ export async function autenticarUsuario({ email, password }) {
     const token = await crearSesion(usuario._id);
     return { token, user: aUsuario(usuario, true) };
 }
+
+// Borra la sesión, desde ese momento el token deja de servir
+export async function eliminarSesion(sesion) {
+    await Sesion.deleteOne({ _id: sesion._id });
+}
+
+// Perfil del usuario de la sesión, con el nombre de sus competencias
+export async function perfilDeSesion(usuario) {
+    await usuario.populate('skills.skill');
+    return aUsuario(usuario, true);
+}

@@ -125,6 +125,7 @@ Todas usan la contraseña `Hub12345`. Las cuentas creadas desde "Crear cuenta" s
 | 28 | 2026-11-03 | d171d03 | Agregar los datos de prueba y el script para cargarlos en MongoDB | servidor | datos-prueba, seed.js, db.js, package.json |
 | 29 | 2026-11-03 | ed79c51 | Agregar funciones reutilizables de validación, paginación y búsqueda | servidor/src | reglas.js, paginacion.js, texto.js |
 | 30 | 2026-11-03 | 7de12f6 | Implementar la consulta del catálogo de competencias | servidor/src | competencias.rutas.js, competencias.controlador.js, competencias.servicio.js, competencias.validacion.js, representaciones.js |
-| 31 | 2026-11-03 | c69e769 | Implementar el registro y el inicio de sesión con contraseñas cifradas | servidor/src | autenticacion.rutas.js, autenticacion.controlador.js, autenticacion.servicio.js, autenticacion.validacion.js, tokens.js |
+| 31 | 2026-11-03 | d03db10 | Implementar el registro y el inicio de sesión con contraseñas cifradas | servidor/src | autenticacion.rutas.js, autenticacion.controlador.js, autenticacion.servicio.js, autenticacion.validacion.js, tokens.js |
+| 32 | 2026-11-04 | e13042b | Proteger rutas con el middleware de sesión y agregar cierre de sesión, usuario actual y alta de competencias | servidor/src | middlewares/autenticacion.js, autenticacion, competencias |
 
 <!-- FIN TABLA COMMITS -->
