@@ -3,7 +3,7 @@
 // Lee y guarda en MongoDB por medio del modelo Competencia
 
 import Competencia from '../modelos/Competencia.js';
-import { ErrorApi, noEncontrado } from '../utils/ErrorApi.js';
+import { ErrorApi, errorDeValidacion, noEncontrado } from '../utils/ErrorApi.js';
 import { escaparRegex, patronDeBusqueda } from '../utils/texto.js';
 import { aCompetencia } from '../utils/representaciones.js';
 import { esIdValido } from '../validaciones/reglas.js';
@@ -50,5 +50,19 @@ export async function crearCompetencia({ name, category }) {
             throw new ErrorApi(409, 'SKILL_EXISTS', 'Ya existe una competencia con ese nombre.');
         }
         throw error;
+    }
+}
+
+// Comprueba que todas las competencias existan en el catálogo
+// La usan el perfil y las iniciativas: si alguna no existe, la petición tiene datos inválidos (400)
+export async function verificarCompetencias(ids, campo) {
+    if (ids.length === 0) {
+        return;
+    }
+
+    const encontradas = await Competencia.countDocuments({ _id: { $in: ids } });
+
+    if (encontradas !== ids.length) {
+        throw errorDeValidacion([{ field: campo, message: 'Una o más competencias no existen en el catálogo.' }]);
     }
 }
