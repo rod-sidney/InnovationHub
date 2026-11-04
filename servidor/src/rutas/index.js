@@ -4,11 +4,15 @@
 
 import { Router } from 'express';
 
+import rutasCompetencias from './competencias.rutas.js';
+
 const rutas = Router();
 
 // Permite comprobar que el servidor está encendido
 rutas.get('/health', (req, res) => {
     res.json({ status: 'ok' });
 });
+
+rutas.use('/skills', rutasCompetencias);
 
 export default rutas;

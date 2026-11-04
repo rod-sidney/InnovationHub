@@ -123,6 +123,7 @@ Todas usan la contraseña `Hub12345`. Las cuentas creadas desde "Crear cuenta" s
 | 26 | 2026-11-03 | abea8a1 | Crear los modelos de usuarios, competencias y sesiones | servidor/src/modelos | valores.js, Usuario.js, Competencia.js, Sesion.js |
 | 27 | 2026-11-03 | fd56598 | Crear los modelos de iniciativas, solicitudes y proyectos | servidor/src/modelos | Iniciativa.js, Solicitud.js, Proyecto.js |
 | 28 | 2026-11-03 | d171d03 | Agregar los datos de prueba y el script para cargarlos en MongoDB | servidor | datos-prueba, seed.js, db.js, package.json |
-| 29 | 2026-11-03 | 0af5e5c | Agregar funciones reutilizables de validación, paginación y búsqueda | servidor/src | reglas.js, paginacion.js, texto.js |
+| 29 | 2026-11-03 | ed79c51 | Agregar funciones reutilizables de validación, paginación y búsqueda | servidor/src | reglas.js, paginacion.js, texto.js |
+| 30 | 2026-11-03 | ab4f8f4 | Implementar la consulta del catálogo de competencias | servidor/src | competencias.rutas.js, competencias.controlador.js, competencias.servicio.js, competencias.validacion.js, representaciones.js |
 
 <!-- FIN TABLA COMMITS -->
