@@ -1,0 +1,202 @@
+[
+  {
+    "_id": "660000000000000000000001",
+    "name": "JavaScript",
+    "category": "Desarrollo de software"
+  },
+  {
+    "_id": "660000000000000000000002",
+    "name": "React",
+    "category": "Desarrollo de software"
+  },
+  {
+    "_id": "660000000000000000000003",
+    "name": "Node.js",
+    "category": "Desarrollo de software"
+  },
+  {
+    "_id": "660000000000000000000004",
+    "name": "Express",
+    "category": "Desarrollo de software"
+  },
+  {
+    "_id": "660000000000000000000005",
+    "name": "APIs REST",
+    "category": "Desarrollo de software"
+  },
+  {
+    "_id": "660000000000000000000006",
+    "name": "HTML semántico",
+    "category": "Desarrollo de software"
+  },
+  {
+    "_id": "660000000000000000000007",
+    "name": "CSS",
+    "category": "Desarrollo de software"
+  },
+  {
+    "_id": "660000000000000000000008",
+    "name": "Accesibilidad Web",
+    "category": "Desarrollo de software"
+  },
+  {
+    "_id": "660000000000000000000009",
+    "name": "Python",
+    "category": "Desarrollo de software"
+  },
+  {
+    "_id": "660000000000000000000010",
+    "name": "Java",
+    "category": "Desarrollo de software"
+  },
+  {
+    "_id": "660000000000000000000011",
+    "name": "C#",
+    "category": "Desarrollo de software"
+  },
+  {
+    "_id": "660000000000000000000012",
+    "name": "Geolocalización",
+    "category": "Desarrollo de software"
+  },
+  {
+    "_id": "660000000000000000000013",
+    "name": "Leaflet",
+    "category": "Desarrollo de software"
+  },
+  {
+    "_id": "660000000000000000000014",
+    "name": "Bases de datos",
+    "category": "Datos e inteligencia artificial"
+  },
+  {
+    "_id": "660000000000000000000015",
+    "name": "SQL",
+    "category": "Datos e inteligencia artificial"
+  },
+  {
+    "_id": "660000000000000000000016",
+    "name": "MongoDB",
+    "category": "Datos e inteligencia artificial"
+  },
+  {
+    "_id": "660000000000000000000017",
+    "name": "Modelado de datos",
+    "category": "Datos e inteligencia artificial"
+  },
+  {
+    "_id": "660000000000000000000018",
+    "name": "Pandas",
+    "category": "Datos e inteligencia artificial"
+  },
+  {
+    "_id": "660000000000000000000019",
+    "name": "Estadística",
+    "category": "Datos e inteligencia artificial"
+  },
+  {
+    "_id": "660000000000000000000020",
+    "name": "Machine Learning",
+    "category": "Datos e inteligencia artificial"
+  },
+  {
+    "_id": "660000000000000000000021",
+    "name": "Visualización de datos",
+    "category": "Datos e inteligencia artificial"
+  },
+  {
+    "_id": "660000000000000000000022",
+    "name": "Power BI",
+    "category": "Datos e inteligencia artificial"
+  },
+  {
+    "_id": "660000000000000000000023",
+    "name": "UI/UX",
+    "category": "Diseño"
+  },
+  {
+    "_id": "660000000000000000000024",
+    "name": "Figma",
+    "category": "Diseño"
+  },
+  {
+    "_id": "660000000000000000000025",
+    "name": "Investigación de usuarios",
+    "category": "Diseño"
+  },
+  {
+    "_id": "660000000000000000000026",
+    "name": "Diseño gráfico",
+    "category": "Diseño"
+  },
+  {
+    "_id": "660000000000000000000027",
+    "name": "Internet de las Cosas (IoT)",
+    "category": "Hardware e infraestructura"
+  },
+  {
+    "_id": "660000000000000000000028",
+    "name": "Electrónica",
+    "category": "Hardware e infraestructura"
+  },
+  {
+    "_id": "660000000000000000000029",
+    "name": "Arduino",
+    "category": "Hardware e infraestructura"
+  },
+  {
+    "_id": "660000000000000000000030",
+    "name": "Linux",
+    "category": "Hardware e infraestructura"
+  },
+  {
+    "_id": "660000000000000000000031",
+    "name": "Gestión de proyectos",
+    "category": "Gestión y comunicación"
+  },
+  {
+    "_id": "660000000000000000000032",
+    "name": "Liderazgo",
+    "category": "Gestión y comunicación"
+  },
+  {
+    "_id": "660000000000000000000033",
+    "name": "Comunicación",
+    "category": "Gestión y comunicación"
+  },
+  {
+    "_id": "660000000000000000000034",
+    "name": "Gestión de comunidades",
+    "category": "Gestión y comunicación"
+  },
+  {
+    "_id": "660000000000000000000035",
+    "name": "Moderación de contenido",
+    "category": "Gestión y comunicación"
+  },
+  {
+    "_id": "660000000000000000000036",
+    "name": "Redacción de contenido",
+    "category": "Gestión y comunicación"
+  },
+  {
+    "_id": "660000000000000000000037",
+    "name": "Marketing digital",
+    "category": "Negocios"
+  },
+  {
+    "_id": "660000000000000000000038",
+    "name": "E-commerce",
+    "category": "Negocios"
+  },
+  {
+    "_id": "660000000000000000000039",
+    "name": "Ventas",
+    "category": "Negocios"
+  },
+  {
+    "_id": "660000000000000000000040",
+    "name": "Finanzas",
+    "category": "Negocios"
+  }
+]

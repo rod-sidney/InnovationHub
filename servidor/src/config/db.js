@@ -10,3 +10,8 @@ export async function conectarBaseDeDatos() {
     await mongoose.connect(config.mongodbUri, { serverSelectionTimeoutMS: 5000 });
     console.log('Conectado a MongoDB');
 }
+
+// La usa el script de datos de prueba para terminar sin dejar la conexión abierta
+export async function desconectarBaseDeDatos() {
+    await mongoose.disconnect();
+}

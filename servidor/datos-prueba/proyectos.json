@@ -1,0 +1,47 @@
+[
+  {
+    "_id": "690000000000000000000001",
+    "initiative": "670000000000000000000007",
+    "owner": "650000000000000000000013",
+    "name": "TutorHub",
+    "objective": "Conectar a estudiantes que necesitan apoyo con compañeros que dominan el tema.",
+    "description": "Plataforma web donde los estudiantes publican los temas en los que necesitan ayuda y otros estudiantes ofrecen sesiones de tutoría. Incluye un calendario de sesiones y una valoración al final de cada tutoría.",
+    "technologies": [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB"
+    ],
+    "startDate": "2026-10-05",
+    "estimatedEndDate": "2027-02-26",
+    "status": "in_progress",
+    "repository": {
+      "owner": "expressjs",
+      "name": "express"
+    },
+    "createdAt": "2026-10-05T17:00:00.000Z",
+    "updatedAt": "2026-10-05T17:00:00.000Z"
+  },
+  {
+    "_id": "690000000000000000000002",
+    "initiative": "670000000000000000000005",
+    "owner": "650000000000000000000007",
+    "name": "EcoDatos",
+    "objective": "Predecir los volúmenes de reciclaje del campus para planificar la recolección.",
+    "description": "Proyecto de analítica que reúne los registros de reciclaje de cada edificio, los limpia y genera un tablero con predicciones semanales para el equipo de mantenimiento.",
+    "technologies": [
+      "Python",
+      "Pandas",
+      "Power BI"
+    ],
+    "startDate": "2026-10-12",
+    "estimatedEndDate": null,
+    "status": "planning",
+    "repository": {
+      "owner": "innovation-hub-cenfotec",
+      "name": "ecodatos"
+    },
+    "createdAt": "2026-10-12T17:00:00.000Z",
+    "updatedAt": "2026-10-12T17:00:00.000Z"
+  }
+]

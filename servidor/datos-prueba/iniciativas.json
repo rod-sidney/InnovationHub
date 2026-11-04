@@ -1,0 +1,465 @@
+[
+  {
+    "_id": "670000000000000000000001",
+    "title": "Mapa interactivo de espacios de estudio colaborativo",
+    "type": "idea",
+    "category": "technology",
+    "summary": "Aplicación de mapas que muestra en tiempo real la disponibilidad de aulas libres y cubículos de estudio en las diferentes sedes del campus.",
+    "description": "Para muchos estudiantes, encontrar un lugar tranquilo para estudiar o reunirse en grupo puede ser un desafío diario, especialmente durante las semanas de exámenes. A menudo, los alumnos recorren varios edificios buscando un aula vacía o un cubículo disponible en la biblioteca, lo que resulta en una pérdida de tiempo valioso.\n\nEsta idea propone el desarrollo de un mapa interactivo accesible desde cualquier dispositivo móvil o computadora. El sistema se integraría con los horarios oficiales de la universidad y, potencialmente, con sensores de movimiento o sistemas de reserva existentes para mostrar en tiempo real qué espacios están libres, ocupados o reservados por otros grupos.\n\nEl impacto esperado es mejorar sustancialmente la experiencia estudiantil, optimizar el uso de las instalaciones del campus y fomentar el trabajo colaborativo sin fricciones. Buscamos estudiantes apasionados por el diseño de interfaces limpias y el desarrollo de sistemas de geolocalización o mapas interactivos para hacer realidad esta herramienta.",
+    "problem": "Los estudiantes pierden tiempo recorriendo edificios para encontrar un aula o un cubículo libre, sobre todo en semanas de exámenes.",
+    "beneficiaries": "Estudiantes de todas las sedes del campus",
+    "tags": [
+      "Mapas",
+      "Campus",
+      "Móvil"
+    ],
+    "visibility": "public",
+    "status": "team_building",
+    "skills": [
+      "660000000000000000000012",
+      "660000000000000000000023"
+    ],
+    "owner": "650000000000000000000002",
+    "members": [
+      {
+        "user": "650000000000000000000002",
+        "role": "Propietario",
+        "joinedAt": "2026-08-07T15:00:00.000Z"
+      },
+      {
+        "user": "650000000000000000000003",
+        "role": "Desarrollo de mapas",
+        "joinedAt": "2026-08-10T15:00:00.000Z"
+      }
+    ],
+    "removedMembers": [],
+    "memberLimit": 4,
+    "image": "https://picsum.photos/id/11/800/450",
+    "createdAt": "2026-08-07T15:00:00.000Z",
+    "updatedAt": "2026-08-07T15:00:00.000Z"
+  },
+  {
+    "_id": "670000000000000000000002",
+    "title": "Red de huertas hidropónicas urbanas",
+    "type": "idea",
+    "category": "sustainability",
+    "summary": "Sistema IoT de monitoreo automático de nutrientes y humedad para huertas sostenibles en espacios reducidos del campus.",
+    "description": "La falta de espacios verdes y la creciente necesidad de promover la sostenibilidad en entornos urbanos han inspirado la creación de este proyecto. Se busca implementar una serie de huertas hidropónicas compactas que puedan ubicarse en balcones, azoteas o espacios reducidos dentro de las instalaciones universitarias, optimizando así el uso del suelo.\n\nPara asegurar el éxito y la escalabilidad del cultivo, el proyecto integrará un sistema basado en el Internet de las Cosas (IoT). Mediante sensores conectados a placas programables, se monitorearán en tiempo real variables críticas como los niveles de nutrientes, el pH del agua y la humedad ambiente. Estos datos se enviarán a un servidor central donde podrán visualizarse y gestionarse a través de un panel de control.\n\nEste esfuerzo no solo fomenta la conciencia ambiental, sino que sirve como un laboratorio vivo para que estudiantes de tecnología y ciencias apliquen sus conocimientos en un entorno real. El objetivo final es crear un modelo de agricultura urbana automatizada que sea replicable y pueda extenderse a la comunidad local.",
+    "problem": "El campus no cuenta con suficientes espacios verdes y no existe un modelo de cultivo urbano que se pueda medir y replicar.",
+    "beneficiaries": "Comunidad universitaria y vecinos del campus",
+    "tags": [
+      "IoT",
+      "Sostenibilidad",
+      "Agricultura urbana"
+    ],
+    "visibility": "public",
+    "status": "published",
+    "skills": [
+      "660000000000000000000027",
+      "660000000000000000000009"
+    ],
+    "owner": "650000000000000000000001",
+    "members": [
+      {
+        "user": "650000000000000000000001",
+        "role": "Propietario",
+        "joinedAt": "2026-08-18T15:00:00.000Z"
+      }
+    ],
+    "removedMembers": [],
+    "memberLimit": 4,
+    "image": "https://picsum.photos/id/12/800/450",
+    "createdAt": "2026-08-18T15:00:00.000Z",
+    "updatedAt": "2026-08-18T15:00:00.000Z"
+  },
+  {
+    "_id": "670000000000000000000003",
+    "title": "Automatización de inventario para asociaciones",
+    "type": "need",
+    "category": "social_impact",
+    "summary": "Las asociaciones estudiantiles manejan sus préstamos de equipos en hojas de cálculo desordenadas; se requiere un sistema centralizado.",
+    "description": "Actualmente, las distintas asociaciones estudiantiles manejan un inventario considerable de equipos, desde proyectores y herramientas pesadas hasta juegos de mesa y suministros para eventos. Sin embargo, la gestión de estos activos se realiza mediante hojas de cálculo individuales que suelen desactualizarse, borrarse accidentalmente o ser inaccesibles para los nuevos miembros de las juntas directivas al inicio de cada año.\n\nEsta situación genera pérdida de equipos, compras duplicadas innecesarias por falta de visibilidad y retrasos burocráticos cuando otras asociaciones necesitan solicitar préstamos de material. La necesidad principal y más urgente es desarrollar un sistema centralizado, seguro y fácil de usar que permita a todas las asociaciones registrar sus equipos de forma estandarizada.\n\nLa solución ideal debe ser una aplicación web intuitiva, capaz de gestionar préstamos mediante el escaneo de códigos QR, enviar alertas automáticas de devolución y generar reportes de uso trimestrales. Necesitamos estudiantes con experiencia en el diseño de bases de datos relacionales y desarrollo de APIs en Node.js para estructurar el núcleo de esta plataforma que beneficiará a toda la comunidad estudiantil.",
+    "problem": "Los inventarios están en hojas de cálculo que se pierden o se desactualizan, lo que provoca pérdidas de equipo y compras duplicadas.",
+    "beneficiaries": "Asociaciones estudiantiles y sus juntas directivas",
+    "tags": [
+      "Inventario",
+      "Códigos QR",
+      "APIs"
+    ],
+    "visibility": "restricted",
+    "status": "team_building",
+    "skills": [
+      "660000000000000000000014",
+      "660000000000000000000003"
+    ],
+    "owner": "650000000000000000000004",
+    "members": [
+      {
+        "user": "650000000000000000000004",
+        "role": "Propietario",
+        "joinedAt": "2026-08-20T15:00:00.000Z"
+      },
+      {
+        "user": "650000000000000000000005",
+        "role": "Bases de datos",
+        "joinedAt": "2026-08-23T15:00:00.000Z"
+      }
+    ],
+    "removedMembers": [],
+    "memberLimit": 3,
+    "image": "https://picsum.photos/id/13/800/450",
+    "createdAt": "2026-08-20T15:00:00.000Z",
+    "updatedAt": "2026-08-20T15:00:00.000Z"
+  },
+  {
+    "_id": "670000000000000000000004",
+    "title": "Asesoría digital para pequeñas empresas locales",
+    "type": "need",
+    "category": "business",
+    "summary": "Comerciantes de la zona aledaña carecen de presencialidad digital y e-commerce básico para ofertar sus productos artesanales.",
+    "description": "Los comercios aledaños al campus universitario, muchos de ellos enfocados en la venta de productos artesanales y servicios de alimentación local, se han quedado rezagados en la transición hacia la economía digital. Esta brecha tecnológica limita severamente sus oportunidades de crecimiento y su capacidad de llegar a un público más allá del tráfico peatonal de la zona.\n\nEl proyecto propone la formación de un equipo de asesores voluntarios que trabajen mano a mano con estos pequeños empresarios. La labor consistirá en realizar un diagnóstico inicial de sus necesidades digitales, crear perfiles estructurados en plataformas de redes sociales, y montar tiendas de e-commerce básicas utilizando herramientas accesibles y de bajo costo que ellos mismos puedan administrar en el futuro.\n\nAdemás de la implementación técnica, se brindarán talleres de capacitación sobre fundamentos de marketing digital y atención al cliente en línea. Esta iniciativa representa una excelente oportunidad de extensión universitaria, permitiendo a los estudiantes aplicar sus habilidades y generar un impacto económico directo y positivo en la comunidad vecina.",
+    "problem": "Los comercios vecinos no tienen presencia digital ni tienda en línea, por lo que dependen solo de quienes pasan frente al local.",
+    "beneficiaries": "Pequeños comercios y emprendimientos alrededor del campus",
+    "tags": [
+      "E-commerce",
+      "Marketing",
+      "Extensión universitaria"
+    ],
+    "visibility": "public",
+    "status": "published",
+    "skills": [
+      "660000000000000000000037",
+      "660000000000000000000038"
+    ],
+    "owner": "650000000000000000000006",
+    "members": [
+      {
+        "user": "650000000000000000000006",
+        "role": "Propietario",
+        "joinedAt": "2026-08-22T15:00:00.000Z"
+      }
+    ],
+    "removedMembers": [],
+    "memberLimit": 5,
+    "image": "https://picsum.photos/id/14/800/450",
+    "createdAt": "2026-08-22T15:00:00.000Z",
+    "updatedAt": "2026-08-22T15:00:00.000Z"
+  },
+  {
+    "_id": "670000000000000000000005",
+    "title": "Analítica de datos para el reciclaje",
+    "type": "challenge",
+    "category": "sustainability",
+    "summary": "Optimizar las rutas de recolección de residuos sólidos en el campus mediante modelos predictivos basados en los pesos históricos.",
+    "description": "La gestión actual de los residuos sólidos en la institución presenta ineficiencias significativas, ya que las rutas de recolección interna se realizan siguiendo un cronograma estático sin considerar el volumen real de desechos acumulados en cada punto. Esto genera viajes innecesarios a contenedores casi vacíos y, de manera opuesta, desbordamiento de basura en zonas de alta afluencia.\n\nEste reto busca aprovechar la base de datos histórica de los pesajes de residuos, proveniente de los centros de acopio institucionales, para entrenar modelos predictivos utilizando técnicas de Machine Learning. El sistema deberá analizar patrones de generación de desechos correlacionados con el calendario académico, eventos especiales en el campus y condiciones climáticas, logrando pronosticar los picos de acumulación.\n\nEl entregable final será un algoritmo de optimización que genere rutas de recolección dinámicas y diarias, minimizando el tiempo de traslado y el esfuerzo del personal de mantenimiento. Este proyecto es una oportunidad ideal para que los estudiantes apasionados por la estadística aplicada y la ciencia de datos resuelvan un problema logístico real y contribuyan a un campus más limpio.",
+    "problem": "Las rutas de recolección siguen un horario fijo: hay viajes a contenedores casi vacíos y desbordes en las zonas con más afluencia.",
+    "beneficiaries": "Personal de mantenimiento y comunidad del campus",
+    "tags": [
+      "Datos",
+      "Reciclaje",
+      "Optimización"
+    ],
+    "visibility": "institutional",
+    "status": "converted",
+    "skills": [
+      "660000000000000000000020",
+      "660000000000000000000019"
+    ],
+    "owner": "650000000000000000000007",
+    "members": [
+      {
+        "user": "650000000000000000000007",
+        "role": "Propietario",
+        "joinedAt": "2026-08-23T15:00:00.000Z"
+      },
+      {
+        "user": "650000000000000000000008",
+        "role": "Análisis de datos",
+        "joinedAt": "2026-08-26T15:00:00.000Z"
+      },
+      {
+        "user": "650000000000000000000009",
+        "role": "Modelos predictivos",
+        "joinedAt": "2026-08-27T15:00:00.000Z"
+      },
+      {
+        "user": "650000000000000000000010",
+        "role": "Visualización de datos",
+        "joinedAt": "2026-08-28T15:00:00.000Z"
+      }
+    ],
+    "removedMembers": [],
+    "memberLimit": 8,
+    "image": "https://picsum.photos/id/15/800/450",
+    "createdAt": "2026-08-23T15:00:00.000Z",
+    "updatedAt": "2026-08-23T15:00:00.000Z"
+  },
+  {
+    "_id": "670000000000000000000006",
+    "title": "Accesibilidad web institucional",
+    "type": "challenge",
+    "category": "technology",
+    "summary": "Auditar y rediseñar los portales de cursos para garantizar cumplimiento estricto de pautas WCAG 2.1 AA para estudiantes con discapacidad visual.",
+    "description": "A pesar de los avances tecnológicos, los portales web utilizados por la institución para la matriculación y la gestión de cursos aún presentan importantes barreras de accesibilidad. Los estudiantes con discapacidad visual o con limitaciones motoras enfrentan dificultades constantes al utilizar estas plataformas debido a la falta de compatibilidad con lectores de pantalla y a una navegación por teclado altamente ineficiente.\n\nEl propósito de este reto es llevar a cabo una auditoría exhaustiva de la interfaz actual, identificando los puntos de fricción y las violaciones a los estándares internacionales de accesibilidad. Posteriormente, el equipo deberá proponer e implementar refactorizaciones directas en el código base, asegurando el uso adecuado de HTML semántico, atributos ARIA, y la configuración de contrastes de color óptimos.\n\nAlcanzar el nivel de conformidad WCAG 2.1 AA no solo responde a un requerimiento ético y de derechos estudiantiles, sino que mejora la usabilidad general del sistema para todos los usuarios. Los participantes de este proyecto adquirirán una experiencia invaluable en la creación de interfaces inclusivas, una competencia altamente demandada y prioritaria en la industria del desarrollo de software.",
+    "problem": "Los portales de matrícula y de cursos no funcionan bien con lectores de pantalla ni con la navegación por teclado.",
+    "beneficiaries": "Estudiantes con discapacidad visual o motora y, en general, todas las personas que usan los portales",
+    "tags": [
+      "WCAG",
+      "Accesibilidad",
+      "Frontend"
+    ],
+    "visibility": "institutional",
+    "status": "team_building",
+    "skills": [
+      "660000000000000000000008",
+      "660000000000000000000006"
+    ],
+    "owner": "650000000000000000000011",
+    "members": [
+      {
+        "user": "650000000000000000000011",
+        "role": "Propietario",
+        "joinedAt": "2026-08-28T15:00:00.000Z"
+      },
+      {
+        "user": "650000000000000000000012",
+        "role": "Auditoría de accesibilidad",
+        "joinedAt": "2026-08-28T15:00:00.000Z"
+      }
+    ],
+    "removedMembers": [],
+    "memberLimit": 4,
+    "image": "https://picsum.photos/id/16/800/450",
+    "createdAt": "2026-08-28T15:00:00.000Z",
+    "updatedAt": "2026-08-28T15:00:00.000Z"
+  },
+  {
+    "_id": "670000000000000000000007",
+    "title": "Plataforma de tutorías cruzadas entre pares",
+    "type": "idea",
+    "category": "education",
+    "summary": "Espacio virtual donde estudiantes avanzados ofrecen acompañamiento académico a compañeros de primeros ingresos en materias de programación.",
+    "description": "La curva de aprendizaje en las materias introductorias de programación y tecnología suele ser muy pronunciada, ocasionando episodios de frustración y altas tasas de deserción durante los primeros ciclos universitarios. Aunque existen profesores y asistentes, a menudo la explicación recibida de un par, quien comparte un lenguaje más cercano a las vivencias del estudiante, resulta ser el recurso didáctico más empático y efectivo.\n\nLa propuesta consiste en construir una plataforma web que conecte proactivamente a estudiantes experimentados, dispuestos a compartir sus conocimientos, con aquellos que requieren apoyo académico puntual. El sistema permitirá agendar sesiones de tutoría virtuales o presenciales en tiempo real, filtrar mentores por áreas de dominio (como lógica de programación, bases de datos o desarrollo web) y contará con un sistema de calificación y retroalimentación bidireccional.\n\nEl desarrollo implicará la creación de una aplicación robusta utilizando React para el frontend y SQL para la gestión de usuarios, horarios y el almacenamiento del progreso. A largo plazo, se espera que esta plataforma logre institucionalizarse como el sistema oficial de acompañamiento estudiantil, fortaleciendo la retención y el tejido de apoyo mutuo dentro de la comunidad.",
+    "problem": "Muchos estudiantes de primer ingreso abandonan los cursos de programación por falta de un acompañamiento cercano.",
+    "beneficiaries": "Estudiantes de primeros cuatrimestres y tutores voluntarios",
+    "tags": [
+      "Tutorías",
+      "React",
+      "Retención estudiantil"
+    ],
+    "visibility": "public",
+    "status": "converted",
+    "skills": [
+      "660000000000000000000001",
+      "660000000000000000000002",
+      "660000000000000000000015"
+    ],
+    "owner": "650000000000000000000013",
+    "members": [
+      {
+        "user": "650000000000000000000013",
+        "role": "Propietario",
+        "joinedAt": "2026-08-31T15:00:00.000Z"
+      },
+      {
+        "user": "650000000000000000000014",
+        "role": "Frontend",
+        "joinedAt": "2026-08-28T15:00:00.000Z"
+      },
+      {
+        "user": "650000000000000000000015",
+        "role": "Backend",
+        "joinedAt": "2026-08-28T15:00:00.000Z"
+      },
+      {
+        "user": "650000000000000000000016",
+        "role": "Base de datos",
+        "joinedAt": "2026-08-28T15:00:00.000Z"
+      }
+    ],
+    "removedMembers": [],
+    "memberLimit": 5,
+    "image": "https://picsum.photos/id/17/800/450",
+    "createdAt": "2026-08-31T15:00:00.000Z",
+    "updatedAt": "2026-08-31T15:00:00.000Z"
+  },
+  {
+    "_id": "670000000000000000000008",
+    "title": "Campaña de reducción de huella de carbono digital",
+    "type": "need",
+    "category": "sustainability",
+    "summary": "Los servidores institucionales almacenan gigabytes de archivos obsoletos; se precisa una estrategia de concientización y limpieza de datos.",
+    "description": "Con frecuencia, la sostenibilidad ambiental se asocia únicamente con el mundo físico, ignorando por completo el grave impacto ecológico que conlleva mantener la infraestructura tecnológica de la universidad. Los servidores institucionales, los sistemas de correo electrónico y las plataformas en la nube consumen enormes cantidades de energía eléctrica ininterrumpida para mantener en línea gigabytes de información duplicada, versiones antiguas de documentos y correos totalmente irrelevantes.\n\nEsta necesidad puntual requiere la estructuración de una campaña integral de concientización dirigida a estudiantes, cuerpo docente y personal administrativo. Se deberán redactar y distribuir guías de buenas prácticas para la depuración de archivos digitales, y organizar jornadas institucionales de 'limpieza de datos', estableciendo metas medibles y transparentes en cuanto al espacio de almacenamiento liberado.\n\nA diferencia de otras iniciativas, este proyecto no demanda desarrollo de software, sino fuertes habilidades de gestión de proyectos, diseño de material comunicativo y un alto nivel de liderazgo. El éxito de esta campaña sentará un precedente sobre la responsabilidad digital y podría integrarse como una política anual permanente para reducir la huella de carbono institucional.",
+    "problem": "Los servidores guardan gigabytes de archivos duplicados u obsoletos que consumen energía sin necesidad.",
+    "beneficiaries": "Comunidad universitaria y el área de Tecnologías de Información",
+    "tags": [
+      "Huella de carbono",
+      "Concientización",
+      "Datos"
+    ],
+    "visibility": "institutional",
+    "status": "published",
+    "skills": [
+      "660000000000000000000031",
+      "660000000000000000000033"
+    ],
+    "owner": "650000000000000000000017",
+    "members": [
+      {
+        "user": "650000000000000000000017",
+        "role": "Propietario",
+        "joinedAt": "2026-09-05T15:00:00.000Z"
+      }
+    ],
+    "removedMembers": [],
+    "memberLimit": 3,
+    "image": "https://picsum.photos/id/18/800/450",
+    "createdAt": "2026-09-05T15:00:00.000Z",
+    "updatedAt": "2026-09-05T15:00:00.000Z"
+  },
+  {
+    "_id": "670000000000000000000009",
+    "title": "Asistente de recordatorios para entregas de cursos",
+    "type": "idea",
+    "category": "education",
+    "summary": "Bot que envía recordatorios de tareas y exámenes a partir del calendario de cada curso matriculado.",
+    "description": "Durante el cuatrimestre, las fechas de entrega están repartidas entre el campus virtual, los programas de curso y los mensajes de cada docente. Es común que un estudiante con varias materias olvide una tarea o se entere tarde de un cambio de fecha.\n\nLa idea es construir un asistente que reúna esas fechas en un solo lugar y envíe recordatorios por correo con algunos días de anticipación. Cada estudiante podría elegir qué cursos seguir y con cuánta antelación recibir los avisos.\n\nPor ahora la iniciativa es privada mientras se define el alcance con el equipo inicial. Se necesitan personas con experiencia en JavaScript, Node.js y consumo de APIs de calendario.",
+    "problem": "Las fechas de entrega están dispersas entre varias plataformas y quienes llevan muchas materias las olvidan o se enteran tarde de los cambios.",
+    "beneficiaries": "Estudiantes con cargas académicas altas",
+    "tags": [
+      "Bot",
+      "Productividad",
+      "Calendario"
+    ],
+    "visibility": "private",
+    "status": "published",
+    "skills": [
+      "660000000000000000000001",
+      "660000000000000000000003",
+      "660000000000000000000005"
+    ],
+    "owner": "650000000000000000000001",
+    "members": [
+      {
+        "user": "650000000000000000000001",
+        "role": "Propietario",
+        "joinedAt": "2026-09-10T15:00:00.000Z"
+      }
+    ],
+    "removedMembers": [],
+    "memberLimit": 3,
+    "image": "https://picsum.photos/id/19/800/450",
+    "createdAt": "2026-09-10T15:00:00.000Z",
+    "updatedAt": "2026-09-10T15:00:00.000Z"
+  },
+  {
+    "_id": "670000000000000000000010",
+    "title": "Sensores de calidad del aire en laboratorios",
+    "type": "challenge",
+    "category": "health",
+    "summary": "Medir CO2, temperatura y humedad en los laboratorios para decidir cuándo ventilar y reducir el consumo del aire acondicionado.",
+    "description": "Los laboratorios de cómputo pasan muchas horas con grupos llenos y puertas cerradas. Hoy la ventilación y el aire acondicionado funcionan con un horario fijo, sin saber si la calidad del aire realmente lo requiere.\n\nEl reto consiste en instalar un conjunto pequeño de sensores de CO2, temperatura y humedad, enviar las lecturas a un servidor y mostrarlas en un tablero sencillo. Con esos datos, el personal de mantenimiento podría ventilar cuando haga falta y apagar equipos cuando no.\n\nLa ubicación de los sensores y el plan de instalación se mantienen restringidos al equipo por la seguridad de los laboratorios.",
+    "problem": "La ventilación de los laboratorios se maneja por horario fijo y no existen datos para saber cuándo empeora la calidad del aire.",
+    "beneficiaries": "Estudiantes, docentes y personal de mantenimiento que usan los laboratorios",
+    "tags": [
+      "Sensores",
+      "Calidad del aire",
+      "IoT"
+    ],
+    "visibility": "restricted",
+    "status": "team_building",
+    "skills": [
+      "660000000000000000000027",
+      "660000000000000000000028",
+      "660000000000000000000021"
+    ],
+    "owner": "650000000000000000000007",
+    "members": [
+      {
+        "user": "650000000000000000000007",
+        "role": "Propietario",
+        "joinedAt": "2026-09-12T15:00:00.000Z"
+      },
+      {
+        "user": "650000000000000000000001",
+        "role": "Sensores IoT",
+        "joinedAt": "2026-09-15T15:00:00.000Z"
+      }
+    ],
+    "removedMembers": [],
+    "memberLimit": 4,
+    "image": "https://picsum.photos/id/20/800/450",
+    "createdAt": "2026-09-12T15:00:00.000Z",
+    "updatedAt": "2026-09-12T15:00:00.000Z"
+  },
+  {
+    "_id": "670000000000000000000011",
+    "title": "Festival de cortometrajes universitarios",
+    "type": "idea",
+    "category": "culture",
+    "summary": "Festival anual donde estudiantes de todas las carreras presentan cortometrajes sobre la vida universitaria.",
+    "description": "Muchos estudiantes producen videos en sus cursos o por pasatiempo, pero ese trabajo casi nunca sale del aula. Esta idea propone organizar un festival anual de cortometrajes con una convocatoria abierta, un jurado de docentes y una muestra final en el auditorio.\n\nEl equipo se encargaría de definir las bases del concurso, diseñar la identidad gráfica, coordinar la difusión en redes y preparar la logística del evento. Buscamos personas con interés en comunicación, diseño gráfico y gestión de eventos.",
+    "problem": "Los estudiantes con intereses audiovisuales no tienen un espacio para mostrar su trabajo ni para formar equipos con otras carreras.",
+    "beneficiaries": "Estudiantes interesados en la producción audiovisual",
+    "tags": [
+      "Cine",
+      "Cultura",
+      "Eventos"
+    ],
+    "visibility": "public",
+    "status": "published",
+    "skills": [
+      "660000000000000000000026",
+      "660000000000000000000033",
+      "660000000000000000000031"
+    ],
+    "owner": "650000000000000000000012",
+    "members": [
+      {
+        "user": "650000000000000000000012",
+        "role": "Propietario",
+        "joinedAt": "2026-10-05T15:00:00.000Z"
+      }
+    ],
+    "removedMembers": [],
+    "memberLimit": 6,
+    "image": "https://picsum.photos/id/21/800/450",
+    "createdAt": "2026-10-05T15:00:00.000Z",
+    "updatedAt": "2026-10-05T15:00:00.000Z"
+  },
+  {
+    "_id": "670000000000000000000012",
+    "title": "Pausas activas guiadas para el personal administrativo",
+    "type": "need",
+    "category": "health",
+    "summary": "Programa de pausas activas de cinco minutos con recordatorios y rutinas guiadas para quienes trabajan muchas horas sentados.",
+    "description": "El personal administrativo pasa la mayor parte de la jornada frente a la computadora y reporta molestias de espalda y cansancio visual. Se necesita un programa sencillo de pausas activas que no interrumpa el trabajo.\n\nLa propuesta incluye una página con rutinas cortas, recordatorios durante el día y una pequeña campaña de comunicación interna. Buscamos apoyo en comunicación, gestión de comunidades y desarrollo web.",
+    "problem": "El personal administrativo no realiza pausas durante la jornada y presenta molestias físicas por la postura.",
+    "beneficiaries": "Personal administrativo de la universidad",
+    "tags": [
+      "Salud",
+      "Bienestar",
+      "Personal"
+    ],
+    "visibility": "institutional",
+    "status": "published",
+    "skills": [
+      "660000000000000000000033",
+      "660000000000000000000034",
+      "660000000000000000000001"
+    ],
+    "owner": "650000000000000000000017",
+    "members": [
+      {
+        "user": "650000000000000000000017",
+        "role": "Propietario",
+        "joinedAt": "2026-10-12T15:00:00.000Z"
+      }
+    ],
+    "removedMembers": [],
+    "memberLimit": 4,
+    "image": "https://picsum.photos/id/22/800/450",
+    "createdAt": "2026-10-12T15:00:00.000Z",
+    "updatedAt": "2026-10-12T15:00:00.000Z"
+  }
+]

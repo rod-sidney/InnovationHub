@@ -1,0 +1,648 @@
+[
+  {
+    "_id": "650000000000000000000001",
+    "firstName": "Carla",
+    "lastName": "Montero",
+    "secondLastName": "Ruiz",
+    "email": "cmontero@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "student",
+    "role": "user",
+    "career": "Desarrollo de Software",
+    "description": "Me gusta unir la programación con proyectos ambientales. Disfruto prototipar con sensores y construir interfaces sencillas.",
+    "skills": [
+      {
+        "skill": "660000000000000000000027",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000009",
+        "level": "intermediate"
+      },
+      {
+        "skill": "660000000000000000000002",
+        "level": "basic"
+      },
+      {
+        "skill": "660000000000000000000003",
+        "level": "advanced"
+      }
+    ],
+    "interests": [
+      "Sostenibilidad",
+      "Medio ambiente",
+      "Automatización"
+    ],
+    "availability": "medium",
+    "portfolio": "https://example.com/portafolio/cmontero",
+    "photo": "https://picsum.photos/id/64/150/150",
+    "status": "active",
+    "createdAt": "2026-08-01T12:00:00.000Z",
+    "updatedAt": "2026-08-01T12:00:00.000Z"
+  },
+  {
+    "_id": "650000000000000000000002",
+    "firstName": "Valeria",
+    "lastName": "Morales",
+    "secondLastName": "Castro",
+    "email": "vmorales@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "student",
+    "role": "user",
+    "career": "Diseño y Desarrollo Web",
+    "description": "Diseño experiencias móviles centradas en las personas que las usan.",
+    "skills": [
+      {
+        "skill": "660000000000000000000023",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000024",
+        "level": "intermediate"
+      },
+      {
+        "skill": "660000000000000000000012",
+        "level": "basic"
+      }
+    ],
+    "interests": [
+      "Vida estudiantil",
+      "Mapas",
+      "Diseño"
+    ],
+    "availability": "high",
+    "portfolio": "",
+    "photo": null,
+    "status": "active",
+    "createdAt": "2026-08-02T12:00:00.000Z",
+    "updatedAt": "2026-08-02T12:00:00.000Z"
+  },
+  {
+    "_id": "650000000000000000000003",
+    "firstName": "Andrés",
+    "lastName": "Soto",
+    "secondLastName": "Jiménez",
+    "email": "asoto@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "student",
+    "role": "user",
+    "career": "Ingeniería del Software",
+    "description": "Desarrollo frontend y me interesan los mapas interactivos.",
+    "skills": [
+      {
+        "skill": "660000000000000000000001",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000013",
+        "level": "intermediate"
+      },
+      {
+        "skill": "660000000000000000000012",
+        "level": "basic"
+      }
+    ],
+    "interests": [
+      "Mapas",
+      "Movilidad"
+    ],
+    "availability": "medium",
+    "portfolio": "",
+    "photo": null,
+    "status": "active",
+    "createdAt": "2026-08-03T12:00:00.000Z",
+    "updatedAt": "2026-08-03T12:00:00.000Z"
+  },
+  {
+    "_id": "650000000000000000000004",
+    "firstName": "Sofía",
+    "lastName": "Vargas",
+    "secondLastName": "Solano",
+    "email": "svargas@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "student",
+    "role": "user",
+    "career": "Desarrollo de Software",
+    "description": "Me interesa resolver problemas de organización con software.",
+    "skills": [
+      {
+        "skill": "660000000000000000000003",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000014",
+        "level": "intermediate"
+      },
+      {
+        "skill": "660000000000000000000005",
+        "level": "basic"
+      }
+    ],
+    "interests": [
+      "Asociaciones estudiantiles",
+      "Automatización"
+    ],
+    "availability": "medium",
+    "portfolio": "",
+    "photo": null,
+    "status": "active",
+    "createdAt": "2026-08-03T12:00:00.000Z",
+    "updatedAt": "2026-08-03T12:00:00.000Z"
+  },
+  {
+    "_id": "650000000000000000000005",
+    "firstName": "Elena",
+    "lastName": "Rojas",
+    "secondLastName": "Mora",
+    "email": "erojas@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "student",
+    "role": "user",
+    "career": "Ingeniería del Software",
+    "description": "Me especializo en el modelado de bases de datos relacionales.",
+    "skills": [
+      {
+        "skill": "660000000000000000000015",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000014",
+        "level": "intermediate"
+      },
+      {
+        "skill": "660000000000000000000017",
+        "level": "basic"
+      }
+    ],
+    "interests": [
+      "Datos",
+      "Gestión"
+    ],
+    "availability": "low",
+    "portfolio": "",
+    "photo": null,
+    "status": "active",
+    "createdAt": "2026-08-05T12:00:00.000Z",
+    "updatedAt": "2026-08-05T12:00:00.000Z"
+  },
+  {
+    "_id": "650000000000000000000006",
+    "firstName": "Marcos",
+    "lastName": "Salazar",
+    "secondLastName": "Vega",
+    "email": "msalazar@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "student",
+    "role": "user",
+    "career": "Administración de Negocios",
+    "description": "Busco acercar la tecnología a los emprendimientos locales.",
+    "skills": [
+      {
+        "skill": "660000000000000000000037",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000038",
+        "level": "intermediate"
+      },
+      {
+        "skill": "660000000000000000000039",
+        "level": "basic"
+      }
+    ],
+    "interests": [
+      "Emprendimiento",
+      "Comercio local"
+    ],
+    "availability": "high",
+    "portfolio": "",
+    "photo": null,
+    "status": "active",
+    "createdAt": "2026-08-06T12:00:00.000Z",
+    "updatedAt": "2026-08-06T12:00:00.000Z"
+  },
+  {
+    "_id": "650000000000000000000007",
+    "firstName": "Elena",
+    "lastName": "Campos",
+    "secondLastName": "Arias",
+    "email": "ecampos@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "teacher",
+    "role": "user",
+    "career": "Ciencia de Datos",
+    "description": "Docente de estadística aplicada e investigación con datos abiertos.",
+    "skills": [
+      {
+        "skill": "660000000000000000000020",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000019",
+        "level": "intermediate"
+      },
+      {
+        "skill": "660000000000000000000009",
+        "level": "basic"
+      }
+    ],
+    "interests": [
+      "Sostenibilidad",
+      "Datos abiertos"
+    ],
+    "availability": "medium",
+    "portfolio": "",
+    "photo": null,
+    "status": "active",
+    "createdAt": "2026-08-01T12:00:00.000Z",
+    "updatedAt": "2026-08-01T12:00:00.000Z"
+  },
+  {
+    "_id": "650000000000000000000008",
+    "firstName": "Javier",
+    "lastName": "Soto",
+    "secondLastName": "Brenes",
+    "email": "jsoto@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "student",
+    "role": "user",
+    "career": "Ciencia de Datos",
+    "description": "Me apasiona encontrar patrones en los datos.",
+    "skills": [
+      {
+        "skill": "660000000000000000000009",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000018",
+        "level": "intermediate"
+      },
+      {
+        "skill": "660000000000000000000019",
+        "level": "basic"
+      }
+    ],
+    "interests": [
+      "Datos",
+      "Medio ambiente"
+    ],
+    "availability": "medium",
+    "portfolio": "",
+    "photo": null,
+    "status": "active",
+    "createdAt": "2026-08-08T12:00:00.000Z",
+    "updatedAt": "2026-08-08T12:00:00.000Z"
+  },
+  {
+    "_id": "650000000000000000000009",
+    "firstName": "María",
+    "lastName": "Jiménez",
+    "secondLastName": "Rojas",
+    "email": "mjimenez@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "student",
+    "role": "user",
+    "career": "Ingeniería del Software",
+    "description": "Me interesa aplicar inteligencia artificial a problemas reales.",
+    "skills": [
+      {
+        "skill": "660000000000000000000020",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000009",
+        "level": "intermediate"
+      }
+    ],
+    "interests": [
+      "Inteligencia artificial",
+      "Sostenibilidad"
+    ],
+    "availability": "low",
+    "portfolio": "",
+    "photo": null,
+    "status": "active",
+    "createdAt": "2026-08-09T12:00:00.000Z",
+    "updatedAt": "2026-08-09T12:00:00.000Z"
+  },
+  {
+    "_id": "650000000000000000000010",
+    "firstName": "Roberto",
+    "lastName": "Brenes",
+    "secondLastName": "Calvo",
+    "email": "rbrenes@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "student",
+    "role": "user",
+    "career": "Ciencia de Datos",
+    "description": "Visualización de datos y tableros de control.",
+    "skills": [
+      {
+        "skill": "660000000000000000000021",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000022",
+        "level": "intermediate"
+      },
+      {
+        "skill": "660000000000000000000015",
+        "level": "basic"
+      }
+    ],
+    "interests": [
+      "Datos",
+      "Logística"
+    ],
+    "availability": "medium",
+    "portfolio": "",
+    "photo": null,
+    "status": "active",
+    "createdAt": "2026-08-10T12:00:00.000Z",
+    "updatedAt": "2026-08-10T12:00:00.000Z"
+  },
+  {
+    "_id": "650000000000000000000011",
+    "firstName": "Esteban",
+    "lastName": "Quirós",
+    "secondLastName": "Méndez",
+    "email": "equiros@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "teacher",
+    "role": "user",
+    "career": "Desarrollo Web",
+    "description": "Docente de desarrollo web e impulsor de la accesibilidad digital.",
+    "skills": [
+      {
+        "skill": "660000000000000000000008",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000006",
+        "level": "intermediate"
+      },
+      {
+        "skill": "660000000000000000000007",
+        "level": "basic"
+      }
+    ],
+    "interests": [
+      "Inclusión",
+      "Educación"
+    ],
+    "availability": "medium",
+    "portfolio": "",
+    "photo": null,
+    "status": "active",
+    "createdAt": "2026-08-01T12:00:00.000Z",
+    "updatedAt": "2026-08-01T12:00:00.000Z"
+  },
+  {
+    "_id": "650000000000000000000012",
+    "firstName": "Ana Luisa",
+    "lastName": "Gómez",
+    "secondLastName": "Pérez",
+    "email": "agomez@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "student",
+    "role": "user",
+    "career": "Diseño de Experiencia de Usuario",
+    "description": "Investigo cómo hacer interfaces usables para todas las personas.",
+    "skills": [
+      {
+        "skill": "660000000000000000000008",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000023",
+        "level": "intermediate"
+      },
+      {
+        "skill": "660000000000000000000025",
+        "level": "basic"
+      }
+    ],
+    "interests": [
+      "Inclusión",
+      "Diseño"
+    ],
+    "availability": "high",
+    "portfolio": "",
+    "photo": null,
+    "status": "active",
+    "createdAt": "2026-08-11T12:00:00.000Z",
+    "updatedAt": "2026-08-11T12:00:00.000Z"
+  },
+  {
+    "_id": "650000000000000000000013",
+    "firstName": "Lucía",
+    "lastName": "Méndez",
+    "secondLastName": "Araya",
+    "email": "lmendez@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "student",
+    "role": "user",
+    "career": "Desarrollo de Software",
+    "description": "Fui tutora de programación y quiero que más estudiantes reciban apoyo.",
+    "skills": [
+      {
+        "skill": "660000000000000000000001",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000002",
+        "level": "intermediate"
+      },
+      {
+        "skill": "660000000000000000000015",
+        "level": "basic"
+      }
+    ],
+    "interests": [
+      "Educación",
+      "Mentoría"
+    ],
+    "availability": "medium",
+    "portfolio": "",
+    "photo": null,
+    "status": "active",
+    "createdAt": "2026-08-12T12:00:00.000Z",
+    "updatedAt": "2026-08-12T12:00:00.000Z"
+  },
+  {
+    "_id": "650000000000000000000014",
+    "firstName": "Felipe",
+    "lastName": "Arce",
+    "secondLastName": "Navarro",
+    "email": "farce@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "student",
+    "role": "user",
+    "career": "Desarrollo de Software",
+    "description": "Desarrollo frontend con React.",
+    "skills": [
+      {
+        "skill": "660000000000000000000002",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000001",
+        "level": "intermediate"
+      },
+      {
+        "skill": "660000000000000000000007",
+        "level": "basic"
+      }
+    ],
+    "interests": [
+      "Educación",
+      "Videojuegos"
+    ],
+    "availability": "medium",
+    "portfolio": "",
+    "photo": null,
+    "status": "active",
+    "createdAt": "2026-08-12T12:00:00.000Z",
+    "updatedAt": "2026-08-12T12:00:00.000Z"
+  },
+  {
+    "_id": "650000000000000000000015",
+    "firstName": "Daniela",
+    "lastName": "Vega",
+    "secondLastName": "Chaves",
+    "email": "dvega@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "student",
+    "role": "user",
+    "career": "Ingeniería del Software",
+    "description": "Me gusta construir APIs y servicios del lado del servidor.",
+    "skills": [
+      {
+        "skill": "660000000000000000000003",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000004",
+        "level": "intermediate"
+      },
+      {
+        "skill": "660000000000000000000016",
+        "level": "basic"
+      }
+    ],
+    "interests": [
+      "Educación",
+      "Backend"
+    ],
+    "availability": "low",
+    "portfolio": "",
+    "photo": null,
+    "status": "active",
+    "createdAt": "2026-08-13T12:00:00.000Z",
+    "updatedAt": "2026-08-13T12:00:00.000Z"
+  },
+  {
+    "_id": "650000000000000000000016",
+    "firstName": "Andrés",
+    "lastName": "Castro",
+    "secondLastName": "Fallas",
+    "email": "acastro@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "student",
+    "role": "user",
+    "career": "Tecnologías de Información",
+    "description": "Administración de bases de datos y servidores.",
+    "skills": [
+      {
+        "skill": "660000000000000000000015",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000014",
+        "level": "intermediate"
+      },
+      {
+        "skill": "660000000000000000000030",
+        "level": "basic"
+      }
+    ],
+    "interests": [
+      "Infraestructura",
+      "Educación"
+    ],
+    "availability": "medium",
+    "portfolio": "",
+    "photo": null,
+    "status": "active",
+    "createdAt": "2026-08-14T12:00:00.000Z",
+    "updatedAt": "2026-08-14T12:00:00.000Z"
+  },
+  {
+    "_id": "650000000000000000000017",
+    "firstName": "Gerardo",
+    "lastName": "Ruiz",
+    "secondLastName": "Alfaro",
+    "email": "gruiz@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "staff",
+    "role": "user",
+    "career": "Tecnologías de Información",
+    "description": "Coordino proyectos de infraestructura tecnológica en la universidad.",
+    "skills": [
+      {
+        "skill": "660000000000000000000031",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000033",
+        "level": "intermediate"
+      },
+      {
+        "skill": "660000000000000000000032",
+        "level": "basic"
+      }
+    ],
+    "interests": [
+      "Sostenibilidad",
+      "Gestión del cambio"
+    ],
+    "availability": "low",
+    "portfolio": "",
+    "photo": null,
+    "status": "active",
+    "createdAt": "2026-08-01T12:00:00.000Z",
+    "updatedAt": "2026-08-01T12:00:00.000Z"
+  },
+  {
+    "_id": "650000000000000000000100",
+    "firstName": "Laura",
+    "lastName": "Chacón",
+    "secondLastName": "Rojas",
+    "email": "admin.innovationhub@ucenfotec.ac.cr",
+    "password": "Hub12345",
+    "memberType": "staff",
+    "role": "admin",
+    "career": "Coordinación de Innovation Hub",
+    "description": "Administro la información general de la plataforma y modero el contenido publicado.",
+    "skills": [
+      {
+        "skill": "660000000000000000000034",
+        "level": "advanced"
+      },
+      {
+        "skill": "660000000000000000000035",
+        "level": "intermediate"
+      }
+    ],
+    "interests": [
+      "Innovación",
+      "Emprendimiento"
+    ],
+    "availability": "high",
+    "portfolio": "",
+    "photo": null,
+    "status": "active",
+    "createdAt": "2026-08-01T12:00:00.000Z",
+    "updatedAt": "2026-08-01T12:00:00.000Z"
+  }
+]
