@@ -122,6 +122,7 @@ Todas usan la contraseña `Hub12345`. Las cuentas creadas desde "Crear cuenta" s
 | 25 | 2026-11-03 | 859ce46 | Conectar el servidor con MongoDB mediante Mongoose | servidor | db.js, env.js, server.js, package.json, .env.example |
 | 26 | 2026-11-03 | abea8a1 | Crear los modelos de usuarios, competencias y sesiones | servidor/src/modelos | valores.js, Usuario.js, Competencia.js, Sesion.js |
 | 27 | 2026-11-03 | fd56598 | Crear los modelos de iniciativas, solicitudes y proyectos | servidor/src/modelos | Iniciativa.js, Solicitud.js, Proyecto.js |
-| 28 | 2026-11-03 | d77a2dd | Agregar los datos de prueba y el script para cargarlos en MongoDB | servidor | datos-prueba, seed.js, db.js, package.json |
+| 28 | 2026-11-03 | d171d03 | Agregar los datos de prueba y el script para cargarlos en MongoDB | servidor | datos-prueba, seed.js, db.js, package.json |
+| 29 | 2026-11-03 | 0af5e5c | Agregar funciones reutilizables de validación, paginación y búsqueda | servidor/src | reglas.js, paginacion.js, texto.js |
 
 <!-- FIN TABLA COMMITS -->
