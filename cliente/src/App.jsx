@@ -1,12 +1,29 @@
 // App.jsx
 // Componente raíz del cliente
 
+import { Routes, Route } from 'react-router';
+
+import Encabezado from './componentes/layout/Encabezado.jsx';
+import PiePagina from './componentes/layout/PiePagina.jsx';
+import Inicio from './paginas/Inicio.jsx';
+import NoEncontrada from './paginas/NoEncontrada.jsx';
+
 function App() {
     return (
-        <main className="container py-5">
-            <h1>Innovation Hub</h1>
-            <p>Cliente React del Avance 2.</p>
-        </main>
+        <div className="d-flex flex-column min-vh-100 bg-light">
+            <Encabezado />
+
+            <main className="flex-grow-1">
+                <Routes>
+                    <Route path="/" element={<Inicio />} />
+
+                    {/* Cualquier otra dirección: página no encontrada */}
+                    <Route path="*" element={<NoEncontrada />} />
+                </Routes>
+            </main>
+
+            <PiePagina />
+        </div>
     );
 }
 

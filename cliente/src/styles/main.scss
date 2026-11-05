@@ -1,0 +1,14 @@
+// main.scss
+// Estilos del cliente: los mismos del Avance 1.
+
+// variables
+@import 'variables';
+
+// bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// parciales
+@import 'tarjetas';
+@import 'detalle';
+@import 'estados';
+@import 'componentes';

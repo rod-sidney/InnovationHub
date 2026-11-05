@@ -140,6 +140,7 @@ Commits del avance 2: 19-
 | 40 | 2026-11-04 | 4768af3 | Implementar la cancelación, la aceptación y el rechazo de solicitudes con incorporación al equipo | servidor/src | solicitudes.servicio.js, solicitudes.validacion.js, solicitudes.controlador.js, solicitudes.rutas.js |
 | 41 | 2026-11-04 | 5809895 | Implementar la conversión de iniciativas en proyectos, su listado y su detalle | servidor/src | proyectos.rutas.js, proyectos.controlador.js, proyectos.servicio.js, proyectos.validacion.js, visibilidad.js, representaciones.js |
 | 42 | 2026-11-04 | bbc9773 | Agregar la colección de Postman con casos correctos, inválidos, inexistentes y no autorizados. Todas las pruebas pasan | pruebas | innovation-hub.postman_collection.json |
-| 43 | 2026-11-05 | d83c6cd | Crear el proyecto del cliente con React y Vite | cliente | package.json, vite.config.js, index.html, main.jsx, App.jsx, imágenes predeterminadas |
+| 43 | 2026-11-05 | 7897fc7 | Crear el proyecto del cliente con React y Vite | cliente | package.json, vite.config.js, index.html, main.jsx, App.jsx, imágenes predeterminadas |
+| 44 | 2026-11-05 | fc566bd | Se trasladan los estilos de Bootstrap y Sass del avance 1 al cliente. Además, se agrega el diseño base y las rutas con React Router, incluida la página no encontrada | cliente/src y /src/styles | main.scss, _variables.scss, _tarjetas.scss, _detalle.scss, _estados.scss, _componentes.scss, App.jsx, main.jsx, Encabezado.jsx, PiePagina.jsx, Inicio.jsx, NoEncontrada.jsx |
 
 <!-- FIN TABLA COMMITS -->

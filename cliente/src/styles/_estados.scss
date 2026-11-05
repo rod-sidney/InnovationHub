@@ -1,0 +1,42 @@
+// _estados.scss
+// Colores de los estados de iniciativas, solicitudes y proyectos
+
+.estado {
+    font-weight: 700;
+
+    span {
+        margin-right: 4px;
+    }
+}
+
+.estado-published,
+.estado-accepted,
+.estado-in_progress {
+    color: $success;
+}
+
+.estado-team_building,
+.estado-planning {
+    color: $info;
+}
+
+.estado-converted,
+.estado-finished {
+    color: $primary;
+}
+
+// El amarillo se oscurece para que tenga contraste suficiente sobre fondo blanco
+.estado-pending,
+.estado-paused {
+    color: darken($warning, 15%);
+}
+
+.estado-rejected {
+    color: $danger;
+}
+
+.estado-archived,
+.estado-cancelled,
+.estado-draft {
+    color: $gray-600;
+}

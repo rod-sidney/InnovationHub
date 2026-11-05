@@ -1,0 +1,20 @@
+// _componentes.scss
+// Estilos pequeños que necesitan los componentes de React
+
+// Texto largo que respeta los saltos de línea que escribió la persona
+// (descripción de una iniciativa o de un proyecto)
+.texto-con-saltos {
+    white-space: pre-line;
+}
+
+// Foto de perfil redonda que no se deforma
+.avatar {
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+// Modal que React muestra con estado
+.modal-abierto {
+    display: block;
+    background-color: rgba($dark, 0.5);
+}
