@@ -2,7 +2,14 @@
 // Página principal: presentación de la plataforma, los tipos de iniciativa y la invitación a publicar
 // diseño de index.html del Avance 1
 
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
+
+import { listarIniciativas } from '../api/iniciativas.js';
+import Cargando from '../componentes/comunes/Cargando.jsx';
+import MensajeError from '../componentes/comunes/MensajeError.jsx';
+import SinResultados from '../componentes/comunes/SinResultados.jsx';
+import TarjetaIniciativa from '../componentes/iniciativas/TarjetaIniciativa.jsx';
 
 // tipos se dibujan con map, el contenido vive en un arreglo
 const TIPOS_DE_INICIATIVA = [
@@ -21,6 +28,57 @@ const TIPOS_DE_INICIATIVA = [
 ];
 
 function Inicio() {
+    const [recientes, setRecientes] = useState([]);
+    const [cargando, setCargando] = useState(true);
+    const [error, setError] = useState(null);
+    // Cambiar este número vuelve a ejecutar el efecto (botón "Intentar de nuevo")
+    const [intento, setIntento] = useState(0);
+
+    useEffect(() => {
+        // AbortController permite cancelar la petición si el componente se desmonta
+        const controlador = new AbortController();
+
+        async function cargar() {
+            setCargando(true);
+            setError(null);
+            try {
+                const pagina = await listarIniciativas({ sort: 'recent', size: 3 }, controlador.signal);
+                if (!controlador.signal.aborted) setRecientes(pagina.data);
+            } catch (errorRecibido) {
+                // Si la petición se canceló, el componente ya no está y no hay nada que mostrar
+                if (!controlador.signal.aborted) setError(errorRecibido);
+            } finally {
+                if (!controlador.signal.aborted) setCargando(false);
+            }
+        }
+
+        cargar();
+
+        // Limpieza: se ejecuta al desmontar el componente o antes de repetir el efecto
+        return () => controlador.abort();
+    }, [intento]);
+
+    // Los tres estados de una pantalla que consulta la API
+    // carga, error y resultado vacío
+    let contenidoRecientes;
+    if (cargando) {
+        contenidoRecientes = <Cargando texto="Cargando iniciativas..." />;
+    } else if (error) {
+        contenidoRecientes = <MensajeError error={error} onReintentar={() => setIntento((valor) => valor + 1)} />;
+    } else if (recientes.length === 0) {
+        contenidoRecientes = <SinResultados mensaje="Todavía no hay iniciativas públicas." />;
+    } else {
+        contenidoRecientes = (
+            <div className="row g-4">
+                {recientes.map((iniciativa) => (
+                    <div className="col-12 col-md-6 col-lg-4" key={iniciativa.id}>
+                        <TarjetaIniciativa iniciativa={iniciativa} />
+                    </div>
+                ))}
+            </div>
+        );
+    }
+
     return (
         <>
             <section className="hero bg-light py-5">
@@ -63,6 +121,23 @@ function Inicio() {
                                 </article>
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-5" aria-labelledby="titulo-iniciativas">
+                <div className="container">
+                    <div className="text-center mb-5">
+                        <h2 id="titulo-iniciativas" className="fw-bold">Iniciativas recientes</h2>
+                        <p className="text-muted">Echa un vistazo a las últimas iniciativas publicadas.</p>
+                    </div>
+
+                    {contenidoRecientes}
+
+                    <div className="text-center mt-5">
+                        <Link to="/iniciativas" className="text-decoration-none fw-bold">
+                            Ver todo el catálogo de iniciativas &rarr;
+                        </Link>
                     </div>
                 </div>
             </section>

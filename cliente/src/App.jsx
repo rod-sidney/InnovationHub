@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router';
 import Encabezado from './componentes/layout/Encabezado.jsx';
 import PiePagina from './componentes/layout/PiePagina.jsx';
 import Inicio from './paginas/Inicio.jsx';
+import Catalogo from './paginas/Catalogo.jsx';
 import NoEncontrada from './paginas/NoEncontrada.jsx';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
             <main className="flex-grow-1">
                 <Routes>
                     <Route path="/" element={<Inicio />} />
+                    <Route path="/iniciativas" element={<Catalogo />} />
 
                     {/* Cualquier otra dirección: página no encontrada */}
                     <Route path="*" element={<NoEncontrada />} />
