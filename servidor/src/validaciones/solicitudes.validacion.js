@@ -63,3 +63,20 @@ export function validarConsultaRecibidas(consulta) {
 
     return { filtros: { initiative, status, skill, role }, paginacion };
 }
+
+// Cuerpo de PATCH /api/requests/:id/status
+// "pending" no se permite, una solicitud no vuelve atrás
+export function validarCambioDeEstado(cuerpo) {
+    const errores = [];
+
+    const status = opcion(errores, 'status', cuerpo.status, {
+        nombre: 'el nuevo estado', permitidos: ['cancelled', 'accepted', 'rejected']
+    });
+    const comment = texto(errores, 'comment', cuerpo.comment, { nombre: 'el comentario', maximo: 300 });
+
+    if (errores.length > 0) {
+        throw errorDeValidacion(errores);
+    }
+
+    return { status, comment };
+}

@@ -1,5 +1,5 @@
 // solicitudes.servicio.js
-// Solicitudes de participación: registro, consulta, listados y modificación
+// Solicitudes de participación: registro, consulta, listados, modificación, cancelación, aceptación y rechazo
 
 import Solicitud from '../modelos/Solicitud.js';
 import Iniciativa from '../modelos/Iniciativa.js';
@@ -202,6 +202,68 @@ export async function actualizarSolicitud(id, datos, usuario) {
         availability: datos.availability,
         message: datos.message
     });
+
+    await solicitud.save();
+    await solicitud.populate(RELACIONES);
+
+    return aSolicitud(solicitud);
+}
+
+// al aceptar, el solicitante entra al equipo con el rol que pidió y la fecha de hoy
+async function incorporarAlEquipo(iniciativa, solicitud) {
+    if (iniciativa.status === 'archived') {
+        throw new ErrorApi(409, 'INITIATIVE_ARCHIVED', 'La iniciativa está archivada y no admite cambios.');
+    }
+
+    // no se entra dos veces al mismo equipo
+    const yaEsMiembro = iniciativa.members.some((miembro) => String(miembro.user) === String(solicitud.requester));
+    if (yaEsMiembro) {
+        throw new ErrorApi(409, 'ALREADY_MEMBER', 'Esa persona ya forma parte del equipo.');
+    }
+
+    if (iniciativa.members.length >= iniciativa.memberLimit) {
+        throw new ErrorApi(409, 'TEAM_FULL', 'El equipo ya no tiene espacios disponibles.');
+    }
+
+    iniciativa.members.push({ user: solicitud.requester, role: solicitud.role, joinedAt: new Date() });
+
+    // Con el primer integrante aceptado, el equipo empieza a formarse
+    if (iniciativa.status === 'published') {
+        iniciativa.status = 'team_building';
+    }
+
+    await iniciativa.save();
+}
+
+// cancelar (solicitante), aceptar o rechazar (propietario)
+export async function cambiarEstado(id, { status, comment }, usuario) {
+    const solicitud = await buscarSolicitud(id);
+    const iniciativa = await Iniciativa.findById(solicitud.initiative);
+
+    if (status === 'cancelled') {
+        if (!esSolicitante(solicitud, usuario)) {
+            throw new ErrorApi(403, 'FORBIDDEN', 'Solo quien envió la solicitud puede cancelarla.');
+        }
+    } else if (!esPropietario(iniciativa, usuario)) {
+        throw new ErrorApi(403, 'FORBIDDEN', 'Solo el propietario de la iniciativa puede aceptar o rechazar solicitudes.');
+    }
+
+    // solo las solicitudes pendientes se cancelan o se resuelven
+    if (solicitud.status !== 'pending') {
+        throw new ErrorApi(409, 'REQUEST_NOT_PENDING', 'La solicitud ya no está pendiente.');
+    }
+
+    if (status === 'accepted') {
+        await incorporarAlEquipo(iniciativa, solicitud);
+    }
+
+    // La solicitud se conserva con su nuevo estado (trazabilidad), no se borra
+    solicitud.status = status;
+
+    if (status !== 'cancelled') {
+        solicitud.decidedAt = new Date();
+        solicitud.responseComment = comment || null;
+    }
 
     await solicitud.save();
     await solicitud.populate(RELACIONES);

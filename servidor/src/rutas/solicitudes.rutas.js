@@ -3,8 +3,11 @@
 // index.js las monta en /api/requests.
 // Todas exigen sesión
 
+
 import { Router } from 'express';
-import { crear, enviadas, recibidas, obtener, actualizar } from '../controladores/solicitudes.controlador.js';
+import {
+    crear, enviadas, recibidas, obtener, actualizar, actualizarEstado
+} from '../controladores/solicitudes.controlador.js';
 import { requerirSesion } from '../middlewares/autenticacion.js';
 
 const rutas = Router();
@@ -15,5 +18,6 @@ rutas.get('/sent', requerirSesion, enviadas);
 rutas.get('/received', requerirSesion, recibidas);
 rutas.get('/:id', requerirSesion, obtener);
 rutas.put('/:id', requerirSesion, actualizar);
+rutas.patch('/:id/status', requerirSesion, actualizarEstado);
 
 export default rutas;
