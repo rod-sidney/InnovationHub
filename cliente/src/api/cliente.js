@@ -6,6 +6,21 @@
 
 const URL_API = import.meta.env.VITE_API_URL;
 
+// Token de la sesión actual
+// Lo actualiza el contexto de sesión al iniciar o cerrar sesión
+let tokenActual = null;
+
+export function usarToken(token) {
+    tokenActual = token;
+}
+
+// Función del contexto de sesión que se llama cuando el servidor rechaza el token (401)
+let avisarSesionVencida = null;
+
+export function alVencerLaSesion(funcion) {
+    avisarSesionVencida = funcion;
+}
+
 // Error con los datos del formato uniforme del contrato: status, code, message y details
 export class ErrorDeApi extends Error {
     constructor(status, codigo, mensaje, detalles = []) {
@@ -27,6 +42,10 @@ export async function pedir(ruta, { metodo = 'GET', cuerpo, signal } = {}) {
     const encabezados = {};
     if (cuerpo !== undefined) {
         encabezados['Content-Type'] = 'application/json';
+    }
+    // Con sesión, cada petición lleva el token (contrato, sección 1.4)
+    if (tokenActual) {
+        encabezados.Authorization = `Bearer ${tokenActual}`;
     }
 
     let respuesta;
@@ -63,6 +82,12 @@ export async function pedir(ruta, { metodo = 'GET', cuerpo, signal } = {}) {
 
     if (!respuesta.ok) {
         const detalle = datos && datos.error ? datos.error : null;
+
+        // El token venció o se cerró la sesión en otro lado, el contexto limpia la sesión
+        if (respuesta.status === 401 && tokenActual && detalle && detalle.code === 'UNAUTHENTICATED' && avisarSesionVencida) {
+            avisarSesionVencida();
+        }
+
         throw new ErrorDeApi(
             respuesta.status,
             detalle ? detalle.code : 'UNKNOWN_ERROR',

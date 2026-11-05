@@ -8,11 +8,14 @@ import { BrowserRouter } from 'react-router'; // lee la dirección del navegador
 import './styles/main.scss';
 
 import App from './App.jsx';
+import { ProveedorSesion } from './contexto/SesionContexto.jsx'; // comparte la sesión con todos los componentes que están dentro de él
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <ProveedorSesion>
+        <App />
+      </ProveedorSesion>
     </BrowserRouter>
   </StrictMode>
 );
