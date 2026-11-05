@@ -4,6 +4,7 @@
 
 import { Router } from 'express';
 import { listar, obtener, crear, actualizar, eliminar } from '../controladores/iniciativas.controlador.js';
+import { listar as listarEquipo, retirar } from '../controladores/equipo.controlador.js';
 import { sesionOpcional, requerirSesion } from '../middlewares/autenticacion.js';
 
 const rutas = Router();
@@ -13,5 +14,9 @@ rutas.get('/:id', sesionOpcional, obtener);
 rutas.post('/', requerirSesion, crear);
 rutas.put('/:id', requerirSesion, actualizar);
 rutas.delete('/:id', requerirSesion, eliminar);
+
+// Equipo de la iniciativa
+rutas.get('/:id/members', sesionOpcional, listarEquipo);
+rutas.delete('/:id/members/:userId', requerirSesion, retirar);
 
 export default rutas;

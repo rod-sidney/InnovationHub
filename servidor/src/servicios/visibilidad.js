@@ -55,6 +55,16 @@ export function verificarQuePuedeVer(iniciativa, usuario) {
     throw new ErrorApi(403, 'FORBIDDEN', 'Esta iniciativa es privada: solo su equipo puede verla.');
 }
 
+// Exige acceso completo (ej: ver el equipo)
+// Con acceso de resumen, 403
+export function verificarAccesoCompleto(iniciativa, usuario) {
+    const acceso = verificarQuePuedeVer(iniciativa, usuario);
+
+    if (acceso !== 'full') {
+        throw new ErrorApi(403, 'FORBIDDEN', 'Solo el equipo de esta iniciativa puede ver esta información.');
+    }
+}
+
 // Condición de MongoDB con las iniciativas que el usuario puede ver en un listado
 // Sin sesión solo las públicas
 // Con sesión: todas menos las privadas ajenas
