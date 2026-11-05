@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+    <!-- Imagen predeterminada de una iniciativa: se usa cuando la iniciativa no tiene foto -->
+    <rect width="800" height="450" fill="#dcebf4"/>
+    <g fill="none" stroke="#183d61" stroke-width="14" stroke-linecap="round">
+        <!-- bombillo -->
+        <circle cx="400" cy="190" r="70"/>
+        <path d="M376 258v22h48v-22"/>
+        <path d="M384 306h32"/>
+        <!-- rayos -->
+        <path d="M400 92V70M318 126l-16-16M482 126l16-16M302 196h-22M498 196h22"/>
+    </g>
+</svg>
