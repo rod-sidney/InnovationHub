@@ -7,11 +7,12 @@ import { Router } from 'express';
 import rutasAutenticacion from './autenticacion.rutas.js';
 import rutasCompetencias from './competencias.rutas.js';
 import rutasIniciativas from './iniciativas.rutas.js';
+import rutasSolicitudes from './solicitudes.rutas.js';
 import rutasUsuarios from './usuarios.rutas.js';
 
 const rutas = Router();
 
-// Permite comprobar que el servidor está encendido
+// comprobar que el servidor está encendido
 rutas.get('/health', (req, res) => {
     res.json({ status: 'ok' });
 });
@@ -20,5 +21,6 @@ rutas.use('/auth', rutasAutenticacion);
 rutas.use('/users', rutasUsuarios);
 rutas.use('/skills', rutasCompetencias);
 rutas.use('/initiatives', rutasIniciativas);
+rutas.use('/requests', rutasSolicitudes);
 
 export default rutas;

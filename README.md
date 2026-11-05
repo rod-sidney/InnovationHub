@@ -135,6 +135,7 @@ Commits del avance 2: 19-
 | 35 | 2026-11-04 | 9a1f35a | Implementar el detalle de iniciativa según su visibilidad y la relación del usuario | servidor/src | iniciativas.servicio.js, visibilidad.js, representaciones.js, iniciativas.controlador.js, iniciativas.rutas.js |
 | 36 | 2026-11-04 | 386dd83 | Implementar el registro y la modificación de iniciativas con validación en el servidor | servidor/src | iniciativas.servicio.js, iniciativas.validacion.js, iniciativas.controlador.js, iniciativas.rutas.js |
 | 37 | 2026-11-04 | 5a7a607 | Implementar la eliminación o el archivado de iniciativas según su información relacionada | servidor/src | iniciativas.servicio.js, iniciativas.controlador.js, iniciativas.rutas.js |
-| 38 | 2026-11-04 | b9c29d6 | Implementar la consulta del equipo y el retiro de miembros | servidor/src | iniciativas.rutas.js, equipo.controlador.js, equipo.servicio.js, equipo.validacion.js, visibilidad.js |
+| 38 | 2026-11-04 | 7645624 | Implementar la consulta del equipo y el retiro de miembros | servidor/src | iniciativas.rutas.js, equipo.controlador.js, equipo.servicio.js, equipo.validacion.js, visibilidad.js |
+| 39 | 2026-11-04 | 5194860 | Implementar el registro, la consulta, los listados y la modificación de solicitudes | servidor/src | solicitudes.rutas.js, solicitudes.controlador.js, solicitudes.servicio.js, solicitudes.validacion.js, representaciones.js |
 
 <!-- FIN TABLA COMMITS -->

@@ -135,3 +135,27 @@ export function aDetalleIniciativa(iniciativa, idProyecto) {
         access: 'full'
     };
 }
+
+
+// Solicitud de participación (sección 4.9)
+// Requiere populate de initiative, skill y requester
+export function aSolicitud(solicitud) {
+    return {
+        id: String(solicitud._id),
+        status: solicitud.status,
+        role: solicitud.role,
+        message: solicitud.message,
+        availability: solicitud.availability,
+        skill: solicitud.skill ? aCompetencia(solicitud.skill) : null,
+        initiative: {
+            id: String(solicitud.initiative._id),
+            title: solicitud.initiative.title,
+            ownerId: String(solicitud.initiative.owner)
+        },
+        requester: aUsuarioDelEquipo(solicitud.requester),
+        responseComment: solicitud.responseComment,
+        decidedAt: solicitud.decidedAt,
+        createdAt: solicitud.createdAt,
+        updatedAt: solicitud.updatedAt
+    };
+}
