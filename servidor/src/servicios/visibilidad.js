@@ -80,3 +80,19 @@ export function filtroDeVisibilidad(usuario) {
         ]
     };
 }
+
+
+// Condición de MongoDB con las iniciativas que el usuario puede ver completas
+// un proyecto se ve solo si se ve completa su iniciativa de origen
+export function filtroDeAccesoCompleto(usuario) {
+    if (!usuario) {
+        return { visibility: 'public' };
+    }
+
+    return {
+        $or: [
+            { visibility: { $in: ['public', 'institutional'] } },
+            { 'members.user': usuario._id }
+        ]
+    };
+}

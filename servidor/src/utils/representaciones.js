@@ -159,3 +159,58 @@ export function aSolicitud(solicitud) {
         updatedAt: solicitud.updatedAt
     };
 }
+
+// Fecha sin hora con el formato "AAAA-MM-DD"
+function aFechaSinHora(fecha) {
+    return fecha ? fecha.toISOString().slice(0, 10) : null;
+}
+
+// El servidor guarda solo propietario y nombre, el enlace se arma al responder
+function aRepositorio(repositorio) {
+    if (!repositorio) {
+        return null;
+    }
+
+    return {
+        owner: repositorio.owner,
+        name: repositorio.name,
+        url: `https://github.com/${repositorio.owner}/${repositorio.name}`
+    };
+}
+
+// Resumen de un proyecto (sección 4.10)
+// Requiere populate de initiative y owner
+export function aResumenProyecto(proyecto) {
+    const iniciativa = proyecto.initiative;
+
+    return {
+        id: String(proyecto._id),
+        name: proyecto.name,
+        objective: proyecto.objective,
+        status: proyecto.status,
+        technologies: proyecto.technologies,
+        startDate: aFechaSinHora(proyecto.startDate),
+        repository: aRepositorio(proyecto.repository),
+        initiative: {
+            id: String(iniciativa._id),
+            title: iniciativa.title,
+            category: iniciativa.category,
+            visibility: iniciativa.visibility
+        },
+        owner: aUsuarioCorto(proyecto.owner),
+        memberCount: iniciativa.members.length,
+        createdAt: proyecto.createdAt
+    };
+}
+
+// Detalle de un proyecto
+// Los integrantes salen del equipo de la iniciativa, no se copian
+export function aProyecto(proyecto) {
+    return {
+        ...aResumenProyecto(proyecto),
+        description: proyecto.description,
+        estimatedEndDate: aFechaSinHora(proyecto.estimatedEndDate),
+        members: aEquipo(proyecto.initiative.members, String(proyecto.owner._id)),
+        updatedAt: proyecto.updatedAt
+    };
+}
