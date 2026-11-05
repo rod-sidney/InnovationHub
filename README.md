@@ -138,6 +138,7 @@ Commits del avance 2: 19-
 | 38 | 2026-11-04 | 7645624 | Implementar la consulta del equipo y el retiro de miembros | servidor/src | iniciativas.rutas.js, equipo.controlador.js, equipo.servicio.js, equipo.validacion.js, visibilidad.js |
 | 39 | 2026-11-04 | 9c6c8fc | Implementar el registro, la consulta, los listados y la modificación de solicitudes | servidor/src | solicitudes.rutas.js, solicitudes.controlador.js, solicitudes.servicio.js, solicitudes.validacion.js, representaciones.js |
 | 40 | 2026-11-04 | 4768af3 | Implementar la cancelación, la aceptación y el rechazo de solicitudes con incorporación al equipo | servidor/src | solicitudes.servicio.js, solicitudes.validacion.js, solicitudes.controlador.js, solicitudes.rutas.js |
-| 41 | 2026-11-04 | 96dc2fc | Implementar la conversión de iniciativas en proyectos, su listado y su detalle | servidor/src | proyectos.rutas.js, proyectos.controlador.js, proyectos.servicio.js, proyectos.validacion.js, visibilidad.js, representaciones.js |
+| 41 | 2026-11-04 | 5809895 | Implementar la conversión de iniciativas en proyectos, su listado y su detalle | servidor/src | proyectos.rutas.js, proyectos.controlador.js, proyectos.servicio.js, proyectos.validacion.js, visibilidad.js, representaciones.js |
+| 42 | 2026-11-04 | 56b07da | Agregar la colección de Postman con casos correctos, inválidos, inexistentes y no autorizados. Todas las pruebas pasan | pruebas | innovation-hub.postman_collection.json |
 
 <!-- FIN TABLA COMMITS -->

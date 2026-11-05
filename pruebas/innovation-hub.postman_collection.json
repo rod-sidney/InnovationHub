@@ -1,0 +1,4366 @@
+{
+  "info": {
+    "name": "Innovation Hub API",
+    "description": "Pruebas de la API de Innovation Hub (Avance 2).\n\nAntes de ejecutarla:\n1. Cargar los datos de prueba: `npm run seed` en la carpeta servidor.\n2. Encender el servidor: `npm run dev`.\n3. Ejecutar la colección completa y en orden (Run collection), porque unas peticiones usan los tokens y los identificadores que guardan las anteriores.\n\nCada recurso tiene casos [Correcta], [Datos inválidos], [Inexistente] y [No autorizado]; los casos [Conflicto] prueban las reglas de negocio (409).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "0. Preparación",
+      "description": "Inicia sesión con las cuentas de prueba y guarda sus tokens en variables de la colección.",
+      "item": [
+        {
+          "name": "Iniciar sesión como Carla (estudiante)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Guarda el token\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.token).to.be.a('string');",
+                  "    pm.collectionVariables.set('tokenCarla', cuerpo.token);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"cmontero@ucenfotec.ac.cr\",\n  \"password\": \"Hub12345\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Iniciar sesión como Sofía (estudiante)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Guarda el token\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.token).to.be.a('string');",
+                  "    pm.collectionVariables.set('tokenSofia', cuerpo.token);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"svargas@ucenfotec.ac.cr\",\n  \"password\": \"Hub12345\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Iniciar sesión como Valeria (estudiante)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Guarda el token\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.token).to.be.a('string');",
+                  "    pm.collectionVariables.set('tokenValeria', cuerpo.token);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"vmorales@ucenfotec.ac.cr\",\n  \"password\": \"Hub12345\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Iniciar sesión como Marcos (estudiante)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Guarda el token\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.token).to.be.a('string');",
+                  "    pm.collectionVariables.set('tokenMarcos', cuerpo.token);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"msalazar@ucenfotec.ac.cr\",\n  \"password\": \"Hub12345\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Iniciar sesión como Lucía (estudiante)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Guarda el token\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.token).to.be.a('string');",
+                  "    pm.collectionVariables.set('tokenLucia', cuerpo.token);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"lmendez@ucenfotec.ac.cr\",\n  \"password\": \"Hub12345\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Iniciar sesión como Elena Campos (docente)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Guarda el token\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.token).to.be.a('string');",
+                  "    pm.collectionVariables.set('tokenElena', cuerpo.token);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"ecampos@ucenfotec.ac.cr\",\n  \"password\": \"Hub12345\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Iniciar sesión como Esteban (docente)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Guarda el token\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.token).to.be.a('string');",
+                  "    pm.collectionVariables.set('tokenEsteban', cuerpo.token);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"equiros@ucenfotec.ac.cr\",\n  \"password\": \"Hub12345\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Iniciar sesión como Gerardo (administrativo)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Guarda el token\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.token).to.be.a('string');",
+                  "    pm.collectionVariables.set('tokenGerardo', cuerpo.token);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"gruiz@ucenfotec.ac.cr\",\n  \"password\": \"Hub12345\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Iniciar sesión como Laura (administradora)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Guarda el token\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.token).to.be.a('string');",
+                  "    pm.collectionVariables.set('tokenAdmin', cuerpo.token);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin.innovationhub@ucenfotec.ac.cr\",\n  \"password\": \"Hub12345\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "1. Salud y errores generales",
+      "description": "Comprobaciones generales del servidor.",
+      "item": [
+        {
+          "name": "[Correcta] Servidor encendido",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Devuelve status ok\", function () {",
+                  "    pm.expect(pm.response.json().status).to.eql('ok');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "health"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Inexistente] Ruta que no existe",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es ROUTE_NOT_FOUND\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('ROUTE_NOT_FOUND');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/no-existe",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "no-existe"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Datos inválidos] JSON mal formado",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es INVALID_JSON\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('INVALID_JSON');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\": \"cmontero@ucenfotec.ac.cr\", ",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Autenticación",
+      "description": "Registro, inicio y cierre de sesión.",
+      "item": [
+        {
+          "name": "[Correcta] Registrar usuario",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Crea la cuenta como usuario y sin datos sensibles\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.token).to.be.a('string');",
+                  "    pm.expect(cuerpo.user.role).to.eql('user');",
+                  "    pm.expect(cuerpo.user).to.not.have.property('passwordHash');",
+                  "    pm.expect(cuerpo.user).to.not.have.property('password');",
+                  "    pm.collectionVariables.set('tokenNuevo', cuerpo.token);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Prueba\",\n  \"lastName\": \"Postman\",\n  \"secondLastName\": \"\",\n  \"email\": \"prueba{{$timestamp}}@ucenfotec.ac.cr\",\n  \"password\": \"Clave1234\",\n  \"passwordConfirmation\": \"Clave1234\",\n  \"memberType\": \"student\",\n  \"career\": \"Desarrollo de Software\",\n  \"acceptTerms\": true,\n  \"photo\": null,\n  \"role\": \"admin\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Datos inválidos] Registrar con datos inválidos",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es VALIDATION_ERROR\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('VALIDATION_ERROR');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});",
+                  "",
+                  "pm.test(\"Indica cada campo inválido\", function () {",
+                  "    pm.expect(pm.response.json().error.details.length).to.be.above(5);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"A\",\n  \"lastName\": \"\",\n  \"email\": \"no-es-correo\",\n  \"password\": \"corta\",\n  \"passwordConfirmation\": \"otra\",\n  \"memberType\": \"visitante\",\n  \"career\": \"\",\n  \"acceptTerms\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Conflicto] Registrar un correo que ya existe",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 409\", function () {",
+                  "    pm.response.to.have.status(409);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es EMAIL_TAKEN\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('EMAIL_TAKEN');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Carla\",\n  \"lastName\": \"Montero\",\n  \"email\": \"cmontero@ucenfotec.ac.cr\",\n  \"password\": \"Clave1234\",\n  \"passwordConfirmation\": \"Clave1234\",\n  \"memberType\": \"student\",\n  \"career\": \"Desarrollo de Software\",\n  \"acceptTerms\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Iniciar sesión con contraseña incorrecta",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es INVALID_CREDENTIALS\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('INVALID_CREDENTIALS');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"cmontero@ucenfotec.ac.cr\",\n  \"password\": \"Incorrecta1\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Inexistente] Iniciar sesión con un correo que no existe",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es INVALID_CREDENTIALS\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('INVALID_CREDENTIALS');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"nadie@ucenfotec.ac.cr\",\n  \"password\": \"Hub12345\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Consultar el usuario de la sesión",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Incluye el correo propio\", function () {",
+                  "    pm.expect(pm.response.json().email).to.include('@ucenfotec.ac.cr');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenNuevo}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Consultar el usuario sin sesión",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es UNAUTHENTICATED\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('UNAUTHENTICATED');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/auth/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Cerrar sesión",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenNuevo}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/logout",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "logout"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Usar el token después de cerrar sesión",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es UNAUTHENTICATED\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('UNAUTHENTICATED');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenNuevo}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Usuarios",
+      "description": "Búsqueda de usuarios y perfil.",
+      "item": [
+        {
+          "name": "[Correcta] Buscar usuarios por competencia y disponibilidad",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Devuelve una página filtrada\", function () {",
+                  "    const pagina = pm.response.json();",
+                  "    pm.expect(pagina).to.include.keys('data', 'page', 'size', 'total', 'totalPages');",
+                  "    pm.expect(pagina.size).to.eql(5);",
+                  "    pagina.data.forEach((u) => pm.expect(u.skills.some((s) => s.skill.id === '660000000000000000000027')).to.be.true);",
+                  "    pagina.data.forEach((u) => pm.expect(u).to.not.have.property('email'));",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users?skill=660000000000000000000027&availability=medium&page=1&size=5",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "skill",
+                  "value": "660000000000000000000027"
+                },
+                {
+                  "key": "availability",
+                  "value": "medium"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "size",
+                  "value": "5"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Datos inválidos] Buscar con parámetros inválidos",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es VALIDATION_ERROR\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('VALIDATION_ERROR');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users?size=100&availability=mucho",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "size",
+                  "value": "100"
+                },
+                {
+                  "key": "availability",
+                  "value": "mucho"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Buscar usuarios sin sesión",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es UNAUTHENTICATED\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('UNAUTHENTICATED');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Inexistente] Consultar un perfil que no existe",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es NOT_FOUND\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('NOT_FOUND');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users/650000000000000000000999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "650000000000000000000999"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Modificar el propio perfil",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Guarda los cambios\", function () {",
+                  "    const perfil = pm.response.json();",
+                  "    pm.expect(perfil.availability).to.eql('high');",
+                  "    pm.expect(perfil.skills.length).to.eql(2);",
+                  "    pm.expect(perfil.email).to.eql('cmontero@ucenfotec.ac.cr');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users/650000000000000000000001",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "650000000000000000000001"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Carla\",\n  \"lastName\": \"Montero\",\n  \"secondLastName\": \"Ruiz\",\n  \"career\": \"Desarrollo de Software\",\n  \"description\": \"Perfil actualizado desde la colección de Postman.\",\n  \"interests\": [\n    \"Sostenibilidad\",\n    \"Automatización\"\n  ],\n  \"availability\": \"high\",\n  \"portfolio\": \"https://example.com/portafolio/cmontero\",\n  \"skills\": [\n    {\n      \"skillId\": \"660000000000000000000027\",\n      \"level\": \"advanced\"\n    },\n    {\n      \"skillId\": \"660000000000000000000009\",\n      \"level\": \"intermediate\"\n    }\n  ],\n  \"photo\": \"https://picsum.photos/id/64/150/150\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Modificar el perfil de otra persona",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es FORBIDDEN\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('FORBIDDEN');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users/650000000000000000000004",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "650000000000000000000004"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Carla\",\n  \"lastName\": \"Montero\",\n  \"secondLastName\": \"Ruiz\",\n  \"career\": \"Desarrollo de Software\",\n  \"description\": \"Perfil actualizado desde la colección de Postman.\",\n  \"interests\": [\n    \"Sostenibilidad\",\n    \"Automatización\"\n  ],\n  \"availability\": \"high\",\n  \"portfolio\": \"https://example.com/portafolio/cmontero\",\n  \"skills\": [\n    {\n      \"skillId\": \"660000000000000000000027\",\n      \"level\": \"advanced\"\n    },\n    {\n      \"skillId\": \"660000000000000000000009\",\n      \"level\": \"intermediate\"\n    }\n  ],\n  \"photo\": \"https://picsum.photos/id/64/150/150\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Datos inválidos] Intentar cambiar el correo desde el perfil",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es VALIDATION_ERROR\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('VALIDATION_ERROR');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});",
+                  "",
+                  "pm.test(\"Señala el campo email\", function () {",
+                  "    pm.expect(pm.response.json().error.details[0].field).to.eql('email');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users/650000000000000000000001",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "650000000000000000000001"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Carla\",\n  \"lastName\": \"Montero\",\n  \"secondLastName\": \"Ruiz\",\n  \"career\": \"Desarrollo de Software\",\n  \"description\": \"Perfil actualizado desde la colección de Postman.\",\n  \"interests\": [\n    \"Sostenibilidad\",\n    \"Automatización\"\n  ],\n  \"availability\": \"high\",\n  \"portfolio\": \"https://example.com/portafolio/cmontero\",\n  \"skills\": [\n    {\n      \"skillId\": \"660000000000000000000027\",\n      \"level\": \"advanced\"\n    },\n    {\n      \"skillId\": \"660000000000000000000009\",\n      \"level\": \"intermediate\"\n    }\n  ],\n  \"photo\": \"https://picsum.photos/id/64/150/150\",\n  \"email\": \"otra@ucenfotec.ac.cr\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Competencias",
+      "description": "Catálogo de competencias.",
+      "item": [
+        {
+          "name": "[Correcta] Listar el catálogo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Devuelve las competencias\", function () {",
+                  "    pm.expect(pm.response.json().length).to.be.at.least(40);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/skills",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "skills"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Inexistente] Consultar una competencia que no existe",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es NOT_FOUND\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('NOT_FOUND');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/skills/660000000000000000000999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "skills",
+                "660000000000000000000999"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Agregar una competencia (administradora)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Devuelve la competencia creada\", function () {",
+                  "    pm.expect(pm.response.json().id).to.be.a('string');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenAdmin}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/skills",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "skills"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Kotlin {{$timestamp}}\",\n  \"category\": \"Desarrollo de software\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Datos inválidos] Agregar una competencia sin nombre",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es VALIDATION_ERROR\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('VALIDATION_ERROR');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenAdmin}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/skills",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "skills"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"\",\n  \"category\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Agregar una competencia sin ser administrador",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es FORBIDDEN\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('FORBIDDEN');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/skills",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "skills"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Swift\",\n  \"category\": \"Desarrollo de software\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Conflicto] Agregar una competencia repetida",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 409\", function () {",
+                  "    pm.response.to.have.status(409);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es SKILL_EXISTS\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('SKILL_EXISTS');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenAdmin}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/skills",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "skills"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"react\",\n  \"category\": \"Desarrollo de software\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Iniciativas",
+      "description": "Catálogo, detalle, registro, modificación y eliminación o archivado.",
+      "item": [
+        {
+          "name": "[Correcta] Catálogo sin sesión: solo públicas",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Todas son públicas y no traen la descripción\", function () {",
+                  "    const pagina = pm.response.json();",
+                  "    pm.expect(pagina.total).to.be.above(0);",
+                  "    pagina.data.forEach((i) => pm.expect(i.visibility).to.eql('public'));",
+                  "    pagina.data.forEach((i) => pm.expect(i).to.not.have.property('description'));",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Catálogo con búsqueda, filtros, orden y paginación",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Respeta los filtros\", function () {",
+                  "    const pagina = pm.response.json();",
+                  "    pm.expect(pagina.size).to.eql(5);",
+                  "    pagina.data.forEach((i) => pm.expect(i.category).to.eql('sustainability'));",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives?q=datos&category=sustainability&sort=title&page=1&size=5",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "datos"
+                },
+                {
+                  "key": "category",
+                  "value": "sustainability"
+                },
+                {
+                  "key": "sort",
+                  "value": "title"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "size",
+                  "value": "5"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Datos inválidos] Catálogo con parámetros inválidos",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es VALIDATION_ERROR\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('VALIDATION_ERROR');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives?type=otro&page=0&size=500",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives"
+              ],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "otro"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "500"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Detalle de una iniciativa pública",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Acceso completo con equipo\", function () {",
+                  "    const iniciativa = pm.response.json();",
+                  "    pm.expect(iniciativa.access).to.eql('full');",
+                  "    pm.expect(iniciativa.members[0].isOwner).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000001",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000001"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Detalle de una restringida sin ser del equipo: solo el resumen",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"No incluye la descripción ni el equipo\", function () {",
+                  "    const iniciativa = pm.response.json();",
+                  "    pm.expect(iniciativa.access).to.eql('summary');",
+                  "    pm.expect(iniciativa).to.not.have.property('description');",
+                  "    pm.expect(iniciativa).to.not.have.property('members');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000003",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000003"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Detalle de una institucional sin sesión",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es UNAUTHENTICATED\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('UNAUTHENTICATED');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000006",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000006"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Detalle de una privada ajena",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es FORBIDDEN\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('FORBIDDEN');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenSofia}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000009",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000009"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Inexistente] Detalle de una iniciativa que no existe",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es NOT_FOUND\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('NOT_FOUND');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000999"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Registrar una iniciativa",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"El propietario y el estado los pone el servidor\", function () {",
+                  "    const iniciativa = pm.response.json();",
+                  "    pm.expect(iniciativa.owner.id).to.eql('650000000000000000000001');",
+                  "    pm.expect(iniciativa.status).to.eql('published');",
+                  "    pm.expect(iniciativa.members.length).to.eql(1);",
+                  "    pm.collectionVariables.set('iniciativaNuevaId', iniciativa.id);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Banco de apuntes compartidos\",\n  \"type\": \"idea\",\n  \"category\": \"education\",\n  \"summary\": \"Repositorio de apuntes revisados por estudiantes avanzados.\",\n  \"description\": \"Plataforma para compartir apuntes de cursos con revisión entre pares.\",\n  \"problem\": \"Los apuntes de calidad están dispersos en chats y correos.\",\n  \"beneficiaries\": \"Estudiantes de primer ingreso\",\n  \"tags\": [\n    \"Apuntes\",\n    \"Estudio\"\n  ],\n  \"visibility\": \"public\",\n  \"skills\": [\n    \"660000000000000000000001\",\n    \"660000000000000000000002\"\n  ],\n  \"memberLimit\": 4,\n  \"image\": null,\n  \"owner\": \"650000000000000000000004\",\n  \"status\": \"archived\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Datos inválidos] Registrar una iniciativa con datos inválidos",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es VALIDATION_ERROR\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('VALIDATION_ERROR');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"\",\n  \"type\": \"proyecto\",\n  \"category\": \"education\",\n  \"summary\": \"Repositorio de apuntes revisados por estudiantes avanzados.\",\n  \"description\": \"Plataforma para compartir apuntes de cursos con revisión entre pares.\",\n  \"problem\": \"Los apuntes de calidad están dispersos en chats y correos.\",\n  \"beneficiaries\": \"Estudiantes de primer ingreso\",\n  \"tags\": [\n    \"Apuntes\",\n    \"Estudio\"\n  ],\n  \"visibility\": \"public\",\n  \"skills\": [],\n  \"memberLimit\": 0,\n  \"image\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Registrar una iniciativa sin sesión",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es UNAUTHENTICATED\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('UNAUTHENTICATED');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Banco de apuntes compartidos\",\n  \"type\": \"idea\",\n  \"category\": \"education\",\n  \"summary\": \"Repositorio de apuntes revisados por estudiantes avanzados.\",\n  \"description\": \"Plataforma para compartir apuntes de cursos con revisión entre pares.\",\n  \"problem\": \"Los apuntes de calidad están dispersos en chats y correos.\",\n  \"beneficiaries\": \"Estudiantes de primer ingreso\",\n  \"tags\": [\n    \"Apuntes\",\n    \"Estudio\"\n  ],\n  \"visibility\": \"public\",\n  \"skills\": [\n    \"660000000000000000000001\",\n    \"660000000000000000000002\"\n  ],\n  \"memberLimit\": 4,\n  \"image\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Modificar la propia iniciativa",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Guarda los cambios\", function () {",
+                  "    const iniciativa = pm.response.json();",
+                  "    pm.expect(iniciativa.title).to.eql('Banco de apuntes revisados');",
+                  "    pm.expect(iniciativa.memberLimit).to.eql(6);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/{{iniciativaNuevaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "{{iniciativaNuevaId}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Banco de apuntes revisados\",\n  \"type\": \"idea\",\n  \"category\": \"education\",\n  \"summary\": \"Repositorio de apuntes revisados por estudiantes avanzados.\",\n  \"description\": \"Plataforma para compartir apuntes de cursos con revisión entre pares.\",\n  \"problem\": \"Los apuntes de calidad están dispersos en chats y correos.\",\n  \"beneficiaries\": \"Estudiantes de primer ingreso\",\n  \"tags\": [\n    \"Apuntes\",\n    \"Estudio\"\n  ],\n  \"visibility\": \"public\",\n  \"skills\": [\n    \"660000000000000000000001\",\n    \"660000000000000000000002\"\n  ],\n  \"memberLimit\": 6,\n  \"image\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Modificar una iniciativa ajena",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es FORBIDDEN\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('FORBIDDEN');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenSofia}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/{{iniciativaNuevaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "{{iniciativaNuevaId}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Banco de apuntes compartidos\",\n  \"type\": \"idea\",\n  \"category\": \"education\",\n  \"summary\": \"Repositorio de apuntes revisados por estudiantes avanzados.\",\n  \"description\": \"Plataforma para compartir apuntes de cursos con revisión entre pares.\",\n  \"problem\": \"Los apuntes de calidad están dispersos en chats y correos.\",\n  \"beneficiaries\": \"Estudiantes de primer ingreso\",\n  \"tags\": [\n    \"Apuntes\",\n    \"Estudio\"\n  ],\n  \"visibility\": \"public\",\n  \"skills\": [\n    \"660000000000000000000001\",\n    \"660000000000000000000002\"\n  ],\n  \"memberLimit\": 4,\n  \"image\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Conflicto] Bajar el límite por debajo de los miembros",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 409\", function () {",
+                  "    pm.response.to.have.status(409);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es MEMBER_LIMIT_TOO_LOW\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('MEMBER_LIMIT_TOO_LOW');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenValeria}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000001",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000001"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Banco de apuntes compartidos\",\n  \"type\": \"idea\",\n  \"category\": \"education\",\n  \"summary\": \"Repositorio de apuntes revisados por estudiantes avanzados.\",\n  \"description\": \"Plataforma para compartir apuntes de cursos con revisión entre pares.\",\n  \"problem\": \"Los apuntes de calidad están dispersos en chats y correos.\",\n  \"beneficiaries\": \"Estudiantes de primer ingreso\",\n  \"tags\": [\n    \"Apuntes\",\n    \"Estudio\"\n  ],\n  \"visibility\": \"public\",\n  \"skills\": [\n    \"660000000000000000000001\",\n    \"660000000000000000000002\"\n  ],\n  \"memberLimit\": 1,\n  \"image\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Eliminar una iniciativa ajena",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es FORBIDDEN\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('FORBIDDEN');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000001",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000001"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Eliminar una iniciativa sin información relacionada",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/{{iniciativaNuevaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "{{iniciativaNuevaId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Eliminar una iniciativa con solicitudes: se archiva",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Queda archivada\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.result).to.eql('archived');",
+                  "    pm.expect(cuerpo.initiative.status).to.eql('archived');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenMarcos}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000004",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000004"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Conflicto] Eliminar una iniciativa ya archivada",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 409\", function () {",
+                  "    pm.response.to.have.status(409);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es ALREADY_ARCHIVED\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('ALREADY_ARCHIVED');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenMarcos}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000004",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000004"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Equipo",
+      "description": "Consulta del equipo y retiro de miembros.",
+      "item": [
+        {
+          "name": "[Correcta] Consultar el equipo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Empieza por el propietario\", function () {",
+                  "    const equipo = pm.response.json();",
+                  "    pm.expect(equipo.length).to.eql(4);",
+                  "    pm.expect(equipo[0].isOwner).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000005/members",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000005",
+                "members"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Datos inválidos] Filtrar el equipo con una competencia inválida",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es VALIDATION_ERROR\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('VALIDATION_ERROR');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000005/members?skill=abc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000005",
+                "members"
+              ],
+              "query": [
+                {
+                  "key": "skill",
+                  "value": "abc"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Ver el equipo de una restringida sin ser miembro",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es FORBIDDEN\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('FORBIDDEN');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000003/members",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000003",
+                "members"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Inexistente] Equipo de una iniciativa que no existe",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es NOT_FOUND\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('NOT_FOUND');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000999/members",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000999",
+                "members"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Retirar a un miembro sin ser el propietario",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es FORBIDDEN\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('FORBIDDEN');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000010/members/650000000000000000000001",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000010",
+                "members",
+                "650000000000000000000001"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Inexistente] Retirar a alguien que no es miembro",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es NOT_FOUND\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('NOT_FOUND');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenElena}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000010/members/650000000000000000000004",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000010",
+                "members",
+                "650000000000000000000004"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Conflicto] El propietario no puede retirarse",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 409\", function () {",
+                  "    pm.response.to.have.status(409);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es OWNER_CANNOT_LEAVE\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('OWNER_CANNOT_LEAVE');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenElena}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000010/members/650000000000000000000007",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000010",
+                "members",
+                "650000000000000000000007"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Retirar a un miembro",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenEsteban}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000006/members/650000000000000000000012",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000006",
+                "members",
+                "650000000000000000000012"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"Terminó su participación en la auditoría.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Solicitudes",
+      "description": "Solicitudes de participación: registro, consulta, listados, modificación y resolución.",
+      "item": [
+        {
+          "name": "[Correcta] Registrar una solicitud",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Queda pendiente\", function () {",
+                  "    const solicitud = pm.response.json();",
+                  "    pm.expect(solicitud.status).to.eql('pending');",
+                  "    pm.collectionVariables.set('solicitudId', solicitud.id);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenSofia}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"initiativeId\": \"670000000000000000000011\",\n  \"role\": \"Diseño de afiches\",\n  \"skillId\": \"660000000000000000000026\",\n  \"availability\": \"medium\",\n  \"message\": \"Me gustaría encargarme de la identidad gráfica del festival.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Datos inválidos] Registrar una solicitud con datos inválidos",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es VALIDATION_ERROR\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('VALIDATION_ERROR');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenSofia}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"initiativeId\": \"670000000000000000000011\",\n  \"role\": \"\",\n  \"skillId\": \"abc\",\n  \"availability\": \"siempre\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Solicitar en la propia iniciativa (RN-10)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es OWN_INITIATIVE\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('OWN_INITIATIVE');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"initiativeId\": \"670000000000000000000002\",\n  \"role\": \"Propietaria\",\n  \"skillId\": \"660000000000000000000009\",\n  \"availability\": \"low\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Conflicto] Segunda solicitud pendiente (RN-11)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 409\", function () {",
+                  "    pm.response.to.have.status(409);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es PENDING_REQUEST_EXISTS\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('PENDING_REQUEST_EXISTS');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenSofia}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"initiativeId\": \"670000000000000000000011\",\n  \"role\": \"Difusión\",\n  \"skillId\": \"660000000000000000000033\",\n  \"availability\": \"low\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Conflicto] Solicitar siendo miembro (RN-15)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 409\", function () {",
+                  "    pm.response.to.have.status(409);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es ALREADY_MEMBER\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('ALREADY_MEMBER');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"initiativeId\": \"670000000000000000000010\",\n  \"role\": \"Sensores\",\n  \"skillId\": \"660000000000000000000027\",\n  \"availability\": \"low\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Mis solicitudes pendientes",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Incluye la solicitud nueva\", function () {",
+                  "    const pagina = pm.response.json();",
+                  "    const ids = pagina.data.map((s) => s.id);",
+                  "    pm.expect(ids).to.include(pm.collectionVariables.get('solicitudId'));",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenSofia}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests/sent?status=pending",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests",
+                "sent"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "pending"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Solicitudes recibidas filtradas",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Solo de sus iniciativas\", function () {",
+                  "    const pagina = pm.response.json();",
+                  "    pagina.data.forEach((s) => pm.expect(s.initiative.ownerId).to.eql('650000000000000000000001'));",
+                  "    pagina.data.forEach((s) => pm.expect(s.status).to.eql('pending'));",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests/received?status=pending&sort=oldest",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests",
+                "received"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "pending"
+                },
+                {
+                  "key": "sort",
+                  "value": "oldest"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Solicitudes recibidas de una iniciativa ajena",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es FORBIDDEN\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('FORBIDDEN');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests/received?initiative=670000000000000000000001",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests",
+                "received"
+              ],
+              "query": [
+                {
+                  "key": "initiative",
+                  "value": "670000000000000000000001"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Consultar una solicitud ajena",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es FORBIDDEN\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('FORBIDDEN');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests/{{solicitudId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests",
+                "{{solicitudId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Inexistente] Consultar una solicitud que no existe",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es NOT_FOUND\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('NOT_FOUND');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests/680000000000000000000999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests",
+                "680000000000000000000999"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Modificar una solicitud pendiente",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Guarda los cambios\", function () {",
+                  "    pm.expect(pm.response.json().role).to.eql('Identidad gráfica');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenSofia}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests/{{solicitudId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests",
+                "{{solicitudId}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"Identidad gráfica\",\n  \"skillId\": \"660000000000000000000033\",\n  \"availability\": \"high\",\n  \"message\": \"Puedo dedicar más horas.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Conflicto] Modificar una solicitud rechazada (RN-12)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 409\", function () {",
+                  "    pm.response.to.have.status(409);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es REQUEST_NOT_PENDING\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('REQUEST_NOT_PENDING');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenMarcos}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests/680000000000000000000005",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests",
+                "680000000000000000000005"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"Difusión\",\n  \"skillId\": \"660000000000000000000027\",\n  \"availability\": \"high\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] El solicitante intenta aceptarse",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es FORBIDDEN\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('FORBIDDEN');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenLucia}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests/680000000000000000000003/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests",
+                "680000000000000000000003",
+                "status"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"accepted\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Datos inválidos] Cambiar a un estado no permitido",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es VALIDATION_ERROR\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('VALIDATION_ERROR');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests/680000000000000000000003/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests",
+                "680000000000000000000003",
+                "status"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"pending\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Aceptar una solicitud (RN-14)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Queda aceptada\", function () {",
+                  "    const solicitud = pm.response.json();",
+                  "    pm.expect(solicitud.status).to.eql('accepted');",
+                  "    pm.expect(solicitud.decidedAt).to.be.a('string');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests/680000000000000000000003/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests",
+                "680000000000000000000003",
+                "status"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"accepted\",\n  \"comment\": \"¡Bienvenida al equipo!\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Correcta] La persona aceptada aparece en el equipo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Lucía está en el equipo\", function () {",
+                  "    pm.expect(pm.response.json().map((m) => m.user.id)).to.include('650000000000000000000013');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000002/members",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000002",
+                "members"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Conflicto] Resolver una solicitud ya aceptada (RN-13)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 409\", function () {",
+                  "    pm.response.to.have.status(409);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es REQUEST_NOT_PENDING\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('REQUEST_NOT_PENDING');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests/680000000000000000000003/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests",
+                "680000000000000000000003",
+                "status"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"rejected\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Rechazar una solicitud",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Queda rechazada\", function () {",
+                  "    pm.expect(pm.response.json().status).to.eql('rejected');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests/680000000000000000000004/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests",
+                "680000000000000000000004",
+                "status"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"rejected\",\n  \"comment\": \"Por ahora el equipo está completo.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Cancelar la propia solicitud",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Queda cancelada\", function () {",
+                  "    pm.expect(pm.response.json().status).to.eql('cancelled');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenSofia}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/requests/{{solicitudId}}/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "requests",
+                "{{solicitudId}}",
+                "status"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"cancelled\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "8. Proyectos",
+      "description": "Conversión de iniciativas en proyectos, listado y detalle.",
+      "item": [
+        {
+          "name": "[Correcta] Listar proyectos sin sesión",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Solo los de iniciativas públicas\", function () {",
+                  "    const pagina = pm.response.json();",
+                  "    pagina.data.forEach((p) => pm.expect(p.initiative.visibility).to.eql('public'));",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Detalle de un proyecto institucional sin sesión",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es UNAUTHENTICATED\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('UNAUTHENTICATED');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/projects/690000000000000000000002",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects",
+                "690000000000000000000002"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Inexistente] Detalle de un proyecto que no existe",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es NOT_FOUND\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('NOT_FOUND');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projects/690000000000000000000999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects",
+                "690000000000000000000999"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[No autorizado] Convertir una iniciativa ajena",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es FORBIDDEN\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('FORBIDDEN');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenSofia}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"initiativeId\": \"670000000000000000000002\",\n  \"name\": \"Huertas conectadas\",\n  \"objective\": \"Monitorear la humedad de las huertas hidropónicas del campus.\",\n  \"description\": \"Proyecto que instala sensores en las huertas y muestra sus datos en un tablero web.\",\n  \"technologies\": [\n    \"Arduino\",\n    \"Python\",\n    \"React\"\n  ],\n  \"startDate\": \"2026-11-09\",\n  \"estimatedEndDate\": \"2027-04-30\",\n  \"repositoryUrl\": \"https://github.com/expressjs/express\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Datos inválidos] Convertir con datos inválidos",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es VALIDATION_ERROR\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('VALIDATION_ERROR');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"initiativeId\": \"670000000000000000000002\",\n  \"name\": \"\",\n  \"objective\": \"Monitorear la humedad de las huertas hidropónicas del campus.\",\n  \"description\": \"Proyecto que instala sensores en las huertas y muestra sus datos en un tablero web.\",\n  \"technologies\": [],\n  \"startDate\": \"2026-02-31\",\n  \"estimatedEndDate\": \"2027-04-30\",\n  \"repositoryUrl\": \"https://gitlab.com/equipo/proyecto\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Conflicto] Convertir sin miembros además del propietario (RN-17)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 409\", function () {",
+                  "    pm.response.to.have.status(409);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es NOT_ENOUGH_MEMBERS\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('NOT_ENOUGH_MEMBERS');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenGerardo}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"initiativeId\": \"670000000000000000000012\",\n  \"name\": \"Huertas conectadas\",\n  \"objective\": \"Monitorear la humedad de las huertas hidropónicas del campus.\",\n  \"description\": \"Proyecto que instala sensores en las huertas y muestra sus datos en un tablero web.\",\n  \"technologies\": [\n    \"Arduino\",\n    \"Python\",\n    \"React\"\n  ],\n  \"startDate\": \"2026-11-09\",\n  \"estimatedEndDate\": \"2027-04-30\",\n  \"repositoryUrl\": \"https://github.com/expressjs/express\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Convertir una iniciativa en proyecto",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Conserva la iniciativa de origen\", function () {",
+                  "    const proyecto = pm.response.json();",
+                  "    pm.expect(proyecto.status).to.eql('planning');",
+                  "    pm.expect(proyecto.initiative.id).to.eql('670000000000000000000002');",
+                  "    pm.expect(proyecto.repository.name).to.eql('express');",
+                  "    pm.collectionVariables.set('proyectoId', proyecto.id);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"initiativeId\": \"670000000000000000000002\",\n  \"name\": \"Huertas conectadas\",\n  \"objective\": \"Monitorear la humedad de las huertas hidropónicas del campus.\",\n  \"description\": \"Proyecto que instala sensores en las huertas y muestra sus datos en un tablero web.\",\n  \"technologies\": [\n    \"Arduino\",\n    \"Python\",\n    \"React\"\n  ],\n  \"startDate\": \"2026-11-09\",\n  \"estimatedEndDate\": \"2027-04-30\",\n  \"repositoryUrl\": \"https://github.com/expressjs/express\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Conflicto] Convertir otra vez la misma iniciativa (RN-18)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 409\", function () {",
+                  "    pm.response.to.have.status(409);",
+                  "});",
+                  "",
+                  "pm.test(\"El error es PROJECT_ALREADY_EXISTS\", function () {",
+                  "    const cuerpo = pm.response.json();",
+                  "    pm.expect(cuerpo.error.code).to.eql('PROJECT_ALREADY_EXISTS');",
+                  "    pm.expect(cuerpo.error.message).to.be.a('string');",
+                  "    pm.expect(cuerpo.error.details).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"initiativeId\": \"670000000000000000000002\",\n  \"name\": \"Huertas conectadas\",\n  \"objective\": \"Monitorear la humedad de las huertas hidropónicas del campus.\",\n  \"description\": \"Proyecto que instala sensores en las huertas y muestra sus datos en un tablero web.\",\n  \"technologies\": [\n    \"Arduino\",\n    \"Python\",\n    \"React\"\n  ],\n  \"startDate\": \"2026-11-09\",\n  \"estimatedEndDate\": \"2027-04-30\",\n  \"repositoryUrl\": \"https://github.com/expressjs/express\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "[Correcta] Consultar el proyecto",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Trae el equipo de la iniciativa\", function () {",
+                  "    const proyecto = pm.response.json();",
+                  "    pm.expect(proyecto.members.length).to.be.at.least(2);",
+                  "    pm.expect(proyecto.members[0].isOwner).to.be.true;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projects/{{proyectoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projects",
+                "{{proyectoId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "[Correcta] La iniciativa queda convertida",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Estado converted y enlace al proyecto\", function () {",
+                  "    const iniciativa = pm.response.json();",
+                  "    pm.expect(iniciativa.status).to.eql('converted');",
+                  "    pm.expect(iniciativa.projectId).to.eql(pm.collectionVariables.get('proyectoId'));",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokenCarla}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/initiatives/670000000000000000000002",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "initiatives",
+                "670000000000000000000002"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api"
+    },
+    {
+      "key": "tokenCarla",
+      "value": ""
+    },
+    {
+      "key": "tokenSofia",
+      "value": ""
+    },
+    {
+      "key": "tokenValeria",
+      "value": ""
+    },
+    {
+      "key": "tokenMarcos",
+      "value": ""
+    },
+    {
+      "key": "tokenLucia",
+      "value": ""
+    },
+    {
+      "key": "tokenElena",
+      "value": ""
+    },
+    {
+      "key": "tokenEsteban",
+      "value": ""
+    },
+    {
+      "key": "tokenGerardo",
+      "value": ""
+    },
+    {
+      "key": "tokenAdmin",
+      "value": ""
+    },
+    {
+      "key": "tokenNuevo",
+      "value": ""
+    },
+    {
+      "key": "iniciativaNuevaId",
+      "value": ""
+    },
+    {
+      "key": "solicitudId",
+      "value": ""
+    },
+    {
+      "key": "proyectoId",
+      "value": ""
+    }
+  ]
+}
