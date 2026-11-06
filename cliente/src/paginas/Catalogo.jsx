@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { listarIniciativas } from '../api/iniciativas.js';
 import { listarCompetencias } from '../api/competencias.js';
 import { useSesion } from '../contexto/SesionContexto.jsx';
+import Aviso from '../componentes/comunes/Aviso.jsx';
 import Cargando from '../componentes/comunes/Cargando.jsx';
 import MensajeError from '../componentes/comunes/MensajeError.jsx';
 import SinResultados from '../componentes/comunes/SinResultados.jsx';
@@ -134,6 +135,8 @@ function Catalogo() {
 
     return (
         <section className="container py-5" aria-labelledby="titulo-catalogo">
+            <Aviso />
+
             <div className="text-center mb-4">
                 <h1 id="titulo-catalogo" className="fw-bold text-dark">Catálogo de iniciativas</h1>
                 <p className="text-muted">Explora ideas, necesidades y retos, y súmate a un equipo.</p>

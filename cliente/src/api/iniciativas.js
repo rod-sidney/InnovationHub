@@ -22,3 +22,13 @@ export function crearIniciativa(datos) {
 export function actualizarIniciativa(id, datos) {
     return pedir(`/initiatives/${id}`, { metodo: 'PUT', cuerpo: datos });
 }
+
+// DELETE /api/initiatives/:id -> null si se eliminó (204) o { result: "archived", initiative } (200)
+export function eliminarIniciativa(id) {
+    return pedir(`/initiatives/${id}`, { metodo: 'DELETE' });
+}
+
+// DELETE /api/initiatives/:id/members/:userId con el motivo opcional en el cuerpo -> 204
+export function retirarMiembro(id, idUsuario, motivo) {
+    return pedir(`/initiatives/${id}/members/${idUsuario}`, { metodo: 'DELETE', cuerpo: { reason: motivo } });
+}

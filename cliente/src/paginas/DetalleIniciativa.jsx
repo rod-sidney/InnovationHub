@@ -1,17 +1,19 @@
 // DetalleIniciativa.jsx
 // Detalle de una iniciativa
 // El identificador sale del parámetro de la ruta (/iniciativas/:id) y el servidor decide si se ve completa o solo el resumen (campo access de respuesta)
+// El propietario puede eliminarla o archivarla y retirar miembros, siempre con confirmación
 
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router';
 
-import { obtenerIniciativa } from '../api/iniciativas.js';
+import { obtenerIniciativa, eliminarIniciativa, retirarMiembro } from '../api/iniciativas.js';
 import { useSesion } from '../contexto/SesionContexto.jsx';
 import Aviso from '../componentes/comunes/Aviso.jsx';
 import Cargando from '../componentes/comunes/Cargando.jsx';
 import MensajeError from '../componentes/comunes/MensajeError.jsx';
 import Estado from '../componentes/comunes/Estado.jsx';
 import Tarjeta from '../componentes/comunes/Tarjeta.jsx';
+import ModalConfirmacion from '../componentes/comunes/ModalConfirmacion.jsx';
 import DatoMeta from '../componentes/iniciativas/DatoMeta.jsx';
 import EquipoIniciativa from '../componentes/iniciativas/EquipoIniciativa.jsx';
 import AccionesIniciativa from '../componentes/iniciativas/AccionesIniciativa.jsx';
@@ -22,11 +24,20 @@ function DetalleIniciativa() {
     // useParams lee los parámetros de la dirección en /iniciativas/670...1, id = "670...1"
     const { id } = useParams();
     const { usuario } = useSesion();
+    const navegar = useNavigate();
+
     const [iniciativa, setIniciativa] = useState(null);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
     // Al aumentar este número se vuelven a pedir los datos (ej: después de cambio)
     const [version, setVersion] = useState(0);
+
+    // Estado de las acciones con confirmación
+    const [confirmandoEliminar, setConfirmandoEliminar] = useState(false);
+    const [miembroARetirar, setMiembroARetirar] = useState(null);
+    const [motivo, setMotivo] = useState('');
+    const [procesando, setProcesando] = useState(false);
+    const [errorAccion, setErrorAccion] = useState(null);
 
     useEffect(() => {
         const controlador = new AbortController();
@@ -48,6 +59,51 @@ function DetalleIniciativa() {
         return () => controlador.abort();
     }, [id, version]);   // si cambia el id de la ruta, se pide la otra iniciativa
 
+    function cerrarModales() {
+        setConfirmandoEliminar(false);
+        setMiembroARetirar(null);
+        setMotivo('');
+        setErrorAccion(null);
+    }
+
+    // Muestra un aviso en esta misma página y vuelve a pedir los datos actualizados
+    function recargarConAviso(texto) {
+        cerrarModales();
+        navegar(`/iniciativas/${id}`, { replace: true, state: { aviso: texto } });
+        setVersion((valor) => valor + 1);
+    }
+
+    // el server decide si elimina (204) o archiva (200) según la información relacionada
+    async function confirmarEliminar() {
+        setProcesando(true);
+        setErrorAccion(null);
+        try {
+            const resultado = await eliminarIniciativa(id);
+            if (resultado === null) {
+                navegar('/iniciativas', { state: { aviso: `La iniciativa «${iniciativa.title}» se eliminó.` } });
+            } else {
+                recargarConAviso('La iniciativa tenía información relacionada (solicitudes, miembros o proyecto), así que se archivó en lugar de eliminarse.');
+            }
+        } catch (errorRecibido) {
+            setErrorAccion(errorRecibido);
+        } finally {
+            setProcesando(false);
+        }
+    }
+
+    async function confirmarRetiro() {
+        setProcesando(true);
+        setErrorAccion(null);
+        try {
+            await retirarMiembro(id, miembroARetirar.user.id, motivo.trim());
+            recargarConAviso(`${miembroARetirar.user.fullName} ya no forma parte del equipo.`);
+        } catch (errorRecibido) {
+            setErrorAccion(errorRecibido);
+        } finally {
+            setProcesando(false);
+        }
+    }
+
     if (cargando) {
         return (
             <section className="container py-5">
@@ -66,6 +122,7 @@ function DetalleIniciativa() {
     }
 
     const accesoCompleto = iniciativa.access === 'full';
+    const puedeGestionar = iniciativa.viewer.isOwner && iniciativa.status !== 'archived';
 
     return (
         <article className="container py-5">
@@ -152,7 +209,11 @@ function DetalleIniciativa() {
 
                     {accesoCompleto && (
                         <Tarjeta titulo="Equipo">
-                            <EquipoIniciativa miembros={iniciativa.members} />
+                            <EquipoIniciativa
+                                miembros={iniciativa.members}
+                                puedeRetirar={puedeGestionar}
+                                onRetirar={(miembro) => setMiembroARetirar(miembro)}
+                            />
                         </Tarjeta>
                     )}
 
@@ -179,8 +240,51 @@ function DetalleIniciativa() {
             </div>
 
             <div className="mt-5 pt-4 border-top text-center text-md-end">
-                <AccionesIniciativa iniciativa={iniciativa} usuario={usuario} />
+                <AccionesIniciativa
+                    iniciativa={iniciativa}
+                    usuario={usuario}
+                    onEliminar={() => setConfirmandoEliminar(true)}
+                />
             </div>
+
+            {/* antes de confirmar se muestran el título, la acción y un mensaje */}
+            <ModalConfirmacion
+                abierto={confirmandoEliminar}
+                titulo="Eliminar o archivar iniciativa"
+                textoConfirmar="Sí, continuar"
+                procesando={procesando}
+                onConfirmar={confirmarEliminar}
+                onCancelar={cerrarModales}
+            >
+                <p>¿Quieres eliminar «{iniciativa.title}»?</p>
+                <p className="mb-0 small text-muted">
+                    Si no tiene solicitudes, miembros ni proyecto, se eliminará definitivamente. Si tiene información
+                    relacionada, se archivará para conservar el historial.
+                </p>
+                {errorAccion && <div className="alert alert-danger mt-3 mb-0" role="alert">{errorAccion.message}</div>}
+            </ModalConfirmacion>
+
+            <ModalConfirmacion
+                abierto={miembroARetirar !== null}
+                titulo="Retirar miembro del equipo"
+                textoConfirmar="Retirar"
+                procesando={procesando}
+                onConfirmar={confirmarRetiro}
+                onCancelar={cerrarModales}
+            >
+                <p>¿Quieres retirar a {miembroARetirar?.user.fullName} del equipo?</p>
+                <label htmlFor="motivo-retiro" className="form-label small fw-semibold">Motivo (opcional)</label>
+                <textarea
+                    id="motivo-retiro"
+                    className="form-control"
+                    rows={2}
+                    maxLength={300}
+                    value={motivo}
+                    onChange={(evento) => setMotivo(evento.target.value)}
+                ></textarea>
+                {errorAccion && <div className="alert alert-danger mt-3 mb-0" role="alert">{errorAccion.message}</div>}
+            </ModalConfirmacion>
+
         </article>
     );
 }

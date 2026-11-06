@@ -4,7 +4,8 @@
 
 import { Link, useLocation } from 'react-router';
 
-function AccionesIniciativa({ iniciativa, usuario }) {
+// onEliminar: función del padre que abre la confirmación para eliminar o archivar
+function AccionesIniciativa({ iniciativa, usuario, onEliminar }) {
     const ubicacion = useLocation();
     const { viewer } = iniciativa;
     const archivada = iniciativa.status === 'archived';
@@ -19,6 +20,9 @@ function AccionesIniciativa({ iniciativa, usuario }) {
                 <Link to={`/iniciativas/${iniciativa.id}/editar`} className="btn btn-warning fw-bold">
                     Editar iniciativa
                 </Link>
+                <button type="button" className="btn btn-outline-danger" onClick={onEliminar}>
+                    Eliminar o archivar
+                </button>
             </div>
         );
     }
