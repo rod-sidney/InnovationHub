@@ -16,6 +16,7 @@ import EditarIniciativa from './paginas/EditarIniciativa.jsx';
 import SolicitarParticipacion from './paginas/SolicitarParticipacion.jsx';
 import MisSolicitudes from './paginas/MisSolicitudes.jsx';
 import EditarSolicitud from './paginas/EditarSolicitud.jsx';
+import SolicitudesRecibidas from './paginas/SolicitudesRecibidas.jsx';
 import IniciarSesion from './paginas/IniciarSesion.jsx';
 import Registro from './paginas/Registro.jsx';
 import NoEncontrada from './paginas/NoEncontrada.jsx';
@@ -44,6 +45,7 @@ function App() {
                         <Route path="/iniciativas/:id/editar" element={<RutaProtegida><EditarIniciativa /></RutaProtegida>} />
                         <Route path="/iniciativas/:id/solicitar" element={<RutaProtegida><SolicitarParticipacion /></RutaProtegida>} />
                         <Route path="/solicitudes" element={<RutaProtegida><MisSolicitudes /></RutaProtegida>} />
+                        <Route path="/solicitudes/recibidas" element={<RutaProtegida><SolicitudesRecibidas /></RutaProtegida>} />
                         <Route path="/solicitudes/:id/editar" element={<RutaProtegida><EditarSolicitud /></RutaProtegida>} />
 
                         <Route path="/iniciar-sesion" element={<IniciarSesion />} />

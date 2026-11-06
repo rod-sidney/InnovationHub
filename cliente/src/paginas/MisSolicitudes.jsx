@@ -12,6 +12,7 @@ import MensajeError from '../componentes/comunes/MensajeError.jsx';
 import SinResultados from '../componentes/comunes/SinResultados.jsx';
 import Paginacion from '../componentes/comunes/Paginacion.jsx';
 import ModalConfirmacion from '../componentes/comunes/ModalConfirmacion.jsx';
+import PestanasSolicitudes from '../componentes/solicitudes/PestanasSolicitudes.jsx';
 import TarjetaSolicitud from '../componentes/solicitudes/TarjetaSolicitud.jsx';
 import { ESTADOS_SOLICITUD, opcionesDe } from '../utils/etiquetas.js';
 
@@ -119,7 +120,8 @@ function MisSolicitudes() {
         <section className="container py-5" aria-labelledby="titulo-mis-solicitudes">
             <Aviso />
 
-            <h1 id="titulo-mis-solicitudes" className="fw-bold text-dark mb-4">Mis solicitudes</h1>
+            <h1 id="titulo-mis-solicitudes" className="fw-bold text-dark mb-4">Solicitudes</h1>
+            <PestanasSolicitudes />
 
             <div className="row g-3 mb-4">
                 <div className="col-12 col-sm-6 col-lg-3">

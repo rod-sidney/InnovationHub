@@ -13,6 +13,11 @@ export function listarEnviadas(filtros, signal) {
     return pedir(`/requests/sent${armarConsulta(filtros)}`, { signal });
 }
 
+// GET /api/requests/received: las solicitudes de las iniciativas propias, con filtros
+export function listarRecibidas(filtros, signal) {
+    return pedir(`/requests/received${armarConsulta(filtros)}`, { signal });
+}
+
 // GET /api/requests/:id
 export function obtenerSolicitud(id, signal) {
     return pedir(`/requests/${id}`, { signal });

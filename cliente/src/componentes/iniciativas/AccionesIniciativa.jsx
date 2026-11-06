@@ -20,6 +20,9 @@ function AccionesIniciativa({ iniciativa, usuario, onEliminar }) {
                 <Link to={`/iniciativas/${iniciativa.id}/editar`} className="btn btn-warning fw-bold">
                     Editar iniciativa
                 </Link>
+                <Link to="/solicitudes/recibidas" state={{ iniciativa: iniciativa.id }} className="btn btn-outline-primary">
+                    Solicitudes recibidas
+                </Link>
                 <button type="button" className="btn btn-outline-danger" onClick={onEliminar}>
                     Eliminar o archivar
                 </button>
