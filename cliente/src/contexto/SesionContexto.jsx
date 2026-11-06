@@ -109,7 +109,12 @@ export function ProveedorSesion({ children }) {
         }
     }
 
-    const valor = { usuario, comprobando, iniciarSesion, registrarse, cerrarSesion };
+    // Después de editar el perfil, la sesión guarda los datos nuevos (por ejemplo, el nombre del saludo)
+    function actualizarUsuario(datos) {
+        setUsuario(datos);
+    }
+
+    const valor = { usuario, comprobando, iniciarSesion, registrarse, cerrarSesion, actualizarUsuario };
 
     return <SesionContexto.Provider value={valor}>{children}</SesionContexto.Provider>;
 }

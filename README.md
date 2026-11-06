@@ -149,6 +149,7 @@ Commits del avance 2: 19-
 | 49 | 2026-11-05 | c8a0a8d | Proteger las rutas con sesión e implementar el formulario para publicar y modificar iniciativas | cliente/src | RutaProtegida.jsx, FormularioIniciativa.jsx, SelectorCompetencias.jsx, CampoEtiquetas.jsx, NuevaIniciativa.jsx, EditarIniciativa.jsx, validaciones.js, iniciativas.js, App.jsx |
 | 50 | 2026-11-05 | 5c4bd60 | Implementar la eliminación o el archivado de iniciativas y el retiro de miembros con confirmación | cliente/src | ModalConfirmacion.jsx, DetalleIniciativa.jsx, AccionesIniciativa.jsx, EquipoIniciativa.jsx, Catalogo.jsx, iniciativas.js |
 | 51 | 2026-11-06 | 34f4e6f | Implementar la solicitud de participación y Mis solicitudes con edición y cancelación | cliente/src | SolicitarParticipacion.jsx, EditarSolicitud.jsx, MisSolicitudes.jsx, FormularioSolicitud.jsx, TarjetaSolicitud.jsx, solicitudes.js, validaciones.js, App.jsx |
-| 52 | 2026-11-06 | ec9e5e2 | Implementar las solicitudes recibidas con filtros, aceptación y rechazo | cliente/src | SolicitudesRecibidas.jsx, PestanasSolicitudes.jsx, MisSolicitudes.jsx, AccionesIniciativa.jsx, solicitudes.js, App.jsx |
+| 52 | 2026-11-06 | 5a6097d | Implementar las solicitudes recibidas con filtros, aceptación y rechazo | cliente/src | SolicitudesRecibidas.jsx, PestanasSolicitudes.jsx, MisSolicitudes.jsx, AccionesIniciativa.jsx, solicitudes.js, App.jsx |
+| 53 | 2026-11-06 | 7200103 | Implementar el perfil: consulta y modificación con competencias por nivel, intereses y foto | cliente/src | MiPerfil.jsx, PerfilUsuario.jsx, VistaPerfil.jsx, FormularioPerfil.jsx, CompetenciasConNivel.jsx, IniciativasDelUsuario.jsx, usuarios.js, SesionContexto.jsx, validaciones.js, App.jsx |
 
 <!-- FIN TABLA COMMITS -->

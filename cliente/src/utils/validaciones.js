@@ -153,3 +153,21 @@ export function validarSolicitud(valores) {
 
     return errores;
 }
+
+export function validarPerfil(valores) {
+    const errores = {};
+
+    revisarNombres(errores, valores);
+    revisarTexto(errores, 'career', valores.career, { nombre: 'la carrera o área', obligatorio: true, minimo: 3, maximo: 80 });
+    revisarTexto(errores, 'description', valores.description, { nombre: 'la descripción', maximo: 500 });
+    revisarTexto(errores, 'portfolio', valores.portfolio, {
+        nombre: 'el portafolio', maximo: 200,
+        patron: /^https?:\/\/\S+$/, mensajePatron: 'El portafolio debe ser un enlace que empiece con http:// o https://.'
+    });
+
+    if (valores.skills.some((elemento) => !elemento.level)) {
+        errores.skills = 'Cada competencia necesita un nivel.';
+    }
+
+    return errores;
+}
