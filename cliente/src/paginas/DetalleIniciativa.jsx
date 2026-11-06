@@ -6,18 +6,22 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router';
 
 import { obtenerIniciativa } from '../api/iniciativas.js';
+import { useSesion } from '../contexto/SesionContexto.jsx';
+import Aviso from '../componentes/comunes/Aviso.jsx';
 import Cargando from '../componentes/comunes/Cargando.jsx';
 import MensajeError from '../componentes/comunes/MensajeError.jsx';
 import Estado from '../componentes/comunes/Estado.jsx';
 import Tarjeta from '../componentes/comunes/Tarjeta.jsx';
 import DatoMeta from '../componentes/iniciativas/DatoMeta.jsx';
 import EquipoIniciativa from '../componentes/iniciativas/EquipoIniciativa.jsx';
+import AccionesIniciativa from '../componentes/iniciativas/AccionesIniciativa.jsx';
 import { TIPOS, CATEGORIAS, VISIBILIDADES, ESTADOS_INICIATIVA } from '../utils/etiquetas.js';
 import { formatearFecha } from '../utils/formato.js';
 
 function DetalleIniciativa() {
     // useParams lee los parámetros de la dirección en /iniciativas/670...1, id = "670...1"
     const { id } = useParams();
+    const { usuario } = useSesion();
     const [iniciativa, setIniciativa] = useState(null);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
@@ -65,12 +69,14 @@ function DetalleIniciativa() {
 
     return (
         <article className="container py-5">
+            <Aviso />
+
             <Link to="/iniciativas" className="d-inline-block mb-3">&larr; Volver al catálogo</Link>
 
             <h1 className="fw-bold text-dark mb-4">{iniciativa.title}</h1>
 
             {/* La portada se muestra solo si la iniciativa tiene imagen. --bs-aspect-ratio da una
-                proporción propia (alto = 35 % del ancho) para que no empuje el contenido */}
+                    proporción propia (alto = 35 % del ancho) para que no empuje el contenido */}
             {iniciativa.image && (
                 <div className="ratio mb-4" style={{ '--bs-aspect-ratio': '35%' }}>
                     <img
@@ -170,6 +176,10 @@ function DetalleIniciativa() {
                         Última modificación: {formatearFecha(iniciativa.updatedAt)}
                     </p>
                 </div>
+            </div>
+
+            <div className="mt-5 pt-4 border-top text-center text-md-end">
+                <AccionesIniciativa iniciativa={iniciativa} usuario={usuario} />
             </div>
         </article>
     );

@@ -1,11 +1,13 @@
 // Catalogo.jsx
 // Catálogo de iniciativas
-// La búsqueda, los filtros, el orden y la paginación los resuelve el servidor: el cliente solo envía la consulta y muestra la página que recibe
+// La búsqueda, los filtros, el orden y la paginación los resuelve el servidor
+// cliente solo envía la consulta y muestra la página que recibe
 
 import { useEffect, useState } from 'react';
 
 import { listarIniciativas } from '../api/iniciativas.js';
 import { listarCompetencias } from '../api/competencias.js';
+import { useSesion } from '../contexto/SesionContexto.jsx';
 import Cargando from '../componentes/comunes/Cargando.jsx';
 import MensajeError from '../componentes/comunes/MensajeError.jsx';
 import SinResultados from '../componentes/comunes/SinResultados.jsx';
@@ -26,6 +28,7 @@ const CONSULTA_INICIAL = {
 };
 
 function Catalogo() {
+    const { usuario } = useSesion();
     const [consulta, setConsulta] = useState(CONSULTA_INICIAL);
     // Lo que se escribe en "Buscar" pasa a la consulta después de una pausa
     const [textoBusqueda, setTextoBusqueda] = useState('');
@@ -120,7 +123,7 @@ function Catalogo() {
                 <div className="row g-4">
                     {resultado.data.map((iniciativa) => (
                         <div className="col-12 col-md-6 col-lg-4" key={iniciativa.id}>
-                            <TarjetaIniciativa iniciativa={iniciativa} />
+                            <TarjetaIniciativa iniciativa={iniciativa} idUsuario={usuario?.id} />
                         </div>
                     ))}
                 </div>
