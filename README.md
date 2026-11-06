@@ -147,6 +147,7 @@ Commits del avance 2: 19-
 | 47 | 2026-11-05 | 069b42a | Implementar la sesión con Context: registro, inicio y cierre de sesión con token | cliente/src | SesionContexto.jsx, autenticacion.js, cliente.js, IniciarSesion.jsx, Registro.jsx, Encabezado.jsx, Campo.jsx, CampoImagen.jsx, validaciones.js, imagenes.js |
 | 48 | 2026-11-05 | 12138d0 | Mostrar en el detalle las acciones según la sesión y la relación con la iniciativa | cliente/src | AccionesIniciativa.jsx, Aviso.jsx, DetalleIniciativa.jsx, Catalogo.jsx |
 | 49 | 2026-11-05 | c8a0a8d | Proteger las rutas con sesión e implementar el formulario para publicar y modificar iniciativas | cliente/src | RutaProtegida.jsx, FormularioIniciativa.jsx, SelectorCompetencias.jsx, CampoEtiquetas.jsx, NuevaIniciativa.jsx, EditarIniciativa.jsx, validaciones.js, iniciativas.js, App.jsx |
-| 50 | 2026-11-05 | 8f831ff | Implementar la eliminación o el archivado de iniciativas y el retiro de miembros con confirmación | cliente/src | ModalConfirmacion.jsx, DetalleIniciativa.jsx, AccionesIniciativa.jsx, EquipoIniciativa.jsx, Catalogo.jsx, iniciativas.js |
+| 50 | 2026-11-05 | 5c4bd60 | Implementar la eliminación o el archivado de iniciativas y el retiro de miembros con confirmación | cliente/src | ModalConfirmacion.jsx, DetalleIniciativa.jsx, AccionesIniciativa.jsx, EquipoIniciativa.jsx, Catalogo.jsx, iniciativas.js |
+| 51 | 2026-11-06 | c1f1a63 | Implementar la solicitud de participación y Mis solicitudes con edición y cancelación | cliente/src | SolicitarParticipacion.jsx, EditarSolicitud.jsx, MisSolicitudes.jsx, FormularioSolicitud.jsx, TarjetaSolicitud.jsx, solicitudes.js, validaciones.js, App.jsx |
 
 <!-- FIN TABLA COMMITS -->

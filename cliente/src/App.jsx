@@ -13,6 +13,9 @@ import Catalogo from './paginas/Catalogo.jsx';
 import DetalleIniciativa from './paginas/DetalleIniciativa.jsx';
 import NuevaIniciativa from './paginas/NuevaIniciativa.jsx';
 import EditarIniciativa from './paginas/EditarIniciativa.jsx';
+import SolicitarParticipacion from './paginas/SolicitarParticipacion.jsx';
+import MisSolicitudes from './paginas/MisSolicitudes.jsx';
+import EditarSolicitud from './paginas/EditarSolicitud.jsx';
 import IniciarSesion from './paginas/IniciarSesion.jsx';
 import Registro from './paginas/Registro.jsx';
 import NoEncontrada from './paginas/NoEncontrada.jsx';
@@ -39,6 +42,9 @@ function App() {
                         {/* Páginas que requieren sesión: RutaProtegida lleva al inicio de sesión */}
                         <Route path="/iniciativas/nueva" element={<RutaProtegida><NuevaIniciativa /></RutaProtegida>} />
                         <Route path="/iniciativas/:id/editar" element={<RutaProtegida><EditarIniciativa /></RutaProtegida>} />
+                        <Route path="/iniciativas/:id/solicitar" element={<RutaProtegida><SolicitarParticipacion /></RutaProtegida>} />
+                        <Route path="/solicitudes" element={<RutaProtegida><MisSolicitudes /></RutaProtegida>} />
+                        <Route path="/solicitudes/:id/editar" element={<RutaProtegida><EditarSolicitud /></RutaProtegida>} />
 
                         <Route path="/iniciar-sesion" element={<IniciarSesion />} />
                         <Route path="/registro" element={<Registro />} />

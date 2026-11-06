@@ -136,3 +136,20 @@ export function validarIniciativa(valores, miembrosActuales = 1) {
 
     return errores;
 }
+
+export function validarSolicitud(valores) {
+    const errores = {};
+
+    revisarTexto(errores, 'role', valores.role, { nombre: 'el rol', obligatorio: true, maximo: 60 });
+
+    if (!valores.skillId) {
+        errores.skillId = 'Elige la competencia que quieres aportar.';
+    }
+    if (!valores.availability) {
+        errores.availability = 'Falta la disponibilidad.';
+    }
+
+    revisarTexto(errores, 'message', valores.message, { nombre: 'el mensaje', maximo: 500 });
+
+    return errores;
+}
