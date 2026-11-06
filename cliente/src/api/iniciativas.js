@@ -12,3 +12,13 @@ export function listarIniciativas(filtros, signal) {
 export function obtenerIniciativa(id, signal) {
     return pedir(`/initiatives/${id}`, { signal });
 }
+
+// POST /api/initiatives - 201 con la iniciativa creada
+export function crearIniciativa(datos) {
+    return pedir('/initiatives', { metodo: 'POST', cuerpo: datos });
+}
+
+// PUT /api/initiatives/:id - 200 con la iniciativa modificada
+export function actualizarIniciativa(id, datos) {
+    return pedir(`/initiatives/${id}`, { metodo: 'PUT', cuerpo: datos });
+}

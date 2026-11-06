@@ -107,3 +107,32 @@ export function validarRegistro(valores) {
 
     return errores;
 }
+
+// miembrosActuales: al editar, el límite no puede ser menor que el equipo actual
+export function validarIniciativa(valores, miembrosActuales = 1) {
+    const errores = {};
+
+    revisarTexto(errores, 'title', valores.title, { nombre: 'el título', obligatorio: true, maximo: 100 });
+
+    if (!valores.type) errores.type = 'Falta el tipo.';
+    if (!valores.category) errores.category = 'Falta la categoría.';
+    if (!valores.visibility) errores.visibility = 'Falta la visibilidad.';
+
+    const limite = Number(valores.memberLimit);
+    if (!Number.isInteger(limite) || limite < 1 || limite > 20) {
+        errores.memberLimit = 'La cantidad de integrantes debe ser un número entero entre 1 y 20.';
+    } else if (limite < miembrosActuales) {
+        errores.memberLimit = `El equipo ya tiene ${miembrosActuales} integrantes: el límite no puede ser menor.`;
+    }
+
+    revisarTexto(errores, 'summary', valores.summary, { nombre: 'el resumen', obligatorio: true, maximo: 300 });
+    revisarTexto(errores, 'description', valores.description, { nombre: 'la descripción', obligatorio: true, maximo: 3000 });
+    revisarTexto(errores, 'problem', valores.problem, { nombre: 'el problema', maximo: 1000 });
+    revisarTexto(errores, 'beneficiaries', valores.beneficiaries, { nombre: 'el campo de beneficiarios', maximo: 150 });
+
+    if (valores.skills.length === 0) {
+        errores.skills = 'Elige al menos una competencia.';
+    }
+
+    return errores;
+}
