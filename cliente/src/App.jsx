@@ -19,6 +19,7 @@ import EditarSolicitud from './paginas/EditarSolicitud.jsx';
 import SolicitudesRecibidas from './paginas/SolicitudesRecibidas.jsx';
 import MiPerfil from './paginas/MiPerfil.jsx';
 import PerfilUsuario from './paginas/PerfilUsuario.jsx';
+import Usuarios from './paginas/Usuarios.jsx';
 import IniciarSesion from './paginas/IniciarSesion.jsx';
 import Registro from './paginas/Registro.jsx';
 import NoEncontrada from './paginas/NoEncontrada.jsx';
@@ -50,6 +51,7 @@ function App() {
                         <Route path="/solicitudes/recibidas" element={<RutaProtegida><SolicitudesRecibidas /></RutaProtegida>} />
                         <Route path="/solicitudes/:id/editar" element={<RutaProtegida><EditarSolicitud /></RutaProtegida>} />
                         <Route path="/perfil" element={<RutaProtegida><MiPerfil /></RutaProtegida>} />
+                        <Route path="/usuarios" element={<RutaProtegida><Usuarios /></RutaProtegida>} />
                         <Route path="/usuarios/:id" element={<RutaProtegida><PerfilUsuario /></RutaProtegida>} />
 
                         <Route path="/iniciar-sesion" element={<IniciarSesion />} />
