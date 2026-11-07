@@ -152,6 +152,7 @@ Commits del avance 2: 19-
 | 52 | 2026-11-06 | 5a6097d | Implementar las solicitudes recibidas con filtros, aceptación y rechazo | cliente/src | SolicitudesRecibidas.jsx, PestanasSolicitudes.jsx, MisSolicitudes.jsx, AccionesIniciativa.jsx, solicitudes.js, App.jsx |
 | 53 | 2026-11-06 | 58c5b00 | Implementar el perfil: consulta y modificación con competencias por nivel, intereses y foto | cliente/src | MiPerfil.jsx, PerfilUsuario.jsx, VistaPerfil.jsx, FormularioPerfil.jsx, CompetenciasConNivel.jsx, IniciativasDelUsuario.jsx, usuarios.js, SesionContexto.jsx, validaciones.js, App.jsx |
 | 54 | 2026-11-06 | 2134a46 | Implementar la búsqueda y el filtrado de usuarios | cliente/src | Usuarios.jsx, FiltrosUsuarios.jsx, TarjetaUsuario.jsx, usuarios.js, App.jsx |
-| 55 | 2026-11-06 | c93cd49 | Implementar la conversión en proyecto, el listado y el detalle de proyectos | cliente/src | ConvertirEnProyecto.jsx, Proyectos.jsx, DetalleProyecto.jsx, FormularioProyecto.jsx, TarjetaProyecto.jsx, proyectos.js, AccionesIniciativa.jsx, DetalleIniciativa.jsx, validaciones.js, App.jsx |
+| 55 | 2026-11-06 | e4a95cf | Implementar la conversión en proyecto, el listado y el detalle de proyectos | cliente/src | ConvertirEnProyecto.jsx, Proyectos.jsx, DetalleProyecto.jsx, FormularioProyecto.jsx, TarjetaProyecto.jsx, proyectos.js, AccionesIniciativa.jsx, DetalleIniciativa.jsx, validaciones.js, App.jsx |
+| 56 | 2026-11-06 | 5b2c859 | Mostrar la información del repositorio con la API de GitHub y manejar sus errores | cliente | github.js, InfoRepositorio.jsx, DetalleProyecto.jsx, .env.example |
 
 <!-- FIN TABLA COMMITS -->

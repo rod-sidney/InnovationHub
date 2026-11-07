@@ -1,6 +1,7 @@
 // DetalleProyecto.jsx
 // Detalle de un proyecto, a partir del parámetro de la ruta (/proyectos/:id)
 // El equipo es el de la iniciativa de origen: el servidor no lo copia al proyecto
+// Si tiene repositorio, InfoRepositorio consulta su información en la API de GitHub
 
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router';
@@ -13,6 +14,7 @@ import Estado from '../componentes/comunes/Estado.jsx';
 import Tarjeta from '../componentes/comunes/Tarjeta.jsx';
 import DatoMeta from '../componentes/iniciativas/DatoMeta.jsx';
 import EquipoIniciativa from '../componentes/iniciativas/EquipoIniciativa.jsx';
+import InfoRepositorio from '../componentes/proyectos/InfoRepositorio.jsx';
 import { ESTADOS_PROYECTO } from '../utils/etiquetas.js';
 import { formatearFecha } from '../utils/formato.js';
 
@@ -93,9 +95,11 @@ function DetalleProyecto() {
                     </Tarjeta>
                     <Tarjeta titulo="Repositorio">
                         {proyecto.repository ? (
-                            <a href={proyecto.repository.url} target="_blank" rel="noopener noreferrer">
-                                {proyecto.repository.owner}/{proyecto.repository.name}
-                            </a>
+                            <InfoRepositorio
+                                propietario={proyecto.repository.owner}
+                                nombre={proyecto.repository.name}
+                                enlace={proyecto.repository.url}
+                            />
                         ) : (
                             <p className="text-muted small mb-0">El proyecto no tiene un repositorio asociado.</p>
                         )}
