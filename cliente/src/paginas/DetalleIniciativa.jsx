@@ -168,7 +168,7 @@ function DetalleIniciativa() {
 
             {accesoCompleto && iniciativa.visibility === 'private' && (
                 <div className="alert alert-info" role="note">
-                    Esta iniciativa es <strong>privada</strong>: no aparece en el catálogo y solo la ve su equipo.
+                    Esta iniciativa es <strong>privada</strong>: solo la ve su equipo; para las demás personas no aparece en el catálogo.
                 </div>
             )}
 

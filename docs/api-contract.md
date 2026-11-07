@@ -24,8 +24,13 @@ variable de entorno con la dirección del servidor.
   identificador).
 - Un identificador en la ruta que no corresponde a ningún recurso, incluso si su formato no es válido,
   responde `404`.
-- Un identificador dentro del cuerpo o en un parámetro de consulta que no es válido o no existe
-  responde `400` (es un dato inválido de la petición).
+- Un identificador dentro del cuerpo que no es válido o no existe responde `400` (es un dato inválido
+  de la petición).
+- En los parámetros de consulta, un identificador con formato inválido responde `400`; si tiene un
+  formato válido pero no corresponde a ningún recurso, el filtro no encuentra resultados y la
+  respuesta es una página vacía. La excepción es `initiative` en `GET /api/requests/received`, que se
+  verifica porque además decide el permiso (`400` si no existe y `403` si la iniciativa no es del
+  usuario).
 
 ### 1.3 Fechas
 

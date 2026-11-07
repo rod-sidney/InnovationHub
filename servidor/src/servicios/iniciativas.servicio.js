@@ -73,7 +73,7 @@ export async function listarIniciativas(filtros, paginacion, usuario) {
 }
 
 // Busca una iniciativa sin datos relacionados (verificar reglas antes de modificarla)
-// Se exporta porque equipo, solicitudes y proyectos también la usan
+// Se exporta porque el servicio del equipo (equipo.servicio.js) también la usa
 export async function buscarIniciativa(id) {
     const iniciativa = esIdValido(String(id)) ? await Iniciativa.findById(id) : null;
 

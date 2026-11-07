@@ -66,7 +66,7 @@ function Inicio() {
     } else if (error) {
         contenidoRecientes = <MensajeError error={error} onReintentar={() => setIntento((valor) => valor + 1)} />;
     } else if (recientes.length === 0) {
-        contenidoRecientes = <SinResultados mensaje="Todavía no hay iniciativas públicas." />;
+        contenidoRecientes = <SinResultados mensaje="Todavía no hay iniciativas para mostrar." />;
     } else {
         contenidoRecientes = (
             <div className="row g-4">

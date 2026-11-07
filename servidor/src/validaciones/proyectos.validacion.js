@@ -15,14 +15,16 @@ function leerRepositorio(errores, valor) {
     }
 
     const partes = typeof valor === 'string' ? valor.trim().match(PATRON_GITHUB) : null;
+    // partes[1] es el propietario y partes[2] el nombre (sin la terminación .git, si la trae)
+    const nombre = partes ? partes[2].replace(/\.git$/, '') : '';
 
-    if (!partes) {
+    // Sin nombre (ej: "https://github.com/usuario/.git") tampoco es un repositorio
+    if (!nombre) {
         errores.push({ field: 'repositoryUrl', message: 'El repositorio debe tener la forma https://github.com/propietario/repositorio.' });
         return null;
     }
 
-    // partes[1] es el propietario y partes[2] el nombre (sin la terminación .git, si la trae)
-    return { owner: partes[1], name: partes[2].replace(/\.git$/, '') };
+    return { owner: partes[1], name: nombre };
 }
 
 // Cuerpo de POST /api/projects (RF-I-PRO-01)
