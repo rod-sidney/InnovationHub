@@ -172,6 +172,13 @@ function DetalleIniciativa() {
                 </div>
             )}
 
+            {iniciativa.projectId && (
+                <div className="alert alert-primary" role="note">
+                    Esta iniciativa se convirtió en proyecto.{' '}
+                    <Link to={`/proyectos/${iniciativa.projectId}`} className="alert-link">Ver el proyecto</Link>
+                </div>
+            )}
+
             {iniciativa.status === 'archived' && (
                 <div className="alert alert-secondary" role="note">
                     Esta iniciativa está <strong>archivada</strong>: se conserva como historial y ya no admite cambios.

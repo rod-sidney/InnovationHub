@@ -20,6 +20,12 @@ function AccionesIniciativa({ iniciativa, usuario, onEliminar }) {
                 <Link to={`/iniciativas/${iniciativa.id}/editar`} className="btn btn-warning fw-bold">
                     Editar iniciativa
                 </Link>
+                {/* solo con al menos un miembro además del propietario (el servidor lo verifica) */}
+                {!iniciativa.projectId && iniciativa.memberCount >= 2 && (
+                    <Link to={`/iniciativas/${iniciativa.id}/proyecto`} className="btn btn-success">
+                        Convertir en proyecto
+                    </Link>
+                )}
                 <Link to="/solicitudes/recibidas" state={{ iniciativa: iniciativa.id }} className="btn btn-outline-primary">
                     Solicitudes recibidas
                 </Link>

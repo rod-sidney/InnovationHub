@@ -20,6 +20,9 @@ import SolicitudesRecibidas from './paginas/SolicitudesRecibidas.jsx';
 import MiPerfil from './paginas/MiPerfil.jsx';
 import PerfilUsuario from './paginas/PerfilUsuario.jsx';
 import Usuarios from './paginas/Usuarios.jsx';
+import Proyectos from './paginas/Proyectos.jsx';
+import DetalleProyecto from './paginas/DetalleProyecto.jsx';
+import ConvertirEnProyecto from './paginas/ConvertirEnProyecto.jsx';
 import IniciarSesion from './paginas/IniciarSesion.jsx';
 import Registro from './paginas/Registro.jsx';
 import NoEncontrada from './paginas/NoEncontrada.jsx';
@@ -42,11 +45,14 @@ function App() {
                         <Route path="/iniciativas" element={<Catalogo />} />
                         {/* :id es un parámetro: el detalle se arma con el valor que venga en la dirección */}
                         <Route path="/iniciativas/:id" element={<DetalleIniciativa />} />
+                        <Route path="/proyectos" element={<Proyectos />} />
+                        <Route path="/proyectos/:id" element={<DetalleProyecto />} />
 
                         {/* Páginas que requieren sesión: RutaProtegida lleva al inicio de sesión */}
                         <Route path="/iniciativas/nueva" element={<RutaProtegida><NuevaIniciativa /></RutaProtegida>} />
                         <Route path="/iniciativas/:id/editar" element={<RutaProtegida><EditarIniciativa /></RutaProtegida>} />
                         <Route path="/iniciativas/:id/solicitar" element={<RutaProtegida><SolicitarParticipacion /></RutaProtegida>} />
+                        <Route path="/iniciativas/:id/proyecto" element={<RutaProtegida><ConvertirEnProyecto /></RutaProtegida>} />
                         <Route path="/solicitudes" element={<RutaProtegida><MisSolicitudes /></RutaProtegida>} />
                         <Route path="/solicitudes/recibidas" element={<RutaProtegida><SolicitudesRecibidas /></RutaProtegida>} />
                         <Route path="/solicitudes/:id/editar" element={<RutaProtegida><EditarSolicitud /></RutaProtegida>} />

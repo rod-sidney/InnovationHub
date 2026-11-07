@@ -171,3 +171,30 @@ export function validarPerfil(valores) {
 
     return errores;
 }
+
+export function validarProyecto(valores) {
+    const errores = {};
+
+    revisarTexto(errores, 'name', valores.name, { nombre: 'el nombre', obligatorio: true, maximo: 100 });
+    revisarTexto(errores, 'objective', valores.objective, { nombre: 'el objetivo', obligatorio: true, maximo: 500 });
+    revisarTexto(errores, 'description', valores.description, { nombre: 'la descripción', obligatorio: true, maximo: 2000 });
+
+    if (valores.technologies.length === 0) {
+        errores.technologies = 'Agrega al menos una tecnología.';
+    }
+
+    if (!valores.startDate) {
+        errores.startDate = 'Falta la fecha de inicio.';
+    } else if (valores.estimatedEndDate && valores.estimatedEndDate < valores.startDate) {
+        // Las fechas "AAAA-MM-DD" se pueden comparar como texto
+        errores.estimatedEndDate = 'La fecha estimada de finalización no puede ser anterior a la fecha de inicio.';
+    }
+
+    revisarTexto(errores, 'repositoryUrl', valores.repositoryUrl, {
+        nombre: 'el repositorio', maximo: 200,
+        patron: /^https:\/\/github\.com\/[A-Za-z0-9-]+\/[A-Za-z0-9._-]+\/?$/,
+        mensajePatron: 'El repositorio debe tener la forma https://github.com/propietario/repositorio.'
+    });
+
+    return errores;
+}

@@ -151,6 +151,7 @@ Commits del avance 2: 19-
 | 51 | 2026-11-06 | 34f4e6f | Implementar la solicitud de participación y Mis solicitudes con edición y cancelación | cliente/src | SolicitarParticipacion.jsx, EditarSolicitud.jsx, MisSolicitudes.jsx, FormularioSolicitud.jsx, TarjetaSolicitud.jsx, solicitudes.js, validaciones.js, App.jsx |
 | 52 | 2026-11-06 | 5a6097d | Implementar las solicitudes recibidas con filtros, aceptación y rechazo | cliente/src | SolicitudesRecibidas.jsx, PestanasSolicitudes.jsx, MisSolicitudes.jsx, AccionesIniciativa.jsx, solicitudes.js, App.jsx |
 | 53 | 2026-11-06 | 58c5b00 | Implementar el perfil: consulta y modificación con competencias por nivel, intereses y foto | cliente/src | MiPerfil.jsx, PerfilUsuario.jsx, VistaPerfil.jsx, FormularioPerfil.jsx, CompetenciasConNivel.jsx, IniciativasDelUsuario.jsx, usuarios.js, SesionContexto.jsx, validaciones.js, App.jsx |
-| 54 | 2026-11-06 | aee18e9 | Implementar la búsqueda y el filtrado de usuarios | cliente/src | Usuarios.jsx, FiltrosUsuarios.jsx, TarjetaUsuario.jsx, usuarios.js, App.jsx |
+| 54 | 2026-11-06 | 2134a46 | Implementar la búsqueda y el filtrado de usuarios | cliente/src | Usuarios.jsx, FiltrosUsuarios.jsx, TarjetaUsuario.jsx, usuarios.js, App.jsx |
+| 55 | 2026-11-06 | c93cd49 | Implementar la conversión en proyecto, el listado y el detalle de proyectos | cliente/src | ConvertirEnProyecto.jsx, Proyectos.jsx, DetalleProyecto.jsx, FormularioProyecto.jsx, TarjetaProyecto.jsx, proyectos.js, AccionesIniciativa.jsx, DetalleIniciativa.jsx, validaciones.js, App.jsx |
 
 <!-- FIN TABLA COMMITS -->
