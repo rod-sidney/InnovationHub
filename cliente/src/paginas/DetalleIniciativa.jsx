@@ -161,14 +161,14 @@ function DetalleIniciativa() {
             {!accesoCompleto && (
                 <div className="alert alert-warning" role="note">
                     <span aria-hidden="true">🔒 </span>
-                    Esta iniciativa es <strong>restringida</strong>: solo ves su resumen. La descripción, el
+                    Esta iniciativa es <strong>restringida</strong>: La descripción, el
                     problema y el equipo solo los ven el propietario y los miembros aceptados.
                 </div>
             )}
 
             {accesoCompleto && iniciativa.visibility === 'private' && (
                 <div className="alert alert-info" role="note">
-                    Esta iniciativa es <strong>privada</strong>: solo la ve su equipo; para las demás personas no aparece en el catálogo.
+                    Esta iniciativa es <strong>privada</strong>: solo disponible para el equipo.
                 </div>
             )}
 

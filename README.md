@@ -2,7 +2,7 @@
 
 Proyecto del curso SOFT-12-C1 -- Programación Web Avanzada
 
-**Estudiante:** Sidney Rodríguez
+**Estudiante:** Sidney Rodríguez Carranza
 
 **Sección:** SCV2   **Periodo:** III Cuatrimestre 2026
 
@@ -10,89 +10,257 @@ Proyecto del curso SOFT-12-C1 -- Programación Web Avanzada
 
 ## Descripción
 
-Aplicación web que permite publicar ideas, necesidades y retos, 
-declarar las competencias que cada iniciativa requiere y conformar 
-equipos interdisciplinarios dentro de la comunidad universitaria.
+Aplicación web que permite publicar ideas, necesidades y retos, declarar las competencias que cada
+iniciativa requiere y conformar equipos interdisciplinarios dentro de la comunidad universitaria.
+
+- **Avance 1** (`avance1/`): prototipo navegable con HTML, CSS, JavaScript, Bootstrap y Sass.
+- **Avance 2** (`cliente/` y `servidor/`): aplicación cliente-servidor. La interfaz es una aplicación
+  de React (Vite) que consume una API propia hecha con Node.js y Express, y la información se guarda
+  en MongoDB.
+
+```
+React (Vite)  --HTTP/JSON-->  API en Node.js con Express  -->  MongoDB
+```
+
+El cliente nunca se conecta a la base de datos: toda regla de negocio, verificación de permisos y
+acceso a datos ocurre en el servidor.
 
 ## Estructura del repositorio
 
-- `avance1/` — prototipo con HTML, CSS, JavaScript, Bootstrap y Sass
-  - `index.html` — página principal
-  - `paginas/` — pantallas del prototipo (catálogo, detalle, publicar, editar, perfil, solicitud, iniciar sesión y crear cuenta)
-  - `datos/`   — archivos JSON con datos simulados: `iniciativas.json`, `usuarios.json`, `competencias.json` y `categorias.json`
-  - `js/`      — módulos de JavaScript, cada uno con una responsabilidad:
-    - `api.js` — carga de iniciativas y del catálogo de competencias, y su persistencia
-    - `auth.js` — sesión (iniciar, cerrar, registrarse) y reglas de permisos y visibilidad
-    - `solicitudes.js` — solicitudes de participación
-    - `validations.js` — validación propia de los formularios
-    - `ui.js` — generación del HTML y componentes de la interfaz (toasts, modales, chips)
-    - `imagenes.js` — reducción de fotos antes de guardarlas
-    - `main.js` y `app.js` — controladores de cada página
-  - `scss/`    — variables y parciales de Sass
-  - `css/`     — hoja de estilos compilada
-  - `img/`     — imágenes predeterminadas (perfil e iniciativa sin foto)
-- `herramientas/` — script que genera la tabla de commits de este README
-- `package.json` — dependencias (Bootstrap y Sass) y scripts para compilar los estilos
- 
-## Cómo ejecutar
- 
-**Nota:** Debido a que la aplicación utiliza la API `fetch` de JavaScript para leer archivos JSON locales, abrir el archivo directamente en el navegador (`file://`) generará un error de CORS. 
+```
+innovation-hub/
+├── README.md
+├── .gitignore
+├── docs/
+│   ├── api-contract.md      contrato de la API (rutas, verbos, formatos y códigos)
+│   └── modelo-datos.md      modelo de datos de MongoDB (embebido frente a referencia)
+├── avance1/                 prototipo del Avance 1 (se conserva)
+├── cliente/                 aplicación React
+│   ├── .env.example
+│   └── src/
+│       ├── api/             funciones que llaman a la API (una por recurso) y a GitHub
+│       ├── componentes/     componentes por dominio: comunes, layout, iniciativas,
+│       │                    solicitudes, usuarios y proyectos
+│       ├── contexto/        sesión compartida con Context de React
+│       ├── paginas/         una página por ruta de React Router
+│       ├── styles/          Bootstrap y Sass del Avance 1
+│       └── utils/           validaciones, etiquetas, formato de fechas e imágenes
+├── servidor/                API con Express
+│   ├── .env.example
+│   ├── datos-prueba/        datos que carga el script de semilla
+│   └── src/
+│       ├── config/          variables de entorno y conexión a MongoDB
+│       ├── rutas/           enrutamiento: ruta + verbo + middlewares -> controlador
+│       ├── controladores/   capa HTTP: valida la entrada, llama al servicio y responde
+│       ├── servicios/       lógica de negocio: reglas RN y visibilidad
+│       ├── modelos/         acceso a datos: esquemas de Mongoose
+│       ├── middlewares/     sesión (token) y manejo uniforme de errores
+│       ├── validaciones/    validación de cuerpos y parámetros
+│       └── utils/           errores, paginación, representaciones y valores controlados
+├── pruebas/                 colección de Postman de la API
+└── herramientas/            script que genera la tabla de commits de este README
+```
 
-Para ejecutar el proyecto correctamente:
+## Requisitos
+
+- Node.js 20.19 o superior (lo exige Mongoose 9; probado con Node.js 24) y npm.
+- MongoDB Community Server 8 o superior escuchando en `localhost:27017`.
+- Postman (opcional) para ejecutar la colección de pruebas.
+
+## 1. Instalar las dependencias
+
+Cada parte tiene su propio `package.json`. Las dependencias (`node_modules`) no se suben al
+repositorio, así que se instalan una vez:
+
+```bash
+cd servidor
+npm install
+cd ../cliente
+npm install
+```
+
+## 2. Configurar las variables de entorno
+
+Los archivos `.env` no se suben al repositorio porque pueden tener secretos. Cada carpeta trae un
+`.env.example` que se copia con el nombre `.env`:
+
+```bash
+cp servidor/.env.example servidor/.env
+cp cliente/.env.example cliente/.env
+```
+
+(En PowerShell: `Copy-Item servidor/.env.example servidor/.env`.)
+
+**servidor/.env**
+
+| Variable | Ejemplo | Para qué sirve |
+|---|---|---|
+| `PORT` | `3000` | Puerto donde escucha la API |
+| `MONGODB_URI` | `mongodb://127.0.0.1:27017/innovation-hub` | Cadena de conexión de MongoDB |
+| `CLIENT_ORIGIN` | `http://localhost:5173` | Origen del cliente permitido por CORS |
+| `SESSION_HOURS` | `8` | Horas que dura una sesión |
+
+**cliente/.env**
+
+| Variable | Ejemplo | Para qué sirve |
+|---|---|---|
+| `VITE_API_URL` | `http://localhost:3000/api` | Dirección de la API (en la entrega final solo cambia este valor) |
+| `VITE_GITHUB_API_URL` | `https://api.github.com` | API pública de GitHub |
+
+## 3. Levantar la base de datos y cargar los datos de prueba
+
+1. Instalar MongoDB Community Server (incluye el servicio de Windows) y, si se quiere, MongoDB Compass:
+   ```bash
+   winget install MongoDB.Server
+   winget install MongoDB.Compass.Full
+   ```
+   También se puede descargar el instalador desde mongodb.com. El instalador deja MongoDB como un
+   servicio de Windows que se inicia solo.
+2. Comprobar que el servicio está encendido (PowerShell):
+   ```bash
+   Get-Service MongoDB
+   ```
+3. Cargar los datos de prueba (vacía las colecciones y vuelve a llenarlas):
+   ```bash
+   cd servidor
+   npm run seed
+   ```
+   La base de datos `innovation-hub` se crea sola. El script guarda las contraseñas con bcrypt y
+   crea los índices (correo único, solicitud pendiente única, proyecto único por iniciativa y
+   vencimiento de sesiones).
+
+## 4. Ejecutar el servidor
+
+```bash
+cd servidor
+npm run dev
+```
+
+`npm run dev` usa `node --watch`: el servidor se reinicia solo al guardar un archivo. Para
+comprobar que funciona, abrir `http://localhost:3000/api/health` (responde `{"status":"ok"}`).
+
+## 5. Ejecutar el cliente
+
+En otra terminal:
+
+```bash
+cd cliente
+npm run dev
+```
+
+Abrir `http://localhost:5173`. El cliente usa el puerto 5173 de forma fija porque es el origen que el
+servidor acepta por CORS.
+
+## 6. Probar la API con Postman
+
+1. Cargar los datos de prueba (`npm run seed`) y encender el servidor.
+2. En Postman: *Import* → `pruebas/innovation-hub.postman_collection.json`.
+3. Ejecutar la colección completa en orden (*Run collection*): unas peticiones usan los tokens e
+   identificadores que guardan las anteriores.
+
+Cada recurso tiene casos **[Correcta]**, **[Datos inválidos]**, **[Inexistente]** y
+**[No autorizado]**, y los casos **[Conflicto]** prueban las reglas de negocio (409). También se
+puede ejecutar desde la terminal con Newman:
+
+```bash
+npx newman run pruebas/innovation-hub.postman_collection.json
+```
+
+## Cuentas de prueba
+
+Todas usan la contraseña `Hub12345`.
+
+| Correo | Para probar |
+|---|---|
+| `cmontero@ucenfotec.ac.cr` | Estudiante: propietaria de una iniciativa pública con solicitudes pendientes y de una privada; miembro de una restringida |
+| `svargas@ucenfotec.ac.cr` | Estudiante: propietaria de una iniciativa restringida; tiene una solicitud pendiente |
+| `vmorales@ucenfotec.ac.cr` | Estudiante: su iniciativa ya tiene un miembro y se puede convertir en proyecto |
+| `lmendez@ucenfotec.ac.cr` | Estudiante: propietaria del proyecto TutorHub (repositorio de GitHub válido) |
+| `ecampos@ucenfotec.ac.cr` | Docente: propietaria del proyecto EcoDatos (repositorio inexistente, para ver el manejo de errores de GitHub) |
+| `equiros@ucenfotec.ac.cr` | Docente: propietario de una iniciativa institucional |
+| `admin.innovationhub@ucenfotec.ac.cr` | La única cuenta de administrador (puede agregar competencias al catálogo) |
+
+## Documentación
+
+- [Contrato de la API](docs/api-contract.md): rutas, verbos, formato de peticiones y respuestas,
+  códigos de estado, formato uniforme de errores y reglas de negocio que verifica el servidor.
+- [Modelo de datos](docs/modelo-datos.md): colecciones de MongoDB y por qué cada relación se resolvió
+  con documentos embebidos o con referencias, con su equivalencia en un modelo relacional.
+
+## Decisiones de diseño (Avance 2)
+
+1. **Servidor en capas:** las rutas definen la dirección, el verbo y los middlewares; los
+   controladores leen y validan la petición y responden con el código de estado; los servicios
+   aplican las reglas de negocio; los modelos de Mongoose son el acceso a datos. Ningún archivo
+   mezcla las cuatro responsabilidades.
+2. **Contrato pensado para dos implementaciones:** rutas, parámetros y campos en inglés, valores
+   controlados como códigos (`public`, `pending`...), identificadores como texto opaco, fechas ISO y un
+   único formato de error. Así el servidor de .NET de la entrega final puede responder igual.
+3. **Validación en los dos lados:** el cliente valida para dar una respuesta inmediata y el servidor
+   vuelve a validar todo (`servidor/src/validaciones`). El servidor solo copia los campos permitidos,
+   así que el cliente no puede elegir el propietario, el rol ni el estado.
+4. **Autorización en el servidor:** `servicios/visibilidad.js` decide qué iniciativas, equipos y
+   proyectos ve cada usuario (cuatro niveles de visibilidad). Ocultar un botón en React nunca
+   reemplaza esa verificación.
+5. **Sesiones con token:** al iniciar sesión el servidor entrega un token aleatorio y guarda solo su
+   hash SHA-256 en la colección `sessions`; cerrar sesión borra el documento y el token deja de
+   servir. Un índice TTL elimina las sesiones vencidas.
+6. **Contraseñas con bcrypt:** se guardan con hash y sal; el campo tiene `select: false` y las
+   respuestas se arman campo por campo, así que nunca salen hashes ni secretos.
+7. **Listados resueltos en MongoDB:** búsqueda, filtros, orden y paginación con `find`, `sort`, `skip`
+   y `limit`; el servidor no descarga colecciones completas para filtrarlas o paginarlas en memoria.
+8. **Modelo de datos documentado:** el equipo vive embebido en la iniciativa (acotado y siempre se lee
+   con ella), y las solicitudes y los proyectos van en sus propias colecciones con referencias (ver
+   `docs/modelo-datos.md`).
+9. **Cliente organizado por dominio:** páginas por ruta, componentes reutilizables con props y
+   children, estado inmutable, formularios controlados, Context para la sesión y `useEffect` con
+   `AbortController` para cancelar las peticiones al desmontar un componente.
+10. **GitHub desde el cliente y sin token:** un token en el navegador quedaría expuesto; se usa el
+    acceso público y se manejan los casos de repositorio inexistente o privado, límite de consultas,
+    servicio no disponible y respuesta inválida.
+11. **Diseño del Avance 1:** se trasladaron las mismas variables y parciales de Sass, con Sass 1.100.0
+    fijo: desde la 1.101, Sass escribe algunos colores calculados en porcentajes y eso rompe los íconos
+    SVG que Bootstrap incrusta en el CSS.
+
+## Avance 1
+
+### Cómo ejecutar el prototipo
+
+**Nota:** el prototipo usa `fetch` para leer archivos JSON locales, así que abrirlo directamente
+desde el disco (`file://`) genera un error de CORS. Para ejecutarlo:
+
 1. Abrir el proyecto en un editor como Visual Studio Code.
 2. Utilizar una extensión de servidor local (como Live Server).
 3. Abrir `avance1/index.html` con el servidor (clic derecho → *Open with Live Server*).
 
-## Cómo compilar los estilos (Sass)
+### Cómo compilar los estilos del prototipo (Sass)
 
-Los estilos se escriben en `avance1/scss/` y se compilan a `avance1/css/`. El CSS compilado ya está incluido en el repositorio, así que no hace falta compilar para ver el prototipo.
+Los estilos se escriben en `avance1/scss/` y se compilan a `avance1/css/`. El CSS compilado ya está
+incluido, así que no hace falta compilar para ver el prototipo. Desde la raíz del repositorio:
 
-1. Instalar las dependencias (Bootstrap y Sass) una sola vez:
-   ```bash
-   npm install
-   ```
-2. Compilar todos los estilos:
-   ```bash
-   npm run sass
-   ```
-   O dejarlo compilando automáticamente cada vez que se guarda un archivo `.scss`:
-   ```bash
-   npm run sass:watch
-   ```
+```bash
+npm install
+npm run sass
+```
 
-`main.scss` importa primero las variables propias (`_variables.scss`), que sobrescriben las de Bootstrap, luego Bootstrap y al final los parciales (`_tarjetas.scss` y `_detalle.scss`). Al compilar, Sass muestra advertencias de obsolescencia (por ejemplo, de `@import`) que vienen en parte del propio Bootstrap 5.3; no impiden la compilación.
+### Decisiones de diseño del Avance 1
 
-## Cuentas de prueba
-
-Todas usan la contraseña `Hub12345`. Las cuentas creadas desde "Crear cuenta" se guardan en el navegador.
-
-| Correo | Para probar |
-|---|---|
-| `cmontero@ucenfotec.ac.cr` | Estudiante: propietaria de una iniciativa pública y de una privada, y miembro de una restringida |
-| `svargas@ucenfotec.ac.cr` | Estudiante: propietaria de una iniciativa restringida |
-| `equiros@ucenfotec.ac.cr` | Docente: propietario de una iniciativa institucional |
-| `admin.innovationhub@ucenfotec.ac.cr` | La única cuenta de administrador |
- 
-## Decisiones de diseño
- 
-1. **Diseño Responsive y UI:** Se utilizó Bootstrap 5 junto con Sass para que la interfaz sea responsive (mobile-first), accesible y visualmente coherente. Se emplearon utilidades de flexbox y grid system para el catálogo y perfiles.
-2. **Persistencia de Datos Simulada:** Dado que aún no hay un backend, se implementó `localStorage` de HTML5. Esto permite que las nuevas iniciativas creadas desde los formularios se guarden en el navegador del usuario y persistan al cambiar de página, simulando una base de datos real.
-3. **Carga Asíncrona de Datos:** Los datos iniciales se extraen de archivos estáticos `.json` utilizando Fetch API y promesas (async/await), inyectándose en el DOM al inicializar la aplicación.
-4. **Enrutamiento por Parámetros:** Para navegar entre el catálogo, el detalle de una iniciativa y la solicitud de participación, se utilizó `URLSearchParams`. Esto permite capturar el `?id=X` de la URL para saber exactamente qué información renderizar en las vistas de detalle sin necesidad de múltiples archivos HTML.
-5. **Delegación de Eventos:** Para mejorar el rendimiento y manejar elementos creados dinámicamente (como la adición de múltiples competencias en el formulario de registro), se implementó el patrón de delegación de eventos en JavaScript.
-6. **Sesión y permisos en el navegador:** `auth.js` valida el inicio de sesión contra `datos/usuarios.json` y contra las cuentas nuevas guardadas en `localStorage`; la sesión no guarda la contraseña. Las reglas de visibilidad (pública, institucional, restringida y privada) y de propietario (RN-06, RN-07, RN-10, RN-11 y RN-15) se revisan en el cliente; desde el Avance 2 se verificarán en el servidor. Las contraseñas de prueba están en texto plano solo porque todavía no hay servidor.
-7. **Versión de los datos:** `VERSION_DATOS` (en `api.js`) hace que el navegador descarte la copia vieja de `localStorage` cuando cambia la estructura de los archivos JSON.
-8. **Catálogo de competencias:** `datos/competencias.json` se carga con `fetch` y llena las listas del filtro del catálogo y del formulario de iniciativa, agrupadas por categoría, en lugar de escribir las competencias como texto libre.
-9. **Retroalimentación con componentes de Bootstrap:** los mensajes de éxito usan toasts y las confirmaciones usan modales (eliminar, descartar cambios, quitar una competencia), en lugar de `alert()` y `confirm()`.
-10. **Validación propia:** los formularios usan `novalidate` y JavaScript propio (`validations.js`) con un mensaje por campo; se revisan campos obligatorios, formato, longitud (con contadores de caracteres), rangos, selecciones válidas, coincidencias y repetidos.
-11. **Fotos reducidas:** `imagenes.js` reduce las fotos con `canvas` (300 px las de perfil y 800 px las de iniciativas) para que quepan en `localStorage`.
-12. **Contenido seguro:** todo dato de usuarios o iniciativas pasa por `escaparHTML()` antes de insertarse con `innerHTML`, para que no se interprete como HTML.
-13. **Versión fija de Sass (1.100.0):** desde la 1.101, Sass escribe algunos colores calculados en porcentajes y eso rompe íconos SVG incrustados de Bootstrap.
+1. **Diseño Responsive y UI:** Bootstrap 5 junto con Sass para una interfaz responsive (mobile-first),
+   accesible y visualmente coherente.
+2. **Persistencia simulada:** `localStorage` guardaba las iniciativas nuevas en el navegador. Desde el
+   Avance 2 la persistencia está en MongoDB.
+3. **Carga asíncrona:** los datos iniciales se leían de archivos `.json` con `fetch` y `async/await`.
+4. **Enrutamiento por parámetros:** `URLSearchParams` leía el `?id=X` de la dirección. En el Avance 2
+   lo reemplaza React Router (`/iniciativas/:id`).
+5. **Delegación de eventos** para los elementos creados dinámicamente.
+6. **Validación propia** con `novalidate` y un mensaje por campo, que el Avance 2 conserva en React.
+7. **Contenido seguro:** `escaparHTML()` evitaba que los datos se interpretaran como HTML. En React,
+   JSX escapa el texto de forma automática.
  
 ## Resumen de commits
 
-Commits del avance 1: 1-18
-Commits del avance 2: 19-
+**Commits del avance 1:** 1-18. Total: 18 commits.
+**Commits del avance 2:** 19-58. Total: 40 commits.
  
 <!-- INICIO TABLA COMMITS -->
 
@@ -154,6 +322,7 @@ Commits del avance 2: 19-
 | 54 | 2026-11-06 | 2134a46 | Implementar la búsqueda y el filtrado de usuarios | cliente/src | Usuarios.jsx, FiltrosUsuarios.jsx, TarjetaUsuario.jsx, usuarios.js, App.jsx |
 | 55 | 2026-11-06 | e4a95cf | Implementar la conversión en proyecto, el listado y el detalle de proyectos | cliente/src | ConvertirEnProyecto.jsx, Proyectos.jsx, DetalleProyecto.jsx, FormularioProyecto.jsx, TarjetaProyecto.jsx, proyectos.js, AccionesIniciativa.jsx, DetalleIniciativa.jsx, validaciones.js, App.jsx |
 | 56 | 2026-11-06 | 438c817 | Mostrar la información del repositorio con la API de GitHub y manejar sus errores | cliente | github.js, InfoRepositorio.jsx, DetalleProyecto.jsx, .env.example |
-| 57 | 2026-11-06 | 2c4f27e | Correcciones: puerto ocupado, versión de Node, repositorio sin nombre y textos | servidor, cliente, docs | server.js, package.json, proyectos.validacion.js, iniciativas.servicio.js, DetalleIniciativa.jsx, Inicio.jsx, api-contract.md |
+| 57 | 2026-11-06 | 970c7b9 | Correcciones: puerto ocupado, versión de Node, repositorio sin nombre y textos | servidor, cliente, docs | server.js, package.json, proyectos.validacion.js, iniciativas.servicio.js, DetalleIniciativa.jsx, Inicio.jsx, api-contract.md |
+| 58 | 2026-11-08 | 85f05b6 | entrega-2. Correcciones finales. | cliente, Global | package.json, DetalleIniciativa.jsx, Inicio.jsx, README.md |
 
 <!-- FIN TABLA COMMITS -->

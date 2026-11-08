@@ -94,7 +94,7 @@ function Inicio() {
                         </div>
                         <div className="col-lg-6">
                             <img
-                                src="https://picsum.photos/id/119/600/400"
+                                src="https://picsum.photos/id/180/367/267"
                                 className="img-fluid rounded shadow"
                                 alt="Equipo trabajando en Innovation Hub"
                             />
