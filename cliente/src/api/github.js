@@ -50,7 +50,6 @@ export async function obtenerRepositorio(propietario, nombre, signal) {
 
     if (esLimiteAlcanzado(respuesta)) {
         const hora = horaDeReinicio(respuesta);
-        // La hora en español ya termina en punto ("11:31 p. m."), por eso no se agrega otro
         throw new ErrorDeGitHub('limite', `Se alcanzó el límite de consultas a GitHub. ${hora ? `Podrás consultar de nuevo a partir de las ${hora}` : 'Intenta más tarde.'}`);
     }
 

@@ -24,7 +24,7 @@ function aCompetenciasDelUsuario(competencias) {
         .map((elemento) => ({ skill: aCompetencia(elemento.skill), level: elemento.level }));
 }
 
-// Perfil de un usuario (sección 4.2)
+// Perfil de un usuario
 // El correo solo se incluye cuando el perfil es de quien hace la petición
 // El hash de la contraseña no se incluye
 export function aUsuario(usuario, incluirCorreo = false) {
@@ -178,7 +178,7 @@ function aRepositorio(repositorio) {
     };
 }
 
-// Resumen de un proyecto (sección 4.10)
+// Resumen de un proyecto
 // Requiere populate de initiative y owner
 export function aResumenProyecto(proyecto) {
     const iniciativa = proyecto.initiative;

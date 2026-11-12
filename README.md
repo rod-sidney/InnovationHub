@@ -323,6 +323,6 @@ npm run sass
 | 55 | 2026-11-06 | e4a95cf | Implementar la conversión en proyecto, el listado y el detalle de proyectos | cliente/src | ConvertirEnProyecto.jsx, Proyectos.jsx, DetalleProyecto.jsx, FormularioProyecto.jsx, TarjetaProyecto.jsx, proyectos.js, AccionesIniciativa.jsx, DetalleIniciativa.jsx, validaciones.js, App.jsx |
 | 56 | 2026-11-06 | 438c817 | Mostrar la información del repositorio con la API de GitHub y manejar sus errores | cliente | github.js, InfoRepositorio.jsx, DetalleProyecto.jsx, .env.example |
 | 57 | 2026-11-06 | 970c7b9 | Correcciones: puerto ocupado, versión de Node, repositorio sin nombre y textos | servidor, cliente, docs | server.js, package.json, proyectos.validacion.js, iniciativas.servicio.js, DetalleIniciativa.jsx, Inicio.jsx, api-contract.md |
-| 58 | 2026-11-08 | 85f05b6 | entrega-2. Correcciones finales. | cliente, Global | package.json, DetalleIniciativa.jsx, Inicio.jsx, README.md |
+| 58 | 2026-11-08 | 55dbd99 | entrega-2. Correcciones finales. | cliente, Global | package.json, DetalleIniciativa.jsx, Inicio.jsx, README.md |
 
 <!-- FIN TABLA COMMITS -->
